@@ -15,21 +15,21 @@ export HF_METRICS_CACHE=checkpoints/hf_model
 
 cache_dir=${TRANSFORMERS_CACHE}
 
+# petl/ lives in the repo root
+export PYTHONPATH=$(pwd):${PYTHONPATH}
+export CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES:-0}
 
-# TASK_NAME=mnli
-TASK_NAME=sst2
+
+TASK_NAME=${TASK_NAME:-sst2}
 metric="accuracy"
-# TASK_NAME=mnli
 # wandb env variables
 export WANDB_PROJECT=glue.${TASK_NAME}
 export WANDB_WATCH="false"
 
 DATE=`date +%Y%m%d`
 
-# declare -a root_seed_list=(42 2 4 6 8)
-# seed=${root_seed_list[$SLURM_ARRAY_TASK_ID]}
-
-seed=42
+declare -a root_seed_list=(42 2 4 6 8)
+seed=${root_seed_list[${SLURM_ARRAY_TASK_ID:-0}]}
 
 # declare -a seed_list=(42)
 # declare -a seed_list=(42 2 4)
@@ -37,39 +37,27 @@ seed=42
 # declare -a seed_list=(6 8)
 # declare -a seed_list=(${root_seed})
 
-# ----- MAM adapter -----
-attn_mode="prefix"
-attn_option="concat"
-attn_composition="add"
-attn_bn=16  # attn bottleneck dim
-
-ffn_mode="adapter"
-ffn_option="parallel"
-ffn_adapter_layernorm_option="none"
-ffn_adapter_init_option="lora"
-ffn_adapter_scalar="2"
-ffn_bn=16 # ffn bottleneck dim
-
-# ----- lora -----
-# attn_mode="lora"
-# attn_option="none"
-# attn_composition="add"
-# attn_bn=16
-
-# set ffn_mode to be 'lora' to use
-# lora at ffn as well
-
-# ffn_mode="lora"
-# ffn_option="none"
-# ffn_adapter_layernorm_option="none"
-# ffn_adapter_init_option="bert"
-# ffn_adapter_scalar="1"
-# ffn_bn=16
-
-# lora_alpha=32
-# lora_dropout=0.1
-# lora_init="lora"
-
+METHOD=${METHOD:-mam}
+case ${METHOD} in
+mam)      # MAM adapter (original setting)
+attn_mode="prefix"; attn_option="concat"; attn_composition="add"; attn_bn=16
+ffn_mode="adapter"; ffn_option="parallel"; ffn_adapter_layernorm_option="none"
+ffn_adapter_init_option="lora"; ffn_adapter_scalar="2"; ffn_bn=16 ;;
+lora)     # LoRA on q,v (original preset, attention only)
+attn_mode="lora"; attn_option="none"; attn_composition="add"; attn_bn=16
+ffn_mode="none"; ffn_option="none"; ffn_adapter_layernorm_option="none"
+ffn_adapter_init_option="bert"; ffn_adapter_scalar="1"; ffn_bn=16
+lora_alpha=32; lora_dropout=0.1; lora_init="lora" ;;
+prefix)   # prefix tuning, l=32 (~0.5% params)
+attn_mode="prefix"; attn_option="concat"; attn_composition="add"; attn_bn=32
+ffn_mode="none"; ffn_option="parallel"; ffn_adapter_layernorm_option="none"
+ffn_adapter_init_option="lora"; ffn_adapter_scalar="4"; ffn_bn=16 ;;
+adapter)  # Houlsby adapter, r=16 at attn + ffn (~0.5% params)
+attn_mode="adapter"; attn_option="sequential"; attn_composition="add"; attn_bn=16
+ffn_mode="adapter"; ffn_option="sequential"; ffn_adapter_layernorm_option="none"
+ffn_adapter_init_option="bert"; ffn_adapter_scalar="1"; ffn_bn=16 ;;
+*) echo "unknown METHOD=${METHOD}"; exit 1 ;;
+esac
 
 # lora params are not set
 if [ -z ${lora_alpha+x} ];
@@ -81,7 +69,7 @@ fi
 
 # set to 1 for debug mode which only
 # uses 1600 training examples
-debug=0
+debug=${DEBUG:-0}
 
 # set to "wandb" to use weights & bias
 report_to="none"
@@ -105,7 +93,8 @@ max_seq_length=512
 lr_scheduler_type="polynomial"
 #metric=bleu
 unfreeze='ef_'
-max_eval_samples=1600
+if [ "${TASK_NAME}" = "mnli" ]; then max_eval_samples=9815; else max_eval_samples=872; fi
+pad_to_max_length=${PAD_TO_MAX:-False}
 logging_steps=50
 
 eval_strategy="epoch"
@@ -136,7 +125,7 @@ fi
 
 # for seed in "${seed_list[@]}"; do
 
-exp_name=glue.${TASK_NAME}.am_${attn_mode}.ao_${attn_option}.fm_${ffn_mode}
+exp_name=glue.${TASK_NAME}.${METHOD}.am_${attn_mode}.ao_${attn_option}.fm_${ffn_mode}
 exp_name+=.fo_${ffn_option}.abn${preseqlen}.fbn${ffn_bn_len}.ac_${attn_composition}
 exp_name+=.fl_${ffn_adapter_layernorm_option}.finit_${ffn_adapter_init_option}
 exp_name+=.fs_${ffn_adapter_scalar}.unfrz_${unfreeze}.ne${num_train_epochs}
@@ -152,11 +141,12 @@ rm checkpoints/hf_model/*.lock
 # python -m torch.distributed.launch --nproc_per_node 2 --master_port=${port} examples/pytorch/text-classification/run_glue.py \
 
 python -u examples/pytorch/text-classification/run_glue.py \
-    --model_name_or_path roberta-base \
+    --model_name_or_path _setup/models/roberta-base \
     --task_name $TASK_NAME \
     --do_train \
     --do_eval \
     --max_seq_length 128 \
+    --pad_to_max_length ${pad_to_max_length} \
     --per_device_train_batch_size ${bsz} \
     --per_device_eval_batch_size ${bsz} \
     --max_tokens_per_batch ${max_tokens_per_batch} \

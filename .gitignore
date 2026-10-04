@@ -161,3 +161,12 @@ tags
 
 # .lock
 *.lock
+# reproduction: rebuilt by setup_env.sh / produced by runs
+_setup/
+checkpoints/
+data/xsum/
+logs/*debug*
+logs/*progress*
+*.orig
+*.bak
+patch_*.py

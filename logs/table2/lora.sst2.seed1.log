@@ -1,0 +1,798 @@
+checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2.
+10/04/2026 14:34:43 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: True
+10/04/2026 14:34:43 - INFO - __main__ -   Training/evaluation parameters TrainingArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.98,
+adam_epsilon=1e-06,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_pin_memory=True,
+ddp_find_unused_parameters=False,
+debug=[],
+deepspeed=None,
+disable_tqdm=True,
+do_eval=True,
+do_predict=False,
+do_train=True,
+eval_accumulation_steps=None,
+eval_steps=5000,
+evaluation_strategy=IntervalStrategy.EPOCH,
+fp16=True,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+gradient_accumulation_steps=1,
+greater_is_better=True,
+group_by_length=False,
+ignore_data_skip=False,
+label_names=None,
+label_smoothing_factor=0.0,
+learning_rate=0.0001,
+length_column_name=length,
+load_best_model_at_end=True,
+local_rank=-1,
+log_level=-1,
+log_level_replica=-1,
+log_on_each_node=True,
+logging_dir=checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./runs/Oct04_14-34-43_j-12410940-job-0,
+logging_first_step=False,
+logging_steps=50,
+logging_strategy=IntervalStrategy.STEPS,
+lr_scheduler_type=SchedulerType.POLYNOMIAL,
+max_grad_norm=1.0,
+max_steps=-1,
+metric_for_best_model=accuracy,
+mp_parameters=,
+no_cuda=False,
+num_train_epochs=10.0,
+output_dir=checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2.,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=32,
+per_device_train_batch_size=32,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2.,
+push_to_hub_organization=None,
+push_to_hub_token=None,
+remove_unused_columns=True,
+report_to=[],
+resume_from_checkpoint=None,
+run_name=sst2.20261004.glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2.,
+save_steps=5000,
+save_strategy=IntervalStrategy.EPOCH,
+save_total_limit=2,
+seed=2,
+sharded_ddp=[],
+skip_memory_metrics=True,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_legacy_prediction_loop=False,
+warmup_ratio=0.06,
+warmup_steps=0,
+weight_decay=0.1,
+)
+10/04/2026 14:34:44 - WARNING - datasets.builder -   Reusing dataset glue (checkpoints/hf_model/glue/sst2/1.0.0/dacbe3125aa31d7f70367a07a8a9e72a5a0bfeb5fc42e75c9db75b96da6053ad)
+[INFO|configuration_utils.py:528] 2026-10-04 14:34:44,175 >> loading configuration file /work/unify-parameter-efficient-tuning/_setup/models/roberta-base/config.json
+[INFO|configuration_utils.py:566] 2026-10-04 14:34:44,175 >> Model config RobertaConfig {
+  "architectures": [
+    "RobertaForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "eos_token_id": 2,
+  "finetuning_task": "sst2",
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 514,
+  "model_type": "roberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.9.0.dev0",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+[INFO|tokenization_auto.py:427] 2026-10-04 14:34:44,175 >> Could not locate the tokenizer configuration file, will try to use the model config instead.
+[INFO|configuration_utils.py:528] 2026-10-04 14:34:44,175 >> loading configuration file /work/unify-parameter-efficient-tuning/_setup/models/roberta-base/config.json
+[INFO|configuration_utils.py:566] 2026-10-04 14:34:44,175 >> Model config RobertaConfig {
+  "architectures": [
+    "RobertaForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "bos_token_id": 0,
+  "eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-05,
+  "max_position_embeddings": 514,
+  "model_type": "roberta",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "position_embedding_type": "absolute",
+  "transformers_version": "4.9.0.dev0",
+  "type_vocab_size": 1,
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+[INFO|tokenization_utils_base.py:1651] 2026-10-04 14:34:44,176 >> Didn't find file /work/unify-parameter-efficient-tuning/_setup/models/roberta-base/added_tokens.json. We won't load it.
+[INFO|tokenization_utils_base.py:1651] 2026-10-04 14:34:44,176 >> Didn't find file /work/unify-parameter-efficient-tuning/_setup/models/roberta-base/special_tokens_map.json. We won't load it.
+[INFO|tokenization_utils_base.py:1651] 2026-10-04 14:34:44,176 >> Didn't find file /work/unify-parameter-efficient-tuning/_setup/models/roberta-base/tokenizer_config.json. We won't load it.
+[INFO|tokenization_utils_base.py:1715] 2026-10-04 14:34:44,176 >> loading file /work/unify-parameter-efficient-tuning/_setup/models/roberta-base/vocab.json
+[INFO|tokenization_utils_base.py:1715] 2026-10-04 14:34:44,176 >> loading file /work/unify-parameter-efficient-tuning/_setup/models/roberta-base/merges.txt
+[INFO|tokenization_utils_base.py:1715] 2026-10-04 14:34:44,176 >> loading file /work/unify-parameter-efficient-tuning/_setup/models/roberta-base/tokenizer.json
+[INFO|tokenization_utils_base.py:1715] 2026-10-04 14:34:44,176 >> loading file None
+[INFO|tokenization_utils_base.py:1715] 2026-10-04 14:34:44,176 >> loading file None
+[INFO|tokenization_utils_base.py:1715] 2026-10-04 14:34:44,176 >> loading file None
+[INFO|modeling_utils.py:1159] 2026-10-04 14:34:44,209 >> loading weights file /work/unify-parameter-efficient-tuning/_setup/models/roberta-base/pytorch_model.bin
+============================ init weights is called! ====================================
+============================ init weights is called! ====================================
+[WARNING|modeling_utils.py:1336] 2026-10-04 14:34:45,301 >> Some weights of the model checkpoint at /work/unify-parameter-efficient-tuning/_setup/models/roberta-base were not used when initializing RobertaForSequenceClassification: ['lm_head.dense.bias', 'lm_head.layer_norm.bias', 'lm_head.bias', 'lm_head.layer_norm.weight', 'roberta.pooler.dense.bias', 'roberta.pooler.dense.weight', 'lm_head.dense.weight', 'lm_head.decoder.weight']
+- This IS expected if you are initializing RobertaForSequenceClassification from the checkpoint of a model trained on another task or with another architecture (e.g. initializing a BertForSequenceClassification model from a BertForPreTraining model).
+- This IS NOT expected if you are initializing RobertaForSequenceClassification from the checkpoint of a model that you expect to be exactly identical (initializing a BertForSequenceClassification model from a BertForSequenceClassification model).
+[WARNING|modeling_utils.py:1347] 2026-10-04 14:34:45,301 >> Some weights of RobertaForSequenceClassification were not initialized from the model checkpoint at /work/unify-parameter-efficient-tuning/_setup/models/roberta-base and are newly initialized: ['classifier.dense.weight', 'classifier.dense.bias', 'classifier.out_proj.weight', 'classifier.out_proj.bias']
+You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.
+tune roberta.encoder.layer.0.attention.self.query.ef_lora_A
+tune roberta.encoder.layer.0.attention.self.query.ef_lora_B
+tune roberta.encoder.layer.0.attention.self.value.ef_lora_A
+tune roberta.encoder.layer.0.attention.self.value.ef_lora_B
+tune roberta.encoder.layer.1.attention.self.query.ef_lora_A
+tune roberta.encoder.layer.1.attention.self.query.ef_lora_B
+tune roberta.encoder.layer.1.attention.self.value.ef_lora_A
+tune roberta.encoder.layer.1.attention.self.value.ef_lora_B
+tune roberta.encoder.layer.2.attention.self.query.ef_lora_A
+tune roberta.encoder.layer.2.attention.self.query.ef_lora_B
+tune roberta.encoder.layer.2.attention.self.value.ef_lora_A
+tune roberta.encoder.layer.2.attention.self.value.ef_lora_B
+tune roberta.encoder.layer.3.attention.self.query.ef_lora_A
+tune roberta.encoder.layer.3.attention.self.query.ef_lora_B
+tune roberta.encoder.layer.3.attention.self.value.ef_lora_A
+tune roberta.encoder.layer.3.attention.self.value.ef_lora_B
+tune roberta.encoder.layer.4.attention.self.query.ef_lora_A
+tune roberta.encoder.layer.4.attention.self.query.ef_lora_B
+tune roberta.encoder.layer.4.attention.self.value.ef_lora_A
+tune roberta.encoder.layer.4.attention.self.value.ef_lora_B
+tune roberta.encoder.layer.5.attention.self.query.ef_lora_A
+tune roberta.encoder.layer.5.attention.self.query.ef_lora_B
+tune roberta.encoder.layer.5.attention.self.value.ef_lora_A
+tune roberta.encoder.layer.5.attention.self.value.ef_lora_B
+tune roberta.encoder.layer.6.attention.self.query.ef_lora_A
+tune roberta.encoder.layer.6.attention.self.query.ef_lora_B
+tune roberta.encoder.layer.6.attention.self.value.ef_lora_A
+tune roberta.encoder.layer.6.attention.self.value.ef_lora_B
+tune roberta.encoder.layer.7.attention.self.query.ef_lora_A
+tune roberta.encoder.layer.7.attention.self.query.ef_lora_B
+tune roberta.encoder.layer.7.attention.self.value.ef_lora_A
+tune roberta.encoder.layer.7.attention.self.value.ef_lora_B
+tune roberta.encoder.layer.8.attention.self.query.ef_lora_A
+tune roberta.encoder.layer.8.attention.self.query.ef_lora_B
+tune roberta.encoder.layer.8.attention.self.value.ef_lora_A
+tune roberta.encoder.layer.8.attention.self.value.ef_lora_B
+tune roberta.encoder.layer.9.attention.self.query.ef_lora_A
+tune roberta.encoder.layer.9.attention.self.query.ef_lora_B
+tune roberta.encoder.layer.9.attention.self.value.ef_lora_A
+tune roberta.encoder.layer.9.attention.self.value.ef_lora_B
+tune roberta.encoder.layer.10.attention.self.query.ef_lora_A
+tune roberta.encoder.layer.10.attention.self.query.ef_lora_B
+tune roberta.encoder.layer.10.attention.self.value.ef_lora_A
+tune roberta.encoder.layer.10.attention.self.value.ef_lora_B
+tune roberta.encoder.layer.11.attention.self.query.ef_lora_A
+tune roberta.encoder.layer.11.attention.self.query.ef_lora_B
+tune roberta.encoder.layer.11.attention.self.value.ef_lora_A
+tune roberta.encoder.layer.11.attention.self.value.ef_lora_B
+10/04/2026 14:34:45 - WARNING - datasets.fingerprint -   Parameter 'function'=<function main.<locals>.preprocess_function at 0x7f91f31fcf70> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+10/04/2026 14:34:45 - WARNING - datasets.arrow_dataset -   Loading cached processed dataset at checkpoints/hf_model/glue/sst2/1.0.0/dacbe3125aa31d7f70367a07a8a9e72a5a0bfeb5fc42e75c9db75b96da6053ad/cache-dcf4bb99f4bea973.arrow
+10/04/2026 14:34:45 - WARNING - datasets.arrow_dataset -   Loading cached processed dataset at checkpoints/hf_model/glue/sst2/1.0.0/dacbe3125aa31d7f70367a07a8a9e72a5a0bfeb5fc42e75c9db75b96da6053ad/cache-d95bafc8f2a4d27b.arrow
+10/04/2026 14:34:45 - WARNING - datasets.arrow_dataset -   Loading cached processed dataset at checkpoints/hf_model/glue/sst2/1.0.0/dacbe3125aa31d7f70367a07a8a9e72a5a0bfeb5fc42e75c9db75b96da6053ad/cache-177219d30e7a269f.arrow
+10/04/2026 14:34:45 - INFO - __main__ -   Sample 11124 of the training set: {'attention_mask': [1, 1, 1, 1, 1, 1], 'idx': 11124, 'input_ids': [0, 28878, 34717, 738, 1437, 2], 'label': 1, 'sentence': 'beautifully shot '}.
+10/04/2026 14:34:45 - INFO - __main__ -   Sample 47324 of the training set: {'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'idx': 47324, 'input_ids': [0, 12186, 98, 203, 1531, 14863, 154, 5, 822, 14, 51, 222, 295, 75, 1508, 5, 3682, 701, 1437, 2], 'label': 0, 'sentence': "had so much fun dissing the film that they did n't mind the ticket cost "}.
+10/04/2026 14:34:45 - INFO - __main__ -   Sample 22162 of the training set: {'attention_mask': [1, 1, 1, 1, 1, 1, 1, 1, 1, 1], 'idx': 22162, 'input_ids': [0, 627, 38909, 326, 19112, 1696, 4356, 29148, 1437, 2], 'label': 0, 'sentence': 'the lousy tarantino imitations '}.
+[INFO|trainer.py:420] 2026-10-04 14:34:46,122 >> Using amp fp16 backend
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:430: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  self.scaler = torch.cuda.amp.GradScaler()
+[INFO|trainer.py:520] 2026-10-04 14:34:46,122 >> The following columns in the training set  don't have a corresponding argument in `PETLEncModel.forward` and have been ignored: sentence, idx.
+[INFO|trainer.py:1183] 2026-10-04 14:34:46,920 >> ***** Running training *****
+[INFO|trainer.py:1184] 2026-10-04 14:34:46,920 >>   Num examples = 67349
+[INFO|trainer.py:1185] 2026-10-04 14:34:46,920 >>   Num Epochs = 10
+[INFO|trainer.py:1186] 2026-10-04 14:34:46,920 >>   Instantaneous batch size per device = 32
+[INFO|trainer.py:1187] 2026-10-04 14:34:46,920 >>   Total train batch size (w. parallel, distributed & accumulation) = 32
+[INFO|trainer.py:1188] 2026-10-04 14:34:46,920 >>   Gradient Accumulation steps = 1
+[INFO|trainer.py:1189] 2026-10-04 14:34:46,920 >>   Total optimization steps = 21050
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 0.6854, 'learning_rate': 3.9588281868566905e-06, 'epoch': 0.02}
+{'loss': 0.6877, 'learning_rate': 7.917656373713381e-06, 'epoch': 0.05}
+{'loss': 0.6934, 'learning_rate': 1.187648456057007e-05, 'epoch': 0.07}
+{'loss': 0.6961, 'learning_rate': 1.5835312747426762e-05, 'epoch': 0.1}
+{'loss': 0.687, 'learning_rate': 1.9794140934283453e-05, 'epoch': 0.12}
+{'loss': 0.6983, 'learning_rate': 2.375296912114014e-05, 'epoch': 0.14}
+{'loss': 0.6892, 'learning_rate': 2.7711797307996832e-05, 'epoch': 0.17}
+{'loss': 0.6927, 'learning_rate': 3.1670625494853524e-05, 'epoch': 0.19}
+{'loss': 0.6794, 'learning_rate': 3.5629453681710215e-05, 'epoch': 0.21}
+{'loss': 0.6084, 'learning_rate': 3.9588281868566906e-05, 'epoch': 0.24}
+{'loss': 0.4714, 'learning_rate': 4.35471100554236e-05, 'epoch': 0.26}
+{'loss': 0.4232, 'learning_rate': 4.750593824228028e-05, 'epoch': 0.29}
+{'loss': 0.4023, 'learning_rate': 5.146476642913698e-05, 'epoch': 0.31}
+{'loss': 0.37, 'learning_rate': 5.5423594615993665e-05, 'epoch': 0.33}
+{'loss': 0.3583, 'learning_rate': 5.9382422802850356e-05, 'epoch': 0.36}
+{'loss': 0.337, 'learning_rate': 6.334125098970705e-05, 'epoch': 0.38}
+{'loss': 0.3458, 'learning_rate': 6.730007917656374e-05, 'epoch': 0.4}
+{'loss': 0.3213, 'learning_rate': 7.125890736342043e-05, 'epoch': 0.43}
+{'loss': 0.2887, 'learning_rate': 7.521773555027712e-05, 'epoch': 0.45}
+{'loss': 0.3152, 'learning_rate': 7.917656373713381e-05, 'epoch': 0.48}
+{'loss': 0.3003, 'learning_rate': 8.31353919239905e-05, 'epoch': 0.5}
+{'loss': 0.3011, 'learning_rate': 8.70942201108472e-05, 'epoch': 0.52}
+{'loss': 0.2815, 'learning_rate': 9.105304829770389e-05, 'epoch': 0.55}
+{'loss': 0.3167, 'learning_rate': 9.501187648456056e-05, 'epoch': 0.57}
+{'loss': 0.2643, 'learning_rate': 9.897070467141727e-05, 'epoch': 0.59}
+{'loss': 0.3066, 'learning_rate': 9.981824430181433e-05, 'epoch': 0.62}
+{'loss': 0.2724, 'learning_rate': 9.9565805832112e-05, 'epoch': 0.64}
+{'loss': 0.2686, 'learning_rate': 9.931336736240967e-05, 'epoch': 0.67}
+{'loss': 0.2786, 'learning_rate': 9.906092889270734e-05, 'epoch': 0.69}
+{'loss': 0.2696, 'learning_rate': 9.8808490423005e-05, 'epoch': 0.71}
+{'loss': 0.255, 'learning_rate': 9.855605195330267e-05, 'epoch': 0.74}
+{'loss': 0.2636, 'learning_rate': 9.830361348360034e-05, 'epoch': 0.76}
+{'loss': 0.2787, 'learning_rate': 9.805117501389801e-05, 'epoch': 0.78}
+{'loss': 0.2462, 'learning_rate': 9.77987365441957e-05, 'epoch': 0.81}
+{'loss': 0.2441, 'learning_rate': 9.754629807449337e-05, 'epoch': 0.83}
+{'loss': 0.2585, 'learning_rate': 9.729385960479103e-05, 'epoch': 0.86}
+{'loss': 0.2535, 'learning_rate': 9.70414211350887e-05, 'epoch': 0.88}
+{'loss': 0.2618, 'learning_rate': 9.678898266538637e-05, 'epoch': 0.9}
+{'loss': 0.2831, 'learning_rate': 9.653654419568404e-05, 'epoch': 0.93}
+{'loss': 0.2583, 'learning_rate': 9.628915449537576e-05, 'epoch': 0.95}
+{'loss': 0.2401, 'learning_rate': 9.603671602567343e-05, 'epoch': 0.97}
+{'loss': 0.2492, 'learning_rate': 9.57842775559711e-05, 'epoch': 1.0}
+[INFO|trainer.py:520] 2026-10-04 14:35:24,310 >> The following columns in the evaluation set  don't have a corresponding argument in `PETLEncModel.forward` and have been ignored: sentence, idx.
+[INFO|trainer.py:2179] 2026-10-04 14:35:24,312 >> ***** Running Evaluation *****
+[INFO|trainer.py:2181] 2026-10-04 14:35:24,312 >>   Num examples = 872
+[INFO|trainer.py:2184] 2026-10-04 14:35:24,312 >>   Batch size = 32
+{'eval_loss': 0.20493775606155396, 'eval_accuracy': 0.926605504587156, 'eval_runtime': 0.5059, 'eval_samples_per_second': 1723.529, 'eval_steps_per_second': 55.343, 'epoch': 1.0}
+[INFO|trainer.py:1933] 2026-10-04 14:35:24,819 >> Saving model checkpoint to checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-2105
+[INFO|configuration_utils.py:364] 2026-10-04 14:35:24,821 >> Configuration saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-2105/config.json
+[INFO|modeling_utils.py:898] 2026-10-04 14:35:25,149 >> Model weights saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-2105/pytorch_model.bin
+[INFO|tokenization_utils_base.py:1948] 2026-10-04 14:35:25,151 >> tokenizer config file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-2105/tokenizer_config.json
+[INFO|tokenization_utils_base.py:1954] 2026-10-04 14:35:25,153 >> Special tokens file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-2105/special_tokens_map.json
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 0.2373, 'learning_rate': 9.553183908626877e-05, 'epoch': 1.02}
+{'loss': 0.2203, 'learning_rate': 9.527940061656643e-05, 'epoch': 1.05}
+{'loss': 0.2386, 'learning_rate': 9.50269621468641e-05, 'epoch': 1.07}
+{'loss': 0.2561, 'learning_rate': 9.477452367716177e-05, 'epoch': 1.09}
+{'loss': 0.2223, 'learning_rate': 9.452208520745944e-05, 'epoch': 1.12}
+{'loss': 0.2392, 'learning_rate': 9.426964673775711e-05, 'epoch': 1.14}
+{'loss': 0.2631, 'learning_rate': 9.40172082680548e-05, 'epoch': 1.16}
+{'loss': 0.2285, 'learning_rate': 9.376476979835246e-05, 'epoch': 1.19}
+{'loss': 0.2349, 'learning_rate': 9.351233132865013e-05, 'epoch': 1.21}
+{'loss': 0.2337, 'learning_rate': 9.32598928589478e-05, 'epoch': 1.24}
+{'loss': 0.2389, 'learning_rate': 9.300745438924547e-05, 'epoch': 1.26}
+{'loss': 0.2199, 'learning_rate': 9.275501591954314e-05, 'epoch': 1.28}
+{'loss': 0.2487, 'learning_rate': 9.250257744984081e-05, 'epoch': 1.31}
+{'loss': 0.2409, 'learning_rate': 9.225013898013848e-05, 'epoch': 1.33}
+{'loss': 0.2283, 'learning_rate': 9.199770051043615e-05, 'epoch': 1.35}
+{'loss': 0.2086, 'learning_rate': 9.174526204073382e-05, 'epoch': 1.38}
+{'loss': 0.2301, 'learning_rate': 9.149282357103149e-05, 'epoch': 1.4}
+{'loss': 0.2541, 'learning_rate': 9.124038510132916e-05, 'epoch': 1.43}
+{'loss': 0.2526, 'learning_rate': 9.098794663162683e-05, 'epoch': 1.45}
+{'loss': 0.2537, 'learning_rate': 9.07355081619245e-05, 'epoch': 1.47}
+{'loss': 0.2297, 'learning_rate': 9.048306969222216e-05, 'epoch': 1.5}
+{'loss': 0.2388, 'learning_rate': 9.023063122251983e-05, 'epoch': 1.52}
+{'loss': 0.2183, 'learning_rate': 8.99781927528175e-05, 'epoch': 1.54}
+{'loss': 0.2421, 'learning_rate': 8.972575428311519e-05, 'epoch': 1.57}
+{'loss': 0.2261, 'learning_rate': 8.947331581341286e-05, 'epoch': 1.59}
+{'loss': 0.2332, 'learning_rate': 8.922087734371053e-05, 'epoch': 1.62}
+{'loss': 0.2496, 'learning_rate': 8.896843887400819e-05, 'epoch': 1.64}
+{'loss': 0.2269, 'learning_rate': 8.871600040430586e-05, 'epoch': 1.66}
+{'loss': 0.2159, 'learning_rate': 8.846356193460353e-05, 'epoch': 1.69}
+{'loss': 0.2357, 'learning_rate': 8.82111234649012e-05, 'epoch': 1.71}
+{'loss': 0.2424, 'learning_rate': 8.795868499519888e-05, 'epoch': 1.73}
+{'loss': 0.2231, 'learning_rate': 8.770624652549655e-05, 'epoch': 1.76}
+{'loss': 0.2152, 'learning_rate': 8.745380805579421e-05, 'epoch': 1.78}
+{'loss': 0.213, 'learning_rate': 8.720136958609188e-05, 'epoch': 1.81}
+{'loss': 0.2269, 'learning_rate': 8.694893111638955e-05, 'epoch': 1.83}
+{'loss': 0.2199, 'learning_rate': 8.669649264668722e-05, 'epoch': 1.85}
+{'loss': 0.2179, 'learning_rate': 8.64440541769849e-05, 'epoch': 1.88}
+{'loss': 0.2281, 'learning_rate': 8.619666447667662e-05, 'epoch': 1.9}
+{'loss': 0.203, 'learning_rate': 8.594422600697429e-05, 'epoch': 1.92}
+{'loss': 0.2127, 'learning_rate': 8.569178753727196e-05, 'epoch': 1.95}
+{'loss': 0.2224, 'learning_rate': 8.543934906756961e-05, 'epoch': 1.97}
+{'loss': 0.2349, 'learning_rate': 8.518691059786729e-05, 'epoch': 2.0}
+[INFO|trainer.py:520] 2026-10-04 14:36:04,813 >> The following columns in the evaluation set  don't have a corresponding argument in `PETLEncModel.forward` and have been ignored: sentence, idx.
+[INFO|trainer.py:2179] 2026-10-04 14:36:04,815 >> ***** Running Evaluation *****
+[INFO|trainer.py:2181] 2026-10-04 14:36:04,815 >>   Num examples = 872
+[INFO|trainer.py:2184] 2026-10-04 14:36:04,815 >>   Batch size = 32
+{'eval_loss': 0.20197464525699615, 'eval_accuracy': 0.9311926605504587, 'eval_runtime': 0.4396, 'eval_samples_per_second': 1983.474, 'eval_steps_per_second': 63.69, 'epoch': 2.0}
+[INFO|trainer.py:1933] 2026-10-04 14:36:05,256 >> Saving model checkpoint to checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-4210
+[INFO|configuration_utils.py:364] 2026-10-04 14:36:05,258 >> Configuration saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-4210/config.json
+[INFO|modeling_utils.py:898] 2026-10-04 14:36:05,607 >> Model weights saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-4210/pytorch_model.bin
+[INFO|tokenization_utils_base.py:1948] 2026-10-04 14:36:05,609 >> tokenizer config file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-4210/tokenizer_config.json
+[INFO|tokenization_utils_base.py:1954] 2026-10-04 14:36:05,610 >> Special tokens file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-4210/special_tokens_map.json
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 0.2086, 'learning_rate': 8.493447212816496e-05, 'epoch': 2.02}
+{'loss': 0.2212, 'learning_rate': 8.468203365846263e-05, 'epoch': 2.04}
+{'loss': 0.1927, 'learning_rate': 8.44295951887603e-05, 'epoch': 2.07}
+{'loss': 0.2322, 'learning_rate': 8.417715671905797e-05, 'epoch': 2.09}
+{'loss': 0.2131, 'learning_rate': 8.392471824935564e-05, 'epoch': 2.11}
+{'loss': 0.2126, 'learning_rate': 8.367227977965331e-05, 'epoch': 2.14}
+{'loss': 0.2163, 'learning_rate': 8.341984130995098e-05, 'epoch': 2.16}
+{'loss': 0.2243, 'learning_rate': 8.316740284024865e-05, 'epoch': 2.19}
+{'loss': 0.2097, 'learning_rate': 8.291496437054632e-05, 'epoch': 2.21}
+{'loss': 0.1854, 'learning_rate': 8.2662525900844e-05, 'epoch': 2.23}
+{'loss': 0.2124, 'learning_rate': 8.241008743114166e-05, 'epoch': 2.26}
+{'loss': 0.1873, 'learning_rate': 8.215764896143933e-05, 'epoch': 2.28}
+{'loss': 0.1956, 'learning_rate': 8.1905210491737e-05, 'epoch': 2.3}
+{'loss': 0.2141, 'learning_rate': 8.165277202203468e-05, 'epoch': 2.33}
+{'loss': 0.1812, 'learning_rate': 8.140033355233235e-05, 'epoch': 2.35}
+{'loss': 0.2168, 'learning_rate': 8.114789508263002e-05, 'epoch': 2.38}
+{'loss': 0.1977, 'learning_rate': 8.089545661292769e-05, 'epoch': 2.4}
+{'loss': 0.222, 'learning_rate': 8.064301814322535e-05, 'epoch': 2.42}
+{'loss': 0.2064, 'learning_rate': 8.039057967352302e-05, 'epoch': 2.45}
+{'loss': 0.2126, 'learning_rate': 8.013814120382069e-05, 'epoch': 2.47}
+{'loss': 0.1961, 'learning_rate': 7.988570273411836e-05, 'epoch': 2.49}
+{'loss': 0.2001, 'learning_rate': 7.963326426441604e-05, 'epoch': 2.52}
+{'loss': 0.2212, 'learning_rate': 7.938082579471371e-05, 'epoch': 2.54}
+{'loss': 0.2042, 'learning_rate': 7.912838732501137e-05, 'epoch': 2.57}
+{'loss': 0.2351, 'learning_rate': 7.887594885530904e-05, 'epoch': 2.59}
+{'loss': 0.2047, 'learning_rate': 7.862351038560671e-05, 'epoch': 2.61}
+{'loss': 0.1824, 'learning_rate': 7.837107191590438e-05, 'epoch': 2.64}
+{'loss': 0.1862, 'learning_rate': 7.811863344620207e-05, 'epoch': 2.66}
+{'loss': 0.2009, 'learning_rate': 7.786619497649974e-05, 'epoch': 2.68}
+{'loss': 0.2069, 'learning_rate': 7.76137565067974e-05, 'epoch': 2.71}
+{'loss': 0.199, 'learning_rate': 7.736131803709507e-05, 'epoch': 2.73}
+{'loss': 0.2071, 'learning_rate': 7.710887956739274e-05, 'epoch': 2.76}
+{'loss': 0.223, 'learning_rate': 7.685644109769041e-05, 'epoch': 2.78}
+{'loss': 0.2106, 'learning_rate': 7.660400262798808e-05, 'epoch': 2.8}
+{'loss': 0.1976, 'learning_rate': 7.635156415828575e-05, 'epoch': 2.83}
+{'loss': 0.1907, 'learning_rate': 7.609912568858342e-05, 'epoch': 2.85}
+{'loss': 0.206, 'learning_rate': 7.584668721888108e-05, 'epoch': 2.87}
+{'loss': 0.1898, 'learning_rate': 7.559424874917875e-05, 'epoch': 2.9}
+{'loss': 0.223, 'learning_rate': 7.534181027947643e-05, 'epoch': 2.92}
+{'loss': 0.2061, 'learning_rate': 7.509442057916814e-05, 'epoch': 2.95}
+{'loss': 0.172, 'learning_rate': 7.484198210946581e-05, 'epoch': 2.97}
+{'loss': 0.2177, 'learning_rate': 7.458954363976348e-05, 'epoch': 2.99}
+[INFO|trainer.py:520] 2026-10-04 14:36:48,133 >> The following columns in the evaluation set  don't have a corresponding argument in `PETLEncModel.forward` and have been ignored: sentence, idx.
+[INFO|trainer.py:2179] 2026-10-04 14:36:48,135 >> ***** Running Evaluation *****
+[INFO|trainer.py:2181] 2026-10-04 14:36:48,135 >>   Num examples = 872
+[INFO|trainer.py:2184] 2026-10-04 14:36:48,135 >>   Batch size = 32
+{'eval_loss': 0.2101367563009262, 'eval_accuracy': 0.926605504587156, 'eval_runtime': 0.5943, 'eval_samples_per_second': 1467.215, 'eval_steps_per_second': 47.112, 'epoch': 3.0}
+[INFO|trainer.py:1933] 2026-10-04 14:36:48,730 >> Saving model checkpoint to checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-6315
+[INFO|configuration_utils.py:364] 2026-10-04 14:36:48,732 >> Configuration saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-6315/config.json
+[INFO|modeling_utils.py:898] 2026-10-04 14:36:48,997 >> Model weights saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-6315/pytorch_model.bin
+[INFO|tokenization_utils_base.py:1948] 2026-10-04 14:36:49,019 >> tokenizer config file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-6315/tokenizer_config.json
+[INFO|tokenization_utils_base.py:1954] 2026-10-04 14:36:49,020 >> Special tokens file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-6315/special_tokens_map.json
+[INFO|trainer.py:2009] 2026-10-04 14:36:49,084 >> Deleting older checkpoint [checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-2105] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 0.2208, 'learning_rate': 7.433710517006115e-05, 'epoch': 3.02}
+{'loss': 0.1832, 'learning_rate': 7.408466670035882e-05, 'epoch': 3.04}
+{'loss': 0.1897, 'learning_rate': 7.383222823065648e-05, 'epoch': 3.06}
+{'loss': 0.2214, 'learning_rate': 7.357978976095417e-05, 'epoch': 3.09}
+{'loss': 0.1824, 'learning_rate': 7.332735129125184e-05, 'epoch': 3.11}
+{'loss': 0.1931, 'learning_rate': 7.307491282154951e-05, 'epoch': 3.14}
+{'loss': 0.2111, 'learning_rate': 7.282247435184718e-05, 'epoch': 3.16}
+{'loss': 0.1819, 'learning_rate': 7.257003588214485e-05, 'epoch': 3.18}
+{'loss': 0.1807, 'learning_rate': 7.231759741244252e-05, 'epoch': 3.21}
+{'loss': 0.1969, 'learning_rate': 7.206515894274019e-05, 'epoch': 3.23}
+{'loss': 0.1926, 'learning_rate': 7.181272047303786e-05, 'epoch': 3.25}
+{'loss': 0.2087, 'learning_rate': 7.156028200333553e-05, 'epoch': 3.28}
+{'loss': 0.1773, 'learning_rate': 7.13078435336332e-05, 'epoch': 3.3}
+{'loss': 0.1885, 'learning_rate': 7.105540506393087e-05, 'epoch': 3.33}
+{'loss': 0.1716, 'learning_rate': 7.080296659422853e-05, 'epoch': 3.35}
+{'loss': 0.1897, 'learning_rate': 7.05505281245262e-05, 'epoch': 3.37}
+{'loss': 0.2242, 'learning_rate': 7.029808965482387e-05, 'epoch': 3.4}
+{'loss': 0.1838, 'learning_rate': 7.004565118512154e-05, 'epoch': 3.42}
+{'loss': 0.1856, 'learning_rate': 6.979321271541921e-05, 'epoch': 3.44}
+{'loss': 0.1693, 'learning_rate': 6.954077424571688e-05, 'epoch': 3.47}
+{'loss': 0.1803, 'learning_rate': 6.928833577601456e-05, 'epoch': 3.49}
+{'loss': 0.2056, 'learning_rate': 6.903589730631223e-05, 'epoch': 3.52}
+{'loss': 0.163, 'learning_rate': 6.87834588366099e-05, 'epoch': 3.54}
+{'loss': 0.2007, 'learning_rate': 6.853102036690757e-05, 'epoch': 3.56}
+{'loss': 0.1943, 'learning_rate': 6.827858189720525e-05, 'epoch': 3.59}
+{'loss': 0.2118, 'learning_rate': 6.802614342750292e-05, 'epoch': 3.61}
+{'loss': 0.1915, 'learning_rate': 6.777370495780058e-05, 'epoch': 3.63}
+{'loss': 0.2025, 'learning_rate': 6.752126648809825e-05, 'epoch': 3.66}
+{'loss': 0.1738, 'learning_rate': 6.726882801839592e-05, 'epoch': 3.68}
+{'loss': 0.1863, 'learning_rate': 6.701638954869359e-05, 'epoch': 3.71}
+{'loss': 0.1939, 'learning_rate': 6.676395107899126e-05, 'epoch': 3.73}
+{'loss': 0.1863, 'learning_rate': 6.651151260928893e-05, 'epoch': 3.75}
+{'loss': 0.1924, 'learning_rate': 6.62590741395866e-05, 'epoch': 3.78}
+{'loss': 0.2012, 'learning_rate': 6.600663566988426e-05, 'epoch': 3.8}
+{'loss': 0.1897, 'learning_rate': 6.575419720018193e-05, 'epoch': 3.82}
+{'loss': 0.1573, 'learning_rate': 6.55017587304796e-05, 'epoch': 3.85}
+{'loss': 0.1903, 'learning_rate': 6.524932026077727e-05, 'epoch': 3.87}
+{'loss': 0.1903, 'learning_rate': 6.499688179107496e-05, 'epoch': 3.9}
+{'loss': 0.1995, 'learning_rate': 6.474949209076667e-05, 'epoch': 3.92}
+{'loss': 0.2085, 'learning_rate': 6.449705362106434e-05, 'epoch': 3.94}
+{'loss': 0.1766, 'learning_rate': 6.424461515136201e-05, 'epoch': 3.97}
+{'loss': 0.1622, 'learning_rate': 6.399217668165967e-05, 'epoch': 3.99}
+[INFO|trainer.py:520] 2026-10-04 14:37:36,182 >> The following columns in the evaluation set  don't have a corresponding argument in `PETLEncModel.forward` and have been ignored: sentence, idx.
+[INFO|trainer.py:2179] 2026-10-04 14:37:36,184 >> ***** Running Evaluation *****
+[INFO|trainer.py:2181] 2026-10-04 14:37:36,184 >>   Num examples = 872
+[INFO|trainer.py:2184] 2026-10-04 14:37:36,185 >>   Batch size = 32
+{'eval_loss': 0.22209478914737701, 'eval_accuracy': 0.9220183486238532, 'eval_runtime': 0.6059, 'eval_samples_per_second': 1439.092, 'eval_steps_per_second': 46.209, 'epoch': 4.0}
+[INFO|trainer.py:1933] 2026-10-04 14:37:36,794 >> Saving model checkpoint to checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-8420
+[INFO|configuration_utils.py:364] 2026-10-04 14:37:36,795 >> Configuration saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-8420/config.json
+[INFO|modeling_utils.py:898] 2026-10-04 14:37:37,039 >> Model weights saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-8420/pytorch_model.bin
+[INFO|tokenization_utils_base.py:1948] 2026-10-04 14:37:37,040 >> tokenizer config file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-8420/tokenizer_config.json
+[INFO|tokenization_utils_base.py:1954] 2026-10-04 14:37:37,040 >> Special tokens file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-8420/special_tokens_map.json
+[INFO|trainer.py:2009] 2026-10-04 14:37:37,100 >> Deleting older checkpoint [checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-6315] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 0.1801, 'learning_rate': 6.373973821195735e-05, 'epoch': 4.01}
+{'loss': 0.1762, 'learning_rate': 6.348729974225502e-05, 'epoch': 4.04}
+{'loss': 0.199, 'learning_rate': 6.323486127255269e-05, 'epoch': 4.06}
+{'loss': 0.1773, 'learning_rate': 6.298242280285036e-05, 'epoch': 4.09}
+{'loss': 0.1697, 'learning_rate': 6.272998433314803e-05, 'epoch': 4.11}
+{'loss': 0.1857, 'learning_rate': 6.24775458634457e-05, 'epoch': 4.13}
+{'loss': 0.1923, 'learning_rate': 6.222510739374337e-05, 'epoch': 4.16}
+{'loss': 0.1912, 'learning_rate': 6.197266892404105e-05, 'epoch': 4.18}
+{'loss': 0.1822, 'learning_rate': 6.172023045433872e-05, 'epoch': 4.2}
+{'loss': 0.1665, 'learning_rate': 6.146779198463639e-05, 'epoch': 4.23}
+{'loss': 0.1731, 'learning_rate': 6.121535351493406e-05, 'epoch': 4.25}
+{'loss': 0.1763, 'learning_rate': 6.0962915045231715e-05, 'epoch': 4.28}
+{'loss': 0.1605, 'learning_rate': 6.071047657552939e-05, 'epoch': 4.3}
+{'loss': 0.1879, 'learning_rate': 6.045803810582705e-05, 'epoch': 4.32}
+{'loss': 0.1777, 'learning_rate': 6.0205599636124734e-05, 'epoch': 4.35}
+{'loss': 0.1716, 'learning_rate': 5.99531611664224e-05, 'epoch': 4.37}
+{'loss': 0.1693, 'learning_rate': 5.9700722696720055e-05, 'epoch': 4.39}
+{'loss': 0.1738, 'learning_rate': 5.9448284227017746e-05, 'epoch': 4.42}
+{'loss': 0.1795, 'learning_rate': 5.919584575731542e-05, 'epoch': 4.44}
+{'loss': 0.1957, 'learning_rate': 5.894340728761308e-05, 'epoch': 4.47}
+{'loss': 0.1988, 'learning_rate': 5.869096881791075e-05, 'epoch': 4.49}
+{'loss': 0.1982, 'learning_rate': 5.843853034820842e-05, 'epoch': 4.51}
+{'loss': 0.1922, 'learning_rate': 5.81860918785061e-05, 'epoch': 4.54}
+{'loss': 0.1658, 'learning_rate': 5.7933653408803764e-05, 'epoch': 4.56}
+{'loss': 0.1567, 'learning_rate': 5.768121493910145e-05, 'epoch': 4.58}
+{'loss': 0.2021, 'learning_rate': 5.7428776469399106e-05, 'epoch': 4.61}
+{'loss': 0.1692, 'learning_rate': 5.717633799969677e-05, 'epoch': 4.63}
+{'loss': 0.1568, 'learning_rate': 5.6923899529994454e-05, 'epoch': 4.66}
+{'loss': 0.1788, 'learning_rate': 5.667146106029211e-05, 'epoch': 4.68}
+{'loss': 0.1635, 'learning_rate': 5.641902259058979e-05, 'epoch': 4.7}
+{'loss': 0.1889, 'learning_rate': 5.616658412088745e-05, 'epoch': 4.73}
+{'loss': 0.2044, 'learning_rate': 5.5914145651185124e-05, 'epoch': 4.75}
+{'loss': 0.1814, 'learning_rate': 5.5661707181482794e-05, 'epoch': 4.77}
+{'loss': 0.1568, 'learning_rate': 5.540926871178046e-05, 'epoch': 4.8}
+{'loss': 0.1897, 'learning_rate': 5.5156830242078136e-05, 'epoch': 4.82}
+{'loss': 0.193, 'learning_rate': 5.4904391772375807e-05, 'epoch': 4.85}
+{'loss': 0.1834, 'learning_rate': 5.465195330267348e-05, 'epoch': 4.87}
+{'loss': 0.1764, 'learning_rate': 5.439951483297114e-05, 'epoch': 4.89}
+{'loss': 0.1932, 'learning_rate': 5.4147076363268826e-05, 'epoch': 4.92}
+{'loss': 0.1601, 'learning_rate': 5.38946378935665e-05, 'epoch': 4.94}
+{'loss': 0.1853, 'learning_rate': 5.364219942386416e-05, 'epoch': 4.96}
+{'loss': 0.165, 'learning_rate': 5.339480972355587e-05, 'epoch': 4.99}
+[INFO|trainer.py:520] 2026-10-04 14:38:21,999 >> The following columns in the evaluation set  don't have a corresponding argument in `PETLEncModel.forward` and have been ignored: sentence, idx.
+[INFO|trainer.py:2179] 2026-10-04 14:38:22,001 >> ***** Running Evaluation *****
+[INFO|trainer.py:2181] 2026-10-04 14:38:22,001 >>   Num examples = 872
+[INFO|trainer.py:2184] 2026-10-04 14:38:22,001 >>   Batch size = 32
+{'eval_loss': 0.20861655473709106, 'eval_accuracy': 0.930045871559633, 'eval_runtime': 0.6114, 'eval_samples_per_second': 1426.216, 'eval_steps_per_second': 45.796, 'epoch': 5.0}
+[INFO|trainer.py:1933] 2026-10-04 14:38:22,613 >> Saving model checkpoint to checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-10525
+[INFO|configuration_utils.py:364] 2026-10-04 14:38:22,614 >> Configuration saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-10525/config.json
+[INFO|modeling_utils.py:898] 2026-10-04 14:38:22,865 >> Model weights saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-10525/pytorch_model.bin
+[INFO|tokenization_utils_base.py:1948] 2026-10-04 14:38:22,867 >> tokenizer config file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-10525/tokenizer_config.json
+[INFO|tokenization_utils_base.py:1954] 2026-10-04 14:38:22,868 >> Special tokens file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-10525/special_tokens_map.json
+[INFO|trainer.py:2009] 2026-10-04 14:38:22,931 >> Deleting older checkpoint [checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-8420] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 0.1882, 'learning_rate': 5.314237125385354e-05, 'epoch': 5.01}
+{'loss': 0.1681, 'learning_rate': 5.288993278415121e-05, 'epoch': 5.04}
+{'loss': 0.1789, 'learning_rate': 5.2637494314448895e-05, 'epoch': 5.06}
+{'loss': 0.1779, 'learning_rate': 5.238505584474655e-05, 'epoch': 5.08}
+{'loss': 0.1681, 'learning_rate': 5.213261737504424e-05, 'epoch': 5.11}
+{'loss': 0.1698, 'learning_rate': 5.18801789053419e-05, 'epoch': 5.13}
+{'loss': 0.1597, 'learning_rate': 5.162774043563956e-05, 'epoch': 5.15}
+{'loss': 0.177, 'learning_rate': 5.137530196593724e-05, 'epoch': 5.18}
+{'loss': 0.1817, 'learning_rate': 5.1122863496234906e-05, 'epoch': 5.2}
+{'loss': 0.1764, 'learning_rate': 5.087042502653258e-05, 'epoch': 5.23}
+{'loss': 0.1911, 'learning_rate': 5.061798655683024e-05, 'epoch': 5.25}
+{'loss': 0.2009, 'learning_rate': 5.036554808712791e-05, 'epoch': 5.27}
+{'loss': 0.1636, 'learning_rate': 5.011310961742558e-05, 'epoch': 5.3}
+{'loss': 0.1685, 'learning_rate': 4.986067114772326e-05, 'epoch': 5.32}
+{'loss': 0.1493, 'learning_rate': 4.960823267802093e-05, 'epoch': 5.34}
+{'loss': 0.1692, 'learning_rate': 4.93557942083186e-05, 'epoch': 5.37}
+{'loss': 0.175, 'learning_rate': 4.9103355738616266e-05, 'epoch': 5.39}
+{'loss': 0.1641, 'learning_rate': 4.8850917268913936e-05, 'epoch': 5.42}
+{'loss': 0.1765, 'learning_rate': 4.859847879921161e-05, 'epoch': 5.44}
+{'loss': 0.1697, 'learning_rate': 4.834604032950927e-05, 'epoch': 5.46}
+{'loss': 0.1795, 'learning_rate': 4.809360185980694e-05, 'epoch': 5.49}
+{'loss': 0.1739, 'learning_rate': 4.7841163390104626e-05, 'epoch': 5.51}
+{'loss': 0.1704, 'learning_rate': 4.758872492040229e-05, 'epoch': 5.53}
+{'loss': 0.1501, 'learning_rate': 4.733628645069996e-05, 'epoch': 5.56}
+{'loss': 0.1606, 'learning_rate': 4.708384798099763e-05, 'epoch': 5.58}
+{'loss': 0.1601, 'learning_rate': 4.6831409511295296e-05, 'epoch': 5.61}
+{'loss': 0.1643, 'learning_rate': 4.6578971041592966e-05, 'epoch': 5.63}
+{'loss': 0.1701, 'learning_rate': 4.632653257189064e-05, 'epoch': 5.65}
+{'loss': 0.1848, 'learning_rate': 4.607409410218831e-05, 'epoch': 5.68}
+{'loss': 0.1789, 'learning_rate': 4.582165563248597e-05, 'epoch': 5.7}
+{'loss': 0.1668, 'learning_rate': 4.5569217162783656e-05, 'epoch': 5.72}
+{'loss': 0.1541, 'learning_rate': 4.531677869308132e-05, 'epoch': 5.75}
+{'loss': 0.1753, 'learning_rate': 4.506434022337899e-05, 'epoch': 5.77}
+{'loss': 0.1753, 'learning_rate': 4.481190175367666e-05, 'epoch': 5.8}
+{'loss': 0.1811, 'learning_rate': 4.455946328397433e-05, 'epoch': 5.82}
+{'loss': 0.1578, 'learning_rate': 4.4307024814271997e-05, 'epoch': 5.84}
+{'loss': 0.1815, 'learning_rate': 4.405458634456967e-05, 'epoch': 5.87}
+{'loss': 0.1634, 'learning_rate': 4.380214787486734e-05, 'epoch': 5.89}
+{'loss': 0.1654, 'learning_rate': 4.3549709405165016e-05, 'epoch': 5.91}
+{'loss': 0.1813, 'learning_rate': 4.3297270935462686e-05, 'epoch': 5.94}
+{'loss': 0.1473, 'learning_rate': 4.3049881235154395e-05, 'epoch': 5.96}
+{'loss': 0.1795, 'learning_rate': 4.2797442765452066e-05, 'epoch': 5.99}
+[INFO|trainer.py:520] 2026-10-04 14:39:11,575 >> The following columns in the evaluation set  don't have a corresponding argument in `PETLEncModel.forward` and have been ignored: sentence, idx.
+[INFO|trainer.py:2179] 2026-10-04 14:39:11,577 >> ***** Running Evaluation *****
+[INFO|trainer.py:2181] 2026-10-04 14:39:11,577 >>   Num examples = 872
+[INFO|trainer.py:2184] 2026-10-04 14:39:11,577 >>   Batch size = 32
+{'eval_loss': 0.22236700356006622, 'eval_accuracy': 0.9311926605504587, 'eval_runtime': 0.455, 'eval_samples_per_second': 1916.608, 'eval_steps_per_second': 61.542, 'epoch': 6.0}
+[INFO|trainer.py:1933] 2026-10-04 14:39:12,033 >> Saving model checkpoint to checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-12630
+[INFO|configuration_utils.py:364] 2026-10-04 14:39:12,034 >> Configuration saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-12630/config.json
+[INFO|modeling_utils.py:898] 2026-10-04 14:39:12,366 >> Model weights saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-12630/pytorch_model.bin
+[INFO|tokenization_utils_base.py:1948] 2026-10-04 14:39:12,368 >> tokenizer config file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-12630/tokenizer_config.json
+[INFO|tokenization_utils_base.py:1954] 2026-10-04 14:39:12,368 >> Special tokens file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-12630/special_tokens_map.json
+[INFO|trainer.py:2009] 2026-10-04 14:39:12,430 >> Deleting older checkpoint [checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-10525] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 0.1559, 'learning_rate': 4.254500429574974e-05, 'epoch': 6.01}
+{'loss': 0.156, 'learning_rate': 4.22925658260474e-05, 'epoch': 6.03}
+{'loss': 0.1822, 'learning_rate': 4.2040127356345085e-05, 'epoch': 6.06}
+{'loss': 0.1536, 'learning_rate': 4.178768888664275e-05, 'epoch': 6.08}
+{'loss': 0.1739, 'learning_rate': 4.153525041694042e-05, 'epoch': 6.1}
+{'loss': 0.1742, 'learning_rate': 4.128281194723809e-05, 'epoch': 6.13}
+{'loss': 0.1657, 'learning_rate': 4.103037347753576e-05, 'epoch': 6.15}
+{'loss': 0.1468, 'learning_rate': 4.0777935007833425e-05, 'epoch': 6.18}
+{'loss': 0.1695, 'learning_rate': 4.0525496538131096e-05, 'epoch': 6.2}
+{'loss': 0.1633, 'learning_rate': 4.027305806842877e-05, 'epoch': 6.22}
+{'loss': 0.1656, 'learning_rate': 4.0020619598726445e-05, 'epoch': 6.25}
+{'loss': 0.1809, 'learning_rate': 3.9768181129024115e-05, 'epoch': 6.27}
+{'loss': 0.16, 'learning_rate': 3.9515742659321786e-05, 'epoch': 6.29}
+{'loss': 0.1735, 'learning_rate': 3.926330418961945e-05, 'epoch': 6.32}
+{'loss': 0.1692, 'learning_rate': 3.901086571991712e-05, 'epoch': 6.34}
+{'loss': 0.165, 'learning_rate': 3.875842725021479e-05, 'epoch': 6.37}
+{'loss': 0.1517, 'learning_rate': 3.8505988780512456e-05, 'epoch': 6.39}
+{'loss': 0.1722, 'learning_rate': 3.8253550310810126e-05, 'epoch': 6.41}
+{'loss': 0.1549, 'learning_rate': 3.80011118411078e-05, 'epoch': 6.44}
+{'loss': 0.1471, 'learning_rate': 3.7748673371405475e-05, 'epoch': 6.46}
+{'loss': 0.1529, 'learning_rate': 3.7496234901703145e-05, 'epoch': 6.48}
+{'loss': 0.1591, 'learning_rate': 3.7243796432000816e-05, 'epoch': 6.51}
+{'loss': 0.1585, 'learning_rate': 3.699135796229848e-05, 'epoch': 6.53}
+{'loss': 0.1704, 'learning_rate': 3.673891949259615e-05, 'epoch': 6.56}
+{'loss': 0.1589, 'learning_rate': 3.648648102289382e-05, 'epoch': 6.58}
+{'loss': 0.165, 'learning_rate': 3.623404255319149e-05, 'epoch': 6.6}
+{'loss': 0.174, 'learning_rate': 3.5981604083489156e-05, 'epoch': 6.63}
+{'loss': 0.1604, 'learning_rate': 3.572916561378684e-05, 'epoch': 6.65}
+{'loss': 0.1807, 'learning_rate': 3.5476727144084505e-05, 'epoch': 6.67}
+{'loss': 0.1705, 'learning_rate': 3.5224288674382176e-05, 'epoch': 6.7}
+{'loss': 0.1572, 'learning_rate': 3.4971850204679846e-05, 'epoch': 6.72}
+{'loss': 0.1727, 'learning_rate': 3.471941173497751e-05, 'epoch': 6.75}
+{'loss': 0.1657, 'learning_rate': 3.446697326527518e-05, 'epoch': 6.77}
+{'loss': 0.143, 'learning_rate': 3.421453479557285e-05, 'epoch': 6.79}
+{'loss': 0.1551, 'learning_rate': 3.396209632587052e-05, 'epoch': 6.82}
+{'loss': 0.1572, 'learning_rate': 3.3709657856168187e-05, 'epoch': 6.84}
+{'loss': 0.1447, 'learning_rate': 3.345721938646587e-05, 'epoch': 6.86}
+{'loss': 0.1534, 'learning_rate': 3.3204780916763535e-05, 'epoch': 6.89}
+{'loss': 0.1822, 'learning_rate': 3.2952342447061206e-05, 'epoch': 6.91}
+{'loss': 0.1524, 'learning_rate': 3.2699903977358876e-05, 'epoch': 6.94}
+{'loss': 0.1727, 'learning_rate': 3.244746550765655e-05, 'epoch': 6.96}
+{'loss': 0.168, 'learning_rate': 3.220007580734827e-05, 'epoch': 6.98}
+[INFO|trainer.py:520] 2026-10-04 14:39:58,900 >> The following columns in the evaluation set  don't have a corresponding argument in `PETLEncModel.forward` and have been ignored: sentence, idx.
+[INFO|trainer.py:2179] 2026-10-04 14:39:58,901 >> ***** Running Evaluation *****
+[INFO|trainer.py:2181] 2026-10-04 14:39:58,901 >>   Num examples = 872
+[INFO|trainer.py:2184] 2026-10-04 14:39:58,901 >>   Batch size = 32
+{'eval_loss': 0.22182387113571167, 'eval_accuracy': 0.9369266055045872, 'eval_runtime': 0.6004, 'eval_samples_per_second': 1452.445, 'eval_steps_per_second': 46.638, 'epoch': 7.0}
+[INFO|trainer.py:1933] 2026-10-04 14:39:59,503 >> Saving model checkpoint to checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-14735
+[INFO|configuration_utils.py:364] 2026-10-04 14:39:59,504 >> Configuration saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-14735/config.json
+[INFO|modeling_utils.py:898] 2026-10-04 14:39:59,763 >> Model weights saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-14735/pytorch_model.bin
+[INFO|tokenization_utils_base.py:1948] 2026-10-04 14:39:59,764 >> tokenizer config file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-14735/tokenizer_config.json
+[INFO|tokenization_utils_base.py:1954] 2026-10-04 14:39:59,764 >> Special tokens file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-14735/special_tokens_map.json
+[INFO|trainer.py:2009] 2026-10-04 14:39:59,826 >> Deleting older checkpoint [checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-4210] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 0.1791, 'learning_rate': 3.1947637337645934e-05, 'epoch': 7.01}
+{'loss': 0.1344, 'learning_rate': 3.1695198867943604e-05, 'epoch': 7.03}
+{'loss': 0.1287, 'learning_rate': 3.1442760398241275e-05, 'epoch': 7.05}
+{'loss': 0.1627, 'learning_rate': 3.1190321928538946e-05, 'epoch': 7.08}
+{'loss': 0.1498, 'learning_rate': 3.093788345883661e-05, 'epoch': 7.1}
+{'loss': 0.147, 'learning_rate': 3.068544498913428e-05, 'epoch': 7.13}
+{'loss': 0.1588, 'learning_rate': 3.0433006519431945e-05, 'epoch': 7.15}
+{'loss': 0.1636, 'learning_rate': 3.0180568049729612e-05, 'epoch': 7.17}
+{'loss': 0.1478, 'learning_rate': 2.9928129580027296e-05, 'epoch': 7.2}
+{'loss': 0.1659, 'learning_rate': 2.9675691110324967e-05, 'epoch': 7.22}
+{'loss': 0.1648, 'learning_rate': 2.9423252640622635e-05, 'epoch': 7.24}
+{'loss': 0.1649, 'learning_rate': 2.9170814170920302e-05, 'epoch': 7.27}
+{'loss': 0.1456, 'learning_rate': 2.891837570121797e-05, 'epoch': 7.29}
+{'loss': 0.1366, 'learning_rate': 2.8665937231515637e-05, 'epoch': 7.32}
+{'loss': 0.1672, 'learning_rate': 2.8413498761813307e-05, 'epoch': 7.34}
+{'loss': 0.163, 'learning_rate': 2.816106029211098e-05, 'epoch': 7.36}
+{'loss': 0.1507, 'learning_rate': 2.7908621822408652e-05, 'epoch': 7.39}
+{'loss': 0.169, 'learning_rate': 2.7656183352706327e-05, 'epoch': 7.41}
+{'loss': 0.1579, 'learning_rate': 2.7403744883003994e-05, 'epoch': 7.43}
+{'loss': 0.1509, 'learning_rate': 2.7151306413301665e-05, 'epoch': 7.46}
+{'loss': 0.1753, 'learning_rate': 2.6898867943599332e-05, 'epoch': 7.48}
+{'loss': 0.1598, 'learning_rate': 2.6646429473897006e-05, 'epoch': 7.51}
+{'loss': 0.1311, 'learning_rate': 2.6393991004194667e-05, 'epoch': 7.53}
+{'loss': 0.1367, 'learning_rate': 2.6141552534492338e-05, 'epoch': 7.55}
+{'loss': 0.1571, 'learning_rate': 2.588911406479001e-05, 'epoch': 7.58}
+{'loss': 0.1753, 'learning_rate': 2.563667559508769e-05, 'epoch': 7.6}
+{'loss': 0.1568, 'learning_rate': 2.5384237125385357e-05, 'epoch': 7.62}
+{'loss': 0.1592, 'learning_rate': 2.5131798655683024e-05, 'epoch': 7.65}
+{'loss': 0.1633, 'learning_rate': 2.4879360185980695e-05, 'epoch': 7.67}
+{'loss': 0.1651, 'learning_rate': 2.4626921716278362e-05, 'epoch': 7.7}
+{'loss': 0.1627, 'learning_rate': 2.4374483246576033e-05, 'epoch': 7.72}
+{'loss': 0.138, 'learning_rate': 2.41220447768737e-05, 'epoch': 7.74}
+{'loss': 0.1528, 'learning_rate': 2.386960630717137e-05, 'epoch': 7.77}
+{'loss': 0.1628, 'learning_rate': 2.361716783746905e-05, 'epoch': 7.79}
+{'loss': 0.1631, 'learning_rate': 2.336472936776672e-05, 'epoch': 7.81}
+{'loss': 0.1574, 'learning_rate': 2.3112290898064387e-05, 'epoch': 7.84}
+{'loss': 0.1437, 'learning_rate': 2.2859852428362058e-05, 'epoch': 7.86}
+{'loss': 0.1837, 'learning_rate': 2.2607413958659725e-05, 'epoch': 7.89}
+{'loss': 0.1488, 'learning_rate': 2.2354975488957396e-05, 'epoch': 7.91}
+{'loss': 0.1469, 'learning_rate': 2.2102537019255063e-05, 'epoch': 7.93}
+{'loss': 0.1778, 'learning_rate': 2.1850098549552734e-05, 'epoch': 7.96}
+{'loss': 0.1558, 'learning_rate': 2.15976600798504e-05, 'epoch': 7.98}
+[INFO|trainer.py:520] 2026-10-04 14:40:46,722 >> The following columns in the evaluation set  don't have a corresponding argument in `PETLEncModel.forward` and have been ignored: sentence, idx.
+[INFO|trainer.py:2179] 2026-10-04 14:40:46,724 >> ***** Running Evaluation *****
+[INFO|trainer.py:2181] 2026-10-04 14:40:46,724 >>   Num examples = 872
+[INFO|trainer.py:2184] 2026-10-04 14:40:46,724 >>   Batch size = 32
+{'eval_loss': 0.23039968311786652, 'eval_accuracy': 0.9311926605504587, 'eval_runtime': 0.5823, 'eval_samples_per_second': 1497.608, 'eval_steps_per_second': 48.088, 'epoch': 8.0}
+[INFO|trainer.py:1933] 2026-10-04 14:40:47,308 >> Saving model checkpoint to checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-16840
+[INFO|configuration_utils.py:364] 2026-10-04 14:40:47,309 >> Configuration saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-16840/config.json
+[INFO|modeling_utils.py:898] 2026-10-04 14:40:47,612 >> Model weights saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-16840/pytorch_model.bin
+[INFO|tokenization_utils_base.py:1948] 2026-10-04 14:40:47,614 >> tokenizer config file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-16840/tokenizer_config.json
+[INFO|tokenization_utils_base.py:1954] 2026-10-04 14:40:47,615 >> Special tokens file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-16840/special_tokens_map.json
+[INFO|trainer.py:2009] 2026-10-04 14:40:47,700 >> Deleting older checkpoint [checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-12630] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 0.1285, 'learning_rate': 2.1350270379542124e-05, 'epoch': 8.0}
+{'loss': 0.1551, 'learning_rate': 2.1097831909839794e-05, 'epoch': 8.03}
+{'loss': 0.1627, 'learning_rate': 2.0845393440137462e-05, 'epoch': 8.05}
+{'loss': 0.1556, 'learning_rate': 2.059295497043513e-05, 'epoch': 8.08}
+{'loss': 0.1522, 'learning_rate': 2.03405165007328e-05, 'epoch': 8.1}
+{'loss': 0.1681, 'learning_rate': 2.008807803103048e-05, 'epoch': 8.12}
+{'loss': 0.1437, 'learning_rate': 1.983563956132815e-05, 'epoch': 8.15}
+{'loss': 0.1275, 'learning_rate': 1.9583201091625816e-05, 'epoch': 8.17}
+{'loss': 0.1553, 'learning_rate': 1.9330762621923486e-05, 'epoch': 8.19}
+{'loss': 0.1567, 'learning_rate': 1.9078324152221154e-05, 'epoch': 8.22}
+{'loss': 0.1498, 'learning_rate': 1.8825885682518825e-05, 'epoch': 8.24}
+{'loss': 0.1464, 'learning_rate': 1.8573447212816492e-05, 'epoch': 8.27}
+{'loss': 0.175, 'learning_rate': 1.8321008743114163e-05, 'epoch': 8.29}
+{'loss': 0.1532, 'learning_rate': 1.806857027341183e-05, 'epoch': 8.31}
+{'loss': 0.1613, 'learning_rate': 1.781613180370951e-05, 'epoch': 8.34}
+{'loss': 0.143, 'learning_rate': 1.756369333400718e-05, 'epoch': 8.36}
+{'loss': 0.1558, 'learning_rate': 1.731125486430485e-05, 'epoch': 8.38}
+{'loss': 0.1647, 'learning_rate': 1.7058816394602517e-05, 'epoch': 8.41}
+{'loss': 0.1424, 'learning_rate': 1.6806377924900187e-05, 'epoch': 8.43}
+{'loss': 0.163, 'learning_rate': 1.6553939455197855e-05, 'epoch': 8.46}
+{'loss': 0.1498, 'learning_rate': 1.6301500985495522e-05, 'epoch': 8.48}
+{'loss': 0.155, 'learning_rate': 1.6049062515793193e-05, 'epoch': 8.5}
+{'loss': 0.1578, 'learning_rate': 1.5796624046090874e-05, 'epoch': 8.53}
+{'loss': 0.1575, 'learning_rate': 1.554418557638854e-05, 'epoch': 8.55}
+{'loss': 0.1303, 'learning_rate': 1.5291747106686212e-05, 'epoch': 8.57}
+{'loss': 0.1357, 'learning_rate': 1.5039308636983881e-05, 'epoch': 8.6}
+{'loss': 0.1719, 'learning_rate': 1.478687016728155e-05, 'epoch': 8.62}
+{'loss': 0.1258, 'learning_rate': 1.453443169757922e-05, 'epoch': 8.65}
+{'loss': 0.1636, 'learning_rate': 1.4281993227876888e-05, 'epoch': 8.67}
+{'loss': 0.1746, 'learning_rate': 1.4029554758174557e-05, 'epoch': 8.69}
+{'loss': 0.1591, 'learning_rate': 1.3777116288472225e-05, 'epoch': 8.72}
+{'loss': 0.1557, 'learning_rate': 1.3524677818769907e-05, 'epoch': 8.74}
+{'loss': 0.1668, 'learning_rate': 1.3272239349067575e-05, 'epoch': 8.76}
+{'loss': 0.16, 'learning_rate': 1.3019800879365244e-05, 'epoch': 8.79}
+{'loss': 0.1498, 'learning_rate': 1.2767362409662911e-05, 'epoch': 8.81}
+{'loss': 0.1394, 'learning_rate': 1.251492393996058e-05, 'epoch': 8.84}
+{'loss': 0.1623, 'learning_rate': 1.226248547025825e-05, 'epoch': 8.86}
+{'loss': 0.138, 'learning_rate': 1.2010047000555918e-05, 'epoch': 8.88}
+{'loss': 0.1606, 'learning_rate': 1.1757608530853587e-05, 'epoch': 8.91}
+{'loss': 0.1541, 'learning_rate': 1.1505170061151267e-05, 'epoch': 8.93}
+{'loss': 0.1522, 'learning_rate': 1.1252731591448936e-05, 'epoch': 8.95}
+{'loss': 0.1454, 'learning_rate': 1.1000293121746605e-05, 'epoch': 8.98}
+[INFO|trainer.py:520] 2026-10-04 14:41:36,661 >> The following columns in the evaluation set  don't have a corresponding argument in `PETLEncModel.forward` and have been ignored: sentence, idx.
+[INFO|trainer.py:2179] 2026-10-04 14:41:36,663 >> ***** Running Evaluation *****
+[INFO|trainer.py:2181] 2026-10-04 14:41:36,663 >>   Num examples = 872
+[INFO|trainer.py:2184] 2026-10-04 14:41:36,663 >>   Batch size = 32
+{'eval_loss': 0.23352064192295074, 'eval_accuracy': 0.9334862385321101, 'eval_runtime': 0.6003, 'eval_samples_per_second': 1452.586, 'eval_steps_per_second': 46.643, 'epoch': 9.0}
+[INFO|trainer.py:1933] 2026-10-04 14:41:37,264 >> Saving model checkpoint to checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-18945
+[INFO|configuration_utils.py:364] 2026-10-04 14:41:37,266 >> Configuration saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-18945/config.json
+[INFO|modeling_utils.py:898] 2026-10-04 14:41:37,577 >> Model weights saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-18945/pytorch_model.bin
+[INFO|tokenization_utils_base.py:1948] 2026-10-04 14:41:37,578 >> tokenizer config file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-18945/tokenizer_config.json
+[INFO|tokenization_utils_base.py:1954] 2026-10-04 14:41:37,579 >> Special tokens file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-18945/special_tokens_map.json
+[INFO|trainer.py:2009] 2026-10-04 14:41:37,645 >> Deleting older checkpoint [checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-16840] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 0.141, 'learning_rate': 1.0747854652044274e-05, 'epoch': 9.0}
+{'loss': 0.1494, 'learning_rate': 1.0500464951735986e-05, 'epoch': 9.03}
+{'loss': 0.1341, 'learning_rate': 1.0248026482033655e-05, 'epoch': 9.05}
+{'loss': 0.1418, 'learning_rate': 9.995588012331335e-06, 'epoch': 9.07}
+{'loss': 0.1839, 'learning_rate': 9.743149542629004e-06, 'epoch': 9.1}
+{'loss': 0.1534, 'learning_rate': 9.490711072926673e-06, 'epoch': 9.12}
+{'loss': 0.1537, 'learning_rate': 9.238272603224342e-06, 'epoch': 9.14}
+{'loss': 0.1583, 'learning_rate': 8.98583413352201e-06, 'epoch': 9.17}
+{'loss': 0.1675, 'learning_rate': 8.733395663819678e-06, 'epoch': 9.19}
+{'loss': 0.1401, 'learning_rate': 8.480957194117347e-06, 'epoch': 9.22}
+{'loss': 0.1375, 'learning_rate': 8.228518724415016e-06, 'epoch': 9.24}
+{'loss': 0.151, 'learning_rate': 7.976080254712697e-06, 'epoch': 9.26}
+{'loss': 0.1437, 'learning_rate': 7.723641785010365e-06, 'epoch': 9.29}
+{'loss': 0.1612, 'learning_rate': 7.471203315308034e-06, 'epoch': 9.31}
+{'loss': 0.1499, 'learning_rate': 7.218764845605702e-06, 'epoch': 9.33}
+{'loss': 0.15, 'learning_rate': 6.96632637590337e-06, 'epoch': 9.36}
+{'loss': 0.1367, 'learning_rate': 6.71388790620104e-06, 'epoch': 9.38}
+{'loss': 0.1484, 'learning_rate': 6.461449436498709e-06, 'epoch': 9.41}
+{'loss': 0.1543, 'learning_rate': 6.209010966796377e-06, 'epoch': 9.43}
+{'loss': 0.1325, 'learning_rate': 5.9565724970940464e-06, 'epoch': 9.45}
+{'loss': 0.146, 'learning_rate': 5.7041340273917265e-06, 'epoch': 9.48}
+{'loss': 0.1395, 'learning_rate': 5.451695557689396e-06, 'epoch': 9.5}
+{'loss': 0.1413, 'learning_rate': 5.199257087987065e-06, 'epoch': 9.52}
+{'loss': 0.1691, 'learning_rate': 4.946818618284733e-06, 'epoch': 9.55}
+{'loss': 0.1634, 'learning_rate': 4.694380148582402e-06, 'epoch': 9.57}
+{'loss': 0.1484, 'learning_rate': 4.441941678880071e-06, 'epoch': 9.6}
+{'loss': 0.1337, 'learning_rate': 4.18950320917774e-06, 'epoch': 9.62}
+{'loss': 0.1536, 'learning_rate': 3.937064739475408e-06, 'epoch': 9.64}
+{'loss': 0.1223, 'learning_rate': 3.684626269773089e-06, 'epoch': 9.67}
+{'loss': 0.1685, 'learning_rate': 3.4321878000707575e-06, 'epoch': 9.69}
+{'loss': 0.1585, 'learning_rate': 3.179749330368426e-06, 'epoch': 9.71}
+{'loss': 0.1348, 'learning_rate': 2.927310860666095e-06, 'epoch': 9.74}
+{'loss': 0.1446, 'learning_rate': 2.6748723909637643e-06, 'epoch': 9.76}
+{'loss': 0.1553, 'learning_rate': 2.422433921261433e-06, 'epoch': 9.79}
+{'loss': 0.153, 'learning_rate': 2.169995451559102e-06, 'epoch': 9.81}
+{'loss': 0.1376, 'learning_rate': 1.9175569818567706e-06, 'epoch': 9.83}
+{'loss': 0.1604, 'learning_rate': 1.6651185121544395e-06, 'epoch': 9.86}
+{'loss': 0.1683, 'learning_rate': 1.4126800424521198e-06, 'epoch': 9.88}
+{'loss': 0.1659, 'learning_rate': 1.1602415727497884e-06, 'epoch': 9.9}
+{'loss': 0.1621, 'learning_rate': 9.078031030474573e-07, 'epoch': 9.93}
+{'loss': 0.1422, 'learning_rate': 6.553646333451263e-07, 'epoch': 9.95}
+{'loss': 0.1469, 'learning_rate': 4.0292616364279517e-07, 'epoch': 9.98}
+{'loss': 0.147, 'learning_rate': 1.5553646333450708e-07, 'epoch': 10.0}
+[INFO|trainer.py:520] 2026-10-04 14:42:23,542 >> The following columns in the evaluation set  don't have a corresponding argument in `PETLEncModel.forward` and have been ignored: sentence, idx.
+[INFO|trainer.py:2179] 2026-10-04 14:42:23,544 >> ***** Running Evaluation *****
+[INFO|trainer.py:2181] 2026-10-04 14:42:23,544 >>   Num examples = 872
+[INFO|trainer.py:2184] 2026-10-04 14:42:23,544 >>   Batch size = 32
+{'eval_loss': 0.22859519720077515, 'eval_accuracy': 0.930045871559633, 'eval_runtime': 0.6102, 'eval_samples_per_second': 1428.991, 'eval_steps_per_second': 45.885, 'epoch': 10.0}
+[INFO|trainer.py:1933] 2026-10-04 14:42:24,155 >> Saving model checkpoint to checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-21050
+[INFO|configuration_utils.py:364] 2026-10-04 14:42:24,163 >> Configuration saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-21050/config.json
+[INFO|modeling_utils.py:898] 2026-10-04 14:42:24,545 >> Model weights saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-21050/pytorch_model.bin
+[INFO|tokenization_utils_base.py:1948] 2026-10-04 14:42:24,546 >> tokenizer config file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-21050/tokenizer_config.json
+[INFO|tokenization_utils_base.py:1954] 2026-10-04 14:42:24,547 >> Special tokens file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-21050/special_tokens_map.json
+[INFO|trainer.py:2009] 2026-10-04 14:42:24,615 >> Deleting older checkpoint [checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-18945] due to args.save_total_limit
+[INFO|trainer.py:1382] 2026-10-04 14:42:24,638 >> 
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+[INFO|trainer.py:1390] 2026-10-04 14:42:24,639 >> Loading best model from checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./checkpoint-14735 (score: 0.9369266055045872).
+{'train_runtime': 457.9549, 'train_samples_per_second': 1470.647, 'train_steps_per_second': 45.965, 'train_loss': 0.1991354978339406, 'epoch': 10.0}
+[INFO|trainer.py:1933] 2026-10-04 14:42:24,880 >> Saving model checkpoint to checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2.
+[INFO|configuration_utils.py:364] 2026-10-04 14:42:24,881 >> Configuration saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./config.json
+[INFO|modeling_utils.py:898] 2026-10-04 14:42:25,126 >> Model weights saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./pytorch_model.bin
+[INFO|tokenization_utils_base.py:1948] 2026-10-04 14:42:25,128 >> tokenizer config file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./tokenizer_config.json
+[INFO|tokenization_utils_base.py:1954] 2026-10-04 14:42:25,128 >> Special tokens file saved in checkpoints/glue/sst2/20261004/glue.sst2.lora.am_lora.ao_none.fm_none.fo_none.abn.fbn.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ne10.warm0.06.wd0.1.seed2./special_tokens_map.json
+***** train metrics *****
+  epoch                    =       10.0
+  train_loss               =     0.1991
+  train_runtime            = 0:07:37.95
+  train_samples            =      67349
+  train_samples_per_second =   1470.647
+  train_steps_per_second   =     45.965
+10/04/2026 14:42:25 - INFO - __main__ -   *** Evaluate ***
+[INFO|trainer.py:520] 2026-10-04 14:42:25,182 >> The following columns in the evaluation set  don't have a corresponding argument in `PETLEncModel.forward` and have been ignored: sentence, idx.
+[INFO|trainer.py:2179] 2026-10-04 14:42:25,184 >> ***** Running Evaluation *****
+[INFO|trainer.py:2181] 2026-10-04 14:42:25,184 >>   Num examples = 872
+[INFO|trainer.py:2184] 2026-10-04 14:42:25,184 >>   Batch size = 32
+{'eval_loss': 0.22182387113571167, 'eval_accuracy': 0.9369266055045872, 'eval_runtime': 0.6369, 'eval_samples_per_second': 1369.231, 'eval_steps_per_second': 43.966, 'epoch': 10.0}
+***** eval metrics *****
+  epoch                   =       10.0
+  eval_accuracy           =     0.9369
+  eval_loss               =     0.2218
+  eval_runtime            = 0:00:00.63
+  eval_samples            =        872
+  eval_samples_per_second =   1369.231
+  eval_steps_per_second   =     43.966

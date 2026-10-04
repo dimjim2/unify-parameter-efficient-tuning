@@ -134,7 +134,7 @@ fi
 
 # set to 1 for debug mode which only
 # uses 1600 training examples
-debug=0
+debug=${DEBUG:-0}
 
 # set to "wandb" to use weights & bias
 report_to="none"
@@ -169,13 +169,13 @@ then
     max_train_samples=2000
     bsz=24
     gradient_steps=2
-    num_train_epochs=30
+    num_train_epochs=3
     max_steps=-1
     eval_strategy='steps'
     save_steps=100
     report_to="none"
     logging_steps=10
-    extra_cmd="--max_train_samples ${max_train_samples}"
+    extra_cmd="--max_train_samples ${max_train_samples} --max_eval_samples 50 --max_predict_samples 50"
     debug_str=".debug"
 fi
 
@@ -194,8 +194,8 @@ rm checkpoints/hf_model/downloads/*.lock
 rm checkpoints/hf_model/*.lock
 
 python -u examples/pytorch/summarization/run_summarization.py \
-    --dataset_name 'xsum' \
-    --model_name_or_path 'facebook/bart-large' \
+    --train_file data/xsum/train.json --validation_file data/xsum/validation.json --test_file data/xsum/test.json --text_column document --summary_column summary \
+    --model_name_or_path '_setup/models/bart-large' \
     --cache_dir ${cache_dir} \
     --lora_alpha ${lora_alpha} \
     --lora_dropout ${lora_dropout} \
