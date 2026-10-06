@@ -1,0 +1,22 @@
+#!/bin/bash
+# DTU HPC (LSF) job array for Table 5: one H100 per method, 5 independent jobs.
+# Submit from the repo root:   bsub < dtu_table5.lsf
+# Shorter runs:                MAX_STEPS=30000 bsub < dtu_table5.lsf
+#BSUB -q gpuh100
+#BSUB -J table5[1-5]
+#BSUB -n 4
+#BSUB -R "span[hosts=1]"
+#BSUB -R "rusage[mem=16GB]"
+#BSUB -gpu "num=1:mode=exclusive_process"
+#BSUB -W 24:00
+#BSUB -o logs/lsf_table5_%J_%I.out
+#BSUB -e logs/lsf_table5_%J_%I.err
+
+METHODS=(lora_s4 lora_s1 pa spa_s4 spa_learn)
+m=${METHODS[$((LSB_JOBINDEX-1))]}
+cd "$LS_SUBCWD"
+source _setup/activate.sh
+mkdir -p logs/table5
+echo "$(date) start $m on $(hostname), GPU: $(nvidia-smi --query-gpu=name --format=csv,noheader), MAX_STEPS=${MAX_STEPS:-100000}"
+METHOD=$m MAX_STEPS=${MAX_STEPS:-100000} bash exps/run_xsum.sh > logs/table5/$m.log 2>&1
+echo "$(date) done $m (exit $?)"

@@ -123,6 +123,27 @@ ffn_bn=512 # ffn bottleneck dim
 # lora_init="lora"
 
 
+# ----- Table 5 presets: METHOD=lora_s4|lora_s1|pa|spa_s4|spa_learn (FFN only) -----
+# unset METHOD keeps the block above (MAM adapter)
+case ${METHOD:-} in
+lora_s4|lora_s1)   # LoRA on FFN, r=102; scaling s = lora_alpha / r
+  attn_mode="none"; attn_option="none"; attn_composition="add"; attn_bn=200
+  ffn_mode="lora"; ffn_option="none"; ffn_adapter_layernorm_option="none"
+  ffn_adapter_init_option="bert"; ffn_adapter_scalar="1"; ffn_bn=102
+  lora_init="lora"; lora_dropout=0.1
+  if [ "${METHOD}" = "lora_s4" ]; then lora_alpha=408; else lora_alpha=102; fi ;;
+pa|spa_s4|spa_learn)   # parallel adapter on FFN, r=512
+  attn_mode="none"; attn_option="none"; attn_composition="add"; attn_bn=200
+  ffn_mode="adapter"; ffn_option="parallel"; ffn_adapter_layernorm_option="none"; ffn_bn=512
+  case ${METHOD} in
+    pa)        ffn_adapter_init_option="bert"; ffn_adapter_scalar="1" ;;
+    spa_s4)    ffn_adapter_init_option="lora"; ffn_adapter_scalar="4" ;;
+    spa_learn) ffn_adapter_init_option="lora"; ffn_adapter_scalar="learnable_scalar" ;;
+  esac ;;
+"") ;;
+*) echo "unknown METHOD=${METHOD}"; exit 1 ;;
+esac
+
 # lora params are not set
 if [ -z ${lora_alpha+x} ];
 then
@@ -142,7 +163,7 @@ report_to="none"
 label_smoothing_factor=0.1
 weight_decay=0.01
 max_grad_norm=0.1
-max_steps=100000
+max_steps=${MAX_STEPS:-100000}
 num_train_epochs=30
 warmup_updates=0
 lr=5e-5
@@ -180,7 +201,7 @@ then
 fi
 
 
-exp_name=xsum.am_${attn_mode}.ao_${attn_option}.fm_${ffn_mode}
+exp_name=xsum.${METHOD:-mam}.am_${attn_mode}.ao_${attn_option}.fm_${ffn_mode}
 exp_name+=.fo_${ffn_option}.abn${attn_bn}.fbn${ffn_bn}.ac_${attn_composition}
 exp_name+=.fl_${ffn_adapter_layernorm_option}.finit_${ffn_adapter_init_option}.fs_${ffn_adapter_scalar}
 exp_name+=.unfrz_${unfreeze}.ms${max_steps}.ls${label_smoothing_factor}

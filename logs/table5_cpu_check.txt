@@ -1,0 +1,9 @@
+method        trainable % of BART    loss  checks
+lora_s4      25,067,520     6.17%    3.33  ALL OK
+lora_s1      25,067,520     6.17%    2.61  ALL OK
+pa           25,202,688     6.20%    4.23  ALL OK
+spa_s4       25,202,688     6.20%    2.58  ALL OK
+spa_learn    25,202,712     6.20%    2.79  ALL OK
+
+Paper Table 5: 6.1% params for every row.
+RESULT: configuration matches - ready for GPU runs
