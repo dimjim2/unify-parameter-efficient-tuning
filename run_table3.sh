@@ -1,22 +1,10 @@
 #!/bin/bash
 
-# Reproduce the XSum portion of Table 3 from:
-# He et al. (ICLR 2022), "Towards a Unified View of
-# Parameter-Efficient Transfer Learning"
-#
-# Runs sequentially on a single GPU:
-#   1. Prefix tuning, l=200
-#   2. Sequential Adapter at attention, r=200
-#   3. Sequential Adapter at FFN, r=200
-#   4. Parallel Adapter at attention, r=200
-#   5. Parallel Adapter at FFN, r=200
-#
-# Usage:
-#   bash run_table3.sh
-
 cd "$(dirname "$0")" || exit 1
 
 mkdir -p logs/table3
+
+SEED=${SEED:-42}
 
 METHODS=(
     prefix
@@ -26,29 +14,21 @@ METHODS=(
     pa_ffn
 )
 
-SEED=${SEED:-42}
-GPU=${GPU:-0}
+NUM_GPUS=4
 
-FAILED=()
+FAILED_FILE="logs/table3/failed.txt"
+rm -f "${FAILED_FILE}"
 
-echo "============================================================"
-echo "TABLE 3 — XSum reproduction"
-echo "============================================================"
-echo "Start time : $(date)"
-echo "GPU        : ${GPU}"
-echo "Seed       : ${SEED}"
-echo "Methods    : ${METHODS[*]}"
-echo "============================================================"
-echo
-
-for METHOD in "${METHODS[@]}"; do
+run_method () {
+    METHOD=$1
+    GPU=$2
 
     LOG="logs/table3/${METHOD}.log"
 
     echo "============================================================"
-    echo "Starting METHOD=${METHOD}"
+    echo "Starting ${METHOD} on GPU ${GPU}"
     echo "Time: $(date)"
-    echo "Log : ${LOG}"
+    echo "Log: ${LOG}"
     echo "============================================================"
 
     if METHOD="${METHOD}" \
@@ -57,33 +37,52 @@ for METHOD in "${METHODS[@]}"; do
        bash exps/run_xsum_table3.sh \
        > "${LOG}" 2>&1
     then
-        echo
-        echo "SUCCESS: ${METHOD}"
-        echo "Finished: $(date)"
+        echo "SUCCESS: ${METHOD} on GPU ${GPU}"
     else
-        EXIT_CODE=$?
-
-        echo
-        echo "FAILED: ${METHOD}"
-        echo "Exit code: ${EXIT_CODE}"
-        echo "Check: ${LOG}"
-
-        FAILED+=("${METHOD}")
+        echo "FAILED: ${METHOD} on GPU ${GPU}"
+        echo "${METHOD}" >> "${FAILED_FILE}"
     fi
+}
 
-    echo
+
+echo "============================================================"
+echo "TABLE 3 — XSum reproduction"
+echo "Using ${NUM_GPUS} GPUs"
+echo "Seed: ${SEED}"
+echo "Start: $(date)"
+echo "============================================================"
+
+for ((i=0; i<${#METHODS[@]}; i+=NUM_GPUS)); do
+
+    pids=()
+
+    for ((g=0; g<NUM_GPUS; g++)); do
+        j=$((i + g))
+
+        if [ $j -lt ${#METHODS[@]} ]; then
+            run_method "${METHODS[$j]}" "${g}" &
+            pids+=($!)
+        fi
+    done
+
+    # Wait for all methods in this wave to finish
+    for pid in "${pids[@]}"; do
+        wait "${pid}"
+    done
+
 done
 
+
+echo
 echo "============================================================"
 echo "TABLE 3 FINISHED"
-echo "End time: $(date)"
+echo "End: $(date)"
 echo "============================================================"
 
-if [ ${#FAILED[@]} -eq 0 ]; then
-    echo "All 5 runs completed successfully."
-    exit 0
-else
-    echo "Failed methods: ${FAILED[*]}"
-    echo "Successful runs have been preserved."
+if [ -f "${FAILED_FILE}" ]; then
+    echo "Failed methods:"
+    cat "${FAILED_FILE}"
     exit 1
+else
+    echo "All five methods completed successfully."
 fi
