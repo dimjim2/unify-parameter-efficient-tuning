@@ -1,6 +1,7 @@
 #! /bin/bash
+set -euo pipefail
 
-ROOT=mosesdecoder
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/mosesdecoder"
 ro_post_process () {
   sys=$1
   ref=$2
