@@ -1,0 +1,2023 @@
+10/06/2026 23:08:22 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: True
+10/06/2026 23:08:22 - INFO - __main__ -   Training/evaluation parameters Seq2SeqTrainingArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.999,
+adam_epsilon=1e-08,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_pin_memory=True,
+ddp_find_unused_parameters=None,
+debug=[],
+deepspeed=None,
+disable_tqdm=True,
+do_eval=True,
+do_predict=True,
+do_train=True,
+eval_accumulation_steps=None,
+eval_steps=3000,
+evaluation_strategy=IntervalStrategy.STEPS,
+fp16=True,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+gradient_accumulation_steps=4,
+greater_is_better=True,
+group_by_length=False,
+ignore_data_skip=False,
+label_names=None,
+label_smoothing_factor=0.1,
+learning_rate=5e-05,
+length_column_name=length,
+load_best_model_at_end=True,
+local_rank=-1,
+log_level=-1,
+log_level_replica=-1,
+log_on_each_node=True,
+logging_dir=checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/runs/Oct06_23-08-22_j-12413260-job-0,
+logging_first_step=False,
+logging_steps=100,
+logging_strategy=IntervalStrategy.STEPS,
+lr_scheduler_type=SchedulerType.POLYNOMIAL,
+max_grad_norm=0.1,
+max_steps=100000,
+metric_for_best_model=rouge2,
+mp_parameters=,
+no_cuda=False,
+num_train_epochs=30.0,
+output_dir=checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=16,
+per_device_train_batch_size=16,
+predict_with_generate=True,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01,
+push_to_hub_organization=None,
+push_to_hub_token=None,
+remove_unused_columns=True,
+report_to=[],
+resume_from_checkpoint=None,
+run_name=xsum.20261006.xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01,
+save_steps=3000,
+save_strategy=IntervalStrategy.STEPS,
+save_total_limit=2,
+seed=42,
+sharded_ddp=[],
+skip_memory_metrics=True,
+sortish_sampler=False,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_legacy_prediction_loop=False,
+warmup_ratio=0.0,
+warmup_steps=0,
+weight_decay=0.01,
+)
+10/06/2026 23:08:23 - WARNING - datasets.builder -   Using custom data configuration default-ec5c74f58db73f26
+10/06/2026 23:08:23 - WARNING - datasets.builder -   Reusing dataset json (checkpoints/hf_model/json/default-ec5c74f58db73f26/0.0.0/45636811569ec4a6630521c18235dfbbab83b7ab572e3393c5ba68ccabe98264)
+loading configuration file _setup/models/bart-large/config.json
+Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.1,
+  "classifier_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "forced_bos_token_id": 0,
+  "forced_eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "transformers_version": "4.9.0.dev0",
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+Could not locate the tokenizer configuration file, will try to use the model config instead.
+loading configuration file _setup/models/bart-large/config.json
+Model config BartConfig {
+  "activation_dropout": 0.1,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": false,
+  "architectures": [
+    "BartModel"
+  ],
+  "attention_dropout": 0.1,
+  "bos_token_id": 0,
+  "classif_dropout": 0.1,
+  "classifier_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "decoder_start_token_id": 2,
+  "dropout": 0.1,
+  "early_stopping": true,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "forced_bos_token_id": 0,
+  "forced_eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_position_embeddings": 1024,
+  "model_type": "bart",
+  "no_repeat_ngram_size": 3,
+  "normalize_before": false,
+  "num_beams": 4,
+  "num_hidden_layers": 12,
+  "pad_token_id": 1,
+  "scale_embedding": false,
+  "task_specific_params": {
+    "summarization": {
+      "length_penalty": 1.0,
+      "max_length": 128,
+      "min_length": 12,
+      "num_beams": 4
+    },
+    "summarization_cnn": {
+      "length_penalty": 2.0,
+      "max_length": 142,
+      "min_length": 56,
+      "num_beams": 4
+    },
+    "summarization_xsum": {
+      "length_penalty": 1.0,
+      "max_length": 62,
+      "min_length": 11,
+      "num_beams": 6
+    }
+  },
+  "transformers_version": "4.9.0.dev0",
+  "use_cache": true,
+  "vocab_size": 50265
+}
+
+Didn't find file _setup/models/bart-large/added_tokens.json. We won't load it.
+Didn't find file _setup/models/bart-large/special_tokens_map.json. We won't load it.
+Didn't find file _setup/models/bart-large/tokenizer_config.json. We won't load it.
+loading file _setup/models/bart-large/vocab.json
+loading file _setup/models/bart-large/merges.txt
+loading file _setup/models/bart-large/tokenizer.json
+loading file None
+loading file None
+loading file None
+loading weights file _setup/models/bart-large/pytorch_model.bin
+All model checkpoint weights were used when initializing BartForConditionalGeneration.
+
+All the weights of BartForConditionalGeneration were initialized from the model checkpoint at _setup/models/bart-large.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use BartForConditionalGeneration for predictions without further training.
+10/06/2026 23:08:25 - WARNING - datasets.fingerprint -   Parameter 'function'=<function main.<locals>.preprocess_function at 0x7fa0cf30aa60> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+Running tokenizer on train dataset #0:   0%|          | 0/103 [00:00<?, ?ba/s]10/06/2026 23:08:25 - WARNING - datasets.fingerprint -   Parameter 'function'=<function main.<locals>.preprocess_function at 0x7fa0cf30aa60> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+
+Running tokenizer on train dataset #1:   0%|          | 0/103 [00:00<?, ?ba/s][ARunning tokenizer on train dataset #0:   1%|          | 1/103 [00:00<01:03,  1.61ba/s]
+Running tokenizer on train dataset #1:   1%|          | 1/103 [00:00<01:04,  1.59ba/s][A
+Running tokenizer on train dataset #1:   2%|▏         | 2/103 [00:01<01:13,  1.37ba/s][ARunning tokenizer on train dataset #0:   2%|▏         | 2/103 [00:01<01:14,  1.35ba/s]Running tokenizer on train dataset #0:   3%|▎         | 3/103 [00:02<01:09,  1.44ba/s]
+Running tokenizer on train dataset #1:   3%|▎         | 3/103 [00:02<01:12,  1.38ba/s][ARunning tokenizer on train dataset #0:   4%|▍         | 4/103 [00:02<01:06,  1.48ba/s]
+Running tokenizer on train dataset #1:   4%|▍         | 4/103 [00:02<01:13,  1.35ba/s][ARunning tokenizer on train dataset #0:   5%|▍         | 5/103 [00:03<01:04,  1.53ba/s]
+Running tokenizer on train dataset #1:   5%|▍         | 5/103 [00:03<01:10,  1.38ba/s][ARunning tokenizer on train dataset #0:   6%|▌         | 6/103 [00:04<01:03,  1.52ba/s]
+Running tokenizer on train dataset #1:   6%|▌         | 6/103 [00:04<01:08,  1.42ba/s][ARunning tokenizer on train dataset #0:   7%|▋         | 7/103 [00:04<01:02,  1.53ba/s]
+Running tokenizer on train dataset #1:   7%|▋         | 7/103 [00:04<01:04,  1.49ba/s][ARunning tokenizer on train dataset #0:   8%|▊         | 8/103 [00:05<01:01,  1.54ba/s]
+Running tokenizer on train dataset #1:   8%|▊         | 8/103 [00:05<01:04,  1.48ba/s][ARunning tokenizer on train dataset #0:   9%|▊         | 9/103 [00:05<00:59,  1.57ba/s]
+Running tokenizer on train dataset #1:   9%|▊         | 9/103 [00:06<01:02,  1.50ba/s][ARunning tokenizer on train dataset #0:  10%|▉         | 10/103 [00:06<00:58,  1.60ba/s]
+Running tokenizer on train dataset #1:  10%|▉         | 10/103 [00:06<01:01,  1.51ba/s][ARunning tokenizer on train dataset #0:  11%|█         | 11/103 [00:07<00:57,  1.59ba/s]
+Running tokenizer on train dataset #1:  11%|█         | 11/103 [00:07<00:59,  1.54ba/s][ARunning tokenizer on train dataset #0:  12%|█▏        | 12/103 [00:07<00:57,  1.59ba/s]
+Running tokenizer on train dataset #1:  12%|█▏        | 12/103 [00:08<00:58,  1.55ba/s][ARunning tokenizer on train dataset #0:  13%|█▎        | 13/103 [00:08<00:57,  1.57ba/s]
+Running tokenizer on train dataset #1:  13%|█▎        | 13/103 [00:08<00:57,  1.57ba/s][ARunning tokenizer on train dataset #0:  14%|█▎        | 14/103 [00:09<00:56,  1.57ba/s]
+Running tokenizer on train dataset #1:  14%|█▎        | 14/103 [00:09<00:57,  1.56ba/s][ARunning tokenizer on train dataset #0:  15%|█▍        | 15/103 [00:09<00:55,  1.59ba/s]
+Running tokenizer on train dataset #1:  15%|█▍        | 15/103 [00:10<00:56,  1.57ba/s][ARunning tokenizer on train dataset #0:  16%|█▌        | 16/103 [00:10<00:54,  1.58ba/s]
+Running tokenizer on train dataset #1:  16%|█▌        | 16/103 [00:10<00:55,  1.58ba/s][ARunning tokenizer on train dataset #0:  17%|█▋        | 17/103 [00:11<00:56,  1.52ba/s]
+Running tokenizer on train dataset #1:  17%|█▋        | 17/103 [00:11<00:57,  1.49ba/s][ARunning tokenizer on train dataset #0:  17%|█▋        | 18/103 [00:11<00:55,  1.54ba/s]
+Running tokenizer on train dataset #1:  17%|█▋        | 18/103 [00:12<00:56,  1.52ba/s][ARunning tokenizer on train dataset #0:  18%|█▊        | 19/103 [00:12<00:53,  1.56ba/s]
+Running tokenizer on train dataset #1:  18%|█▊        | 19/103 [00:12<00:54,  1.54ba/s][ARunning tokenizer on train dataset #0:  19%|█▉        | 20/103 [00:12<00:52,  1.58ba/s]
+Running tokenizer on train dataset #1:  19%|█▉        | 20/103 [00:13<00:53,  1.56ba/s][ARunning tokenizer on train dataset #0:  20%|██        | 21/103 [00:13<00:51,  1.60ba/s]
+Running tokenizer on train dataset #1:  20%|██        | 21/103 [00:13<00:52,  1.57ba/s][ARunning tokenizer on train dataset #0:  21%|██▏       | 22/103 [00:14<00:51,  1.58ba/s]
+Running tokenizer on train dataset #1:  21%|██▏       | 22/103 [00:14<00:51,  1.56ba/s][ARunning tokenizer on train dataset #0:  22%|██▏       | 23/103 [00:14<00:50,  1.59ba/s]
+Running tokenizer on train dataset #1:  22%|██▏       | 23/103 [00:15<00:51,  1.56ba/s][ARunning tokenizer on train dataset #0:  23%|██▎       | 24/103 [00:15<00:49,  1.60ba/s]
+Running tokenizer on train dataset #1:  23%|██▎       | 24/103 [00:15<00:50,  1.57ba/s][ARunning tokenizer on train dataset #0:  24%|██▍       | 25/103 [00:16<00:49,  1.57ba/s]
+Running tokenizer on train dataset #1:  24%|██▍       | 25/103 [00:16<00:49,  1.58ba/s][ARunning tokenizer on train dataset #0:  25%|██▌       | 26/103 [00:16<00:48,  1.58ba/s]
+Running tokenizer on train dataset #1:  25%|██▌       | 26/103 [00:17<00:48,  1.58ba/s][ARunning tokenizer on train dataset #0:  26%|██▌       | 27/103 [00:17<00:47,  1.59ba/s]
+Running tokenizer on train dataset #1:  26%|██▌       | 27/103 [00:17<00:48,  1.56ba/s][ARunning tokenizer on train dataset #0:  27%|██▋       | 28/103 [00:17<00:47,  1.59ba/s]
+Running tokenizer on train dataset #1:  27%|██▋       | 28/103 [00:18<00:47,  1.58ba/s][ARunning tokenizer on train dataset #0:  28%|██▊       | 29/103 [00:18<00:46,  1.60ba/s]
+Running tokenizer on train dataset #1:  28%|██▊       | 29/103 [00:18<00:46,  1.60ba/s][ARunning tokenizer on train dataset #0:  29%|██▉       | 30/103 [00:19<00:47,  1.53ba/s]
+Running tokenizer on train dataset #1:  29%|██▉       | 30/103 [00:19<00:48,  1.49ba/s][ARunning tokenizer on train dataset #0:  30%|███       | 31/103 [00:19<00:46,  1.56ba/s]
+Running tokenizer on train dataset #1:  30%|███       | 31/103 [00:20<00:47,  1.53ba/s][ARunning tokenizer on train dataset #0:  31%|███       | 32/103 [00:20<00:44,  1.58ba/s]
+Running tokenizer on train dataset #1:  31%|███       | 32/103 [00:20<00:46,  1.54ba/s][ARunning tokenizer on train dataset #0:  32%|███▏      | 33/103 [00:21<00:43,  1.60ba/s]
+Running tokenizer on train dataset #1:  32%|███▏      | 33/103 [00:21<00:44,  1.56ba/s][ARunning tokenizer on train dataset #0:  33%|███▎      | 34/103 [00:21<00:43,  1.60ba/s]
+Running tokenizer on train dataset #1:  33%|███▎      | 34/103 [00:22<00:44,  1.54ba/s][ARunning tokenizer on train dataset #0:  34%|███▍      | 35/103 [00:22<00:42,  1.61ba/s]
+Running tokenizer on train dataset #1:  34%|███▍      | 35/103 [00:22<00:43,  1.56ba/s][ARunning tokenizer on train dataset #0:  35%|███▍      | 36/103 [00:22<00:40,  1.64ba/s]
+Running tokenizer on train dataset #1:  35%|███▍      | 36/103 [00:23<00:42,  1.58ba/s][ARunning tokenizer on train dataset #0:  36%|███▌      | 37/103 [00:23<00:40,  1.62ba/s]
+Running tokenizer on train dataset #1:  36%|███▌      | 37/103 [00:24<00:41,  1.58ba/s][ARunning tokenizer on train dataset #0:  37%|███▋      | 38/103 [00:24<00:40,  1.61ba/s]
+Running tokenizer on train dataset #1:  37%|███▋      | 38/103 [00:24<00:40,  1.61ba/s][ARunning tokenizer on train dataset #0:  38%|███▊      | 39/103 [00:24<00:39,  1.60ba/s]
+Running tokenizer on train dataset #1:  38%|███▊      | 39/103 [00:25<00:40,  1.58ba/s][ARunning tokenizer on train dataset #0:  39%|███▉      | 40/103 [00:25<00:38,  1.62ba/s]
+Running tokenizer on train dataset #1:  39%|███▉      | 40/103 [00:26<00:39,  1.59ba/s][ARunning tokenizer on train dataset #0:  40%|███▉      | 41/103 [00:26<00:38,  1.62ba/s]
+Running tokenizer on train dataset #1:  40%|███▉      | 41/103 [00:26<00:38,  1.60ba/s][ARunning tokenizer on train dataset #0:  41%|████      | 42/103 [00:26<00:38,  1.60ba/s]
+Running tokenizer on train dataset #1:  41%|████      | 42/103 [00:27<00:38,  1.59ba/s][ARunning tokenizer on train dataset #0:  42%|████▏     | 43/103 [00:27<00:37,  1.61ba/s]
+Running tokenizer on train dataset #1:  42%|████▏     | 43/103 [00:27<00:37,  1.58ba/s][ARunning tokenizer on train dataset #0:  43%|████▎     | 44/103 [00:28<00:38,  1.53ba/s]Running tokenizer on train dataset #0:  44%|████▎     | 45/103 [00:28<00:37,  1.55ba/s]
+Running tokenizer on train dataset #1:  43%|████▎     | 44/103 [00:28<00:39,  1.51ba/s][ARunning tokenizer on train dataset #0:  45%|████▍     | 46/103 [00:29<00:36,  1.57ba/s]
+Running tokenizer on train dataset #1:  44%|████▎     | 45/103 [00:29<00:37,  1.54ba/s][A
+Running tokenizer on train dataset #1:  45%|████▍     | 46/103 [00:29<00:36,  1.57ba/s][ARunning tokenizer on train dataset #0:  46%|████▌     | 47/103 [00:29<00:35,  1.57ba/s]
+Running tokenizer on train dataset #1:  46%|████▌     | 47/103 [00:30<00:35,  1.58ba/s][ARunning tokenizer on train dataset #0:  47%|████▋     | 48/103 [00:30<00:34,  1.58ba/s]Running tokenizer on train dataset #0:  48%|████▊     | 49/103 [00:31<00:33,  1.61ba/s]
+Running tokenizer on train dataset #1:  47%|████▋     | 48/103 [00:31<00:34,  1.58ba/s][ARunning tokenizer on train dataset #0:  49%|████▊     | 50/103 [00:31<00:33,  1.61ba/s]
+Running tokenizer on train dataset #1:  48%|████▊     | 49/103 [00:31<00:34,  1.58ba/s][ARunning tokenizer on train dataset #0:  50%|████▉     | 51/103 [00:32<00:32,  1.60ba/s]
+Running tokenizer on train dataset #1:  49%|████▊     | 50/103 [00:32<00:33,  1.58ba/s][ARunning tokenizer on train dataset #0:  50%|█████     | 52/103 [00:32<00:31,  1.60ba/s]
+Running tokenizer on train dataset #1:  50%|████▉     | 51/103 [00:33<00:32,  1.59ba/s][ARunning tokenizer on train dataset #0:  51%|█████▏    | 53/103 [00:33<00:30,  1.63ba/s]
+Running tokenizer on train dataset #1:  50%|█████     | 52/103 [00:33<00:33,  1.54ba/s][ARunning tokenizer on train dataset #0:  52%|█████▏    | 54/103 [00:34<00:30,  1.62ba/s]
+Running tokenizer on train dataset #1:  51%|█████▏    | 53/103 [00:34<00:32,  1.54ba/s][ARunning tokenizer on train dataset #0:  53%|█████▎    | 55/103 [00:34<00:29,  1.62ba/s]
+Running tokenizer on train dataset #1:  52%|█████▏    | 54/103 [00:34<00:31,  1.57ba/s][ARunning tokenizer on train dataset #0:  54%|█████▍    | 56/103 [00:35<00:28,  1.63ba/s]
+Running tokenizer on train dataset #1:  53%|█████▎    | 55/103 [00:35<00:30,  1.57ba/s][ARunning tokenizer on train dataset #0:  55%|█████▌    | 57/103 [00:36<00:28,  1.62ba/s]
+Running tokenizer on train dataset #1:  54%|█████▍    | 56/103 [00:36<00:29,  1.58ba/s][ARunning tokenizer on train dataset #0:  56%|█████▋    | 58/103 [00:36<00:29,  1.53ba/s]
+Running tokenizer on train dataset #1:  55%|█████▌    | 57/103 [00:36<00:28,  1.61ba/s][ARunning tokenizer on train dataset #0:  57%|█████▋    | 59/103 [00:37<00:28,  1.55ba/s]
+Running tokenizer on train dataset #1:  56%|█████▋    | 58/103 [00:37<00:29,  1.51ba/s][ARunning tokenizer on train dataset #0:  58%|█████▊    | 60/103 [00:38<00:27,  1.57ba/s]
+Running tokenizer on train dataset #1:  57%|█████▋    | 59/103 [00:38<00:28,  1.54ba/s][ARunning tokenizer on train dataset #0:  59%|█████▉    | 61/103 [00:38<00:26,  1.56ba/s]
+Running tokenizer on train dataset #1:  58%|█████▊    | 60/103 [00:38<00:27,  1.54ba/s][ARunning tokenizer on train dataset #0:  60%|██████    | 62/103 [00:39<00:25,  1.59ba/s]
+Running tokenizer on train dataset #1:  59%|█████▉    | 61/103 [00:39<00:26,  1.56ba/s][ARunning tokenizer on train dataset #0:  61%|██████    | 63/103 [00:39<00:25,  1.59ba/s]
+Running tokenizer on train dataset #1:  60%|██████    | 62/103 [00:40<00:26,  1.57ba/s][ARunning tokenizer on train dataset #0:  62%|██████▏   | 64/103 [00:40<00:24,  1.60ba/s]
+Running tokenizer on train dataset #1:  61%|██████    | 63/103 [00:40<00:25,  1.58ba/s][ARunning tokenizer on train dataset #0:  63%|██████▎   | 65/103 [00:41<00:23,  1.59ba/s]
+Running tokenizer on train dataset #1:  62%|██████▏   | 64/103 [00:41<00:24,  1.56ba/s][ARunning tokenizer on train dataset #0:  64%|██████▍   | 66/103 [00:41<00:23,  1.60ba/s]
+Running tokenizer on train dataset #1:  63%|██████▎   | 65/103 [00:42<00:24,  1.56ba/s][ARunning tokenizer on train dataset #0:  65%|██████▌   | 67/103 [00:42<00:22,  1.59ba/s]
+Running tokenizer on train dataset #1:  64%|██████▍   | 66/103 [00:42<00:23,  1.56ba/s][ARunning tokenizer on train dataset #0:  66%|██████▌   | 68/103 [00:43<00:21,  1.60ba/s]
+Running tokenizer on train dataset #1:  65%|██████▌   | 67/103 [00:43<00:22,  1.58ba/s][ARunning tokenizer on train dataset #0:  67%|██████▋   | 69/103 [00:43<00:21,  1.62ba/s]
+Running tokenizer on train dataset #1:  66%|██████▌   | 68/103 [00:43<00:22,  1.58ba/s][ARunning tokenizer on train dataset #0:  68%|██████▊   | 70/103 [00:44<00:20,  1.59ba/s]
+Running tokenizer on train dataset #1:  67%|██████▋   | 69/103 [00:44<00:21,  1.59ba/s][ARunning tokenizer on train dataset #0:  69%|██████▉   | 71/103 [00:45<00:21,  1.52ba/s]
+Running tokenizer on train dataset #1:  68%|██████▊   | 70/103 [00:45<00:20,  1.57ba/s][ARunning tokenizer on train dataset #0:  70%|██████▉   | 72/103 [00:45<00:20,  1.54ba/s]
+Running tokenizer on train dataset #1:  69%|██████▉   | 71/103 [00:45<00:21,  1.50ba/s][ARunning tokenizer on train dataset #0:  71%|███████   | 73/103 [00:46<00:18,  1.58ba/s]
+Running tokenizer on train dataset #1:  70%|██████▉   | 72/103 [00:46<00:20,  1.52ba/s][ARunning tokenizer on train dataset #0:  72%|███████▏  | 74/103 [00:46<00:18,  1.60ba/s]
+Running tokenizer on train dataset #1:  71%|███████   | 73/103 [00:47<00:19,  1.54ba/s][ARunning tokenizer on train dataset #0:  73%|███████▎  | 75/103 [00:47<00:17,  1.62ba/s]
+Running tokenizer on train dataset #1:  72%|███████▏  | 74/103 [00:47<00:18,  1.58ba/s][ARunning tokenizer on train dataset #0:  74%|███████▍  | 76/103 [00:48<00:16,  1.60ba/s]
+Running tokenizer on train dataset #1:  73%|███████▎  | 75/103 [00:48<00:17,  1.59ba/s][ARunning tokenizer on train dataset #0:  75%|███████▍  | 77/103 [00:48<00:16,  1.59ba/s]
+Running tokenizer on train dataset #1:  74%|███████▍  | 76/103 [00:49<00:17,  1.57ba/s][ARunning tokenizer on train dataset #0:  76%|███████▌  | 78/103 [00:49<00:15,  1.60ba/s]
+Running tokenizer on train dataset #1:  75%|███████▍  | 77/103 [00:49<00:16,  1.57ba/s][ARunning tokenizer on train dataset #0:  77%|███████▋  | 79/103 [00:49<00:14,  1.62ba/s]
+Running tokenizer on train dataset #1:  76%|███████▌  | 78/103 [00:50<00:15,  1.59ba/s][ARunning tokenizer on train dataset #0:  78%|███████▊  | 80/103 [00:50<00:14,  1.59ba/s]
+Running tokenizer on train dataset #1:  77%|███████▋  | 79/103 [00:50<00:15,  1.60ba/s][ARunning tokenizer on train dataset #0:  79%|███████▊  | 81/103 [00:51<00:13,  1.58ba/s]
+Running tokenizer on train dataset #1:  78%|███████▊  | 80/103 [00:51<00:14,  1.58ba/s][ARunning tokenizer on train dataset #0:  80%|███████▉  | 82/103 [00:51<00:13,  1.59ba/s]
+Running tokenizer on train dataset #1:  79%|███████▊  | 81/103 [00:52<00:13,  1.58ba/s][ARunning tokenizer on train dataset #0:  81%|████████  | 83/103 [00:52<00:12,  1.60ba/s]
+Running tokenizer on train dataset #1:  80%|███████▉  | 82/103 [00:52<00:13,  1.58ba/s][ARunning tokenizer on train dataset #0:  82%|████████▏ | 84/103 [00:53<00:11,  1.60ba/s]
+Running tokenizer on train dataset #1:  81%|████████  | 83/103 [00:53<00:12,  1.57ba/s][ARunning tokenizer on train dataset #0:  83%|████████▎ | 85/103 [00:53<00:11,  1.50ba/s]
+Running tokenizer on train dataset #1:  82%|████████▏ | 84/103 [00:54<00:12,  1.58ba/s][ARunning tokenizer on train dataset #0:  83%|████████▎ | 86/103 [00:54<00:11,  1.54ba/s]
+Running tokenizer on train dataset #1:  83%|████████▎ | 85/103 [00:54<00:11,  1.51ba/s][ARunning tokenizer on train dataset #0:  84%|████████▍ | 87/103 [00:55<00:10,  1.57ba/s]
+Running tokenizer on train dataset #1:  83%|████████▎ | 86/103 [00:55<00:11,  1.54ba/s][ARunning tokenizer on train dataset #0:  85%|████████▌ | 88/103 [00:55<00:09,  1.57ba/s]
+Running tokenizer on train dataset #1:  84%|████████▍ | 87/103 [00:56<00:10,  1.55ba/s][ARunning tokenizer on train dataset #0:  86%|████████▋ | 89/103 [00:56<00:08,  1.58ba/s]
+Running tokenizer on train dataset #1:  85%|████████▌ | 88/103 [00:56<00:09,  1.56ba/s][ARunning tokenizer on train dataset #0:  87%|████████▋ | 90/103 [00:56<00:08,  1.60ba/s]
+Running tokenizer on train dataset #1:  86%|████████▋ | 89/103 [00:57<00:09,  1.54ba/s][ARunning tokenizer on train dataset #0:  88%|████████▊ | 91/103 [00:57<00:07,  1.62ba/s]
+Running tokenizer on train dataset #1:  87%|████████▋ | 90/103 [00:58<00:08,  1.53ba/s][ARunning tokenizer on train dataset #0:  89%|████████▉ | 92/103 [00:58<00:06,  1.60ba/s]
+Running tokenizer on train dataset #1:  88%|████████▊ | 91/103 [00:58<00:07,  1.56ba/s][ARunning tokenizer on train dataset #0:  90%|█████████ | 93/103 [00:58<00:06,  1.56ba/s]
+Running tokenizer on train dataset #1:  89%|████████▉ | 92/103 [00:59<00:06,  1.58ba/s][ARunning tokenizer on train dataset #0:  91%|█████████▏| 94/103 [00:59<00:05,  1.54ba/s]
+Running tokenizer on train dataset #1:  90%|█████████ | 93/103 [00:59<00:06,  1.58ba/s][ARunning tokenizer on train dataset #0:  92%|█████████▏| 95/103 [01:00<00:05,  1.53ba/s]
+Running tokenizer on train dataset #1:  91%|█████████▏| 94/103 [01:00<00:05,  1.59ba/s][ARunning tokenizer on train dataset #0:  93%|█████████▎| 96/103 [01:00<00:04,  1.55ba/s]
+Running tokenizer on train dataset #1:  92%|█████████▏| 95/103 [01:01<00:05,  1.56ba/s][ARunning tokenizer on train dataset #0:  94%|█████████▍| 97/103 [01:01<00:03,  1.57ba/s]
+Running tokenizer on train dataset #1:  93%|█████████▎| 96/103 [01:01<00:04,  1.57ba/s][ARunning tokenizer on train dataset #0:  95%|█████████▌| 98/103 [01:02<00:03,  1.56ba/s]
+Running tokenizer on train dataset #1:  94%|█████████▍| 97/103 [01:02<00:03,  1.58ba/s][ARunning tokenizer on train dataset #0:  96%|█████████▌| 99/103 [01:02<00:02,  1.49ba/s]
+Running tokenizer on train dataset #1:  95%|█████████▌| 98/103 [01:03<00:03,  1.57ba/s][ARunning tokenizer on train dataset #0:  97%|█████████▋| 100/103 [01:03<00:01,  1.52ba/s]
+Running tokenizer on train dataset #1:  96%|█████████▌| 99/103 [01:03<00:02,  1.50ba/s][ARunning tokenizer on train dataset #0:  98%|█████████▊| 101/103 [01:04<00:01,  1.55ba/s]
+Running tokenizer on train dataset #1:  97%|█████████▋| 100/103 [01:04<00:01,  1.54ba/s][ARunning tokenizer on train dataset #0:  99%|█████████▉| 102/103 [01:04<00:00,  1.58ba/s]Running tokenizer on train dataset #0: 100%|██████████| 103/103 [01:04<00:00,  1.59ba/s]
+
+Running tokenizer on train dataset #1:  98%|█████████▊| 101/103 [01:05<00:01,  1.58ba/s][A
+Running tokenizer on train dataset #1:  99%|█████████▉| 102/103 [01:05<00:00,  1.60ba/s][ARunning tokenizer on train dataset #1: 100%|██████████| 103/103 [01:05<00:00,  1.57ba/s]
+10/06/2026 23:09:31 - WARNING - datasets.fingerprint -   Parameter 'function'=<function main.<locals>.preprocess_function at 0x7fa0d4682e50> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+Running tokenizer on validation dataset #0:   0%|          | 0/1 [00:00<?, ?ba/s]10/06/2026 23:09:31 - WARNING - datasets.fingerprint -   Parameter 'function'=<function main.<locals>.preprocess_function at 0x7fa0d4682e50> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+
+Running tokenizer on validation dataset #1:   0%|          | 0/1 [00:00<?, ?ba/s][ARunning tokenizer on validation dataset #0: 100%|██████████| 1/1 [00:00<00:00,  1.96ba/s]Running tokenizer on validation dataset #0: 100%|██████████| 1/1 [00:00<00:00,  1.96ba/s]
+
+Running tokenizer on validation dataset #1: 100%|██████████| 1/1 [00:00<00:00,  1.91ba/s][ARunning tokenizer on validation dataset #1: 100%|██████████| 1/1 [00:00<00:00,  1.91ba/s]
+10/06/2026 23:09:32 - WARNING - datasets.fingerprint -   Parameter 'function'=<function main.<locals>.preprocess_function at 0x7fa0cf30aa60> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+Running tokenizer on prediction dataset #0:   0%|          | 0/6 [00:00<?, ?ba/s]10/06/2026 23:09:32 - WARNING - datasets.fingerprint -   Parameter 'function'=<function main.<locals>.preprocess_function at 0x7fa0cf30aa60> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+
+Running tokenizer on prediction dataset #1:   0%|          | 0/6 [00:00<?, ?ba/s][ARunning tokenizer on prediction dataset #0:  17%|█▋        | 1/6 [00:00<00:03,  1.49ba/s]
+Running tokenizer on prediction dataset #1:  17%|█▋        | 1/6 [00:00<00:03,  1.50ba/s][ARunning tokenizer on prediction dataset #0:  33%|███▎      | 2/6 [00:01<00:02,  1.54ba/s]
+Running tokenizer on prediction dataset #1:  33%|███▎      | 2/6 [00:01<00:02,  1.54ba/s][ARunning tokenizer on prediction dataset #0:  50%|█████     | 3/6 [00:02<00:02,  1.39ba/s]
+Running tokenizer on prediction dataset #1:  50%|█████     | 3/6 [00:02<00:02,  1.40ba/s][A
+Running tokenizer on prediction dataset #1:  67%|██████▋   | 4/6 [00:02<00:01,  1.48ba/s][ARunning tokenizer on prediction dataset #0:  67%|██████▋   | 4/6 [00:02<00:01,  1.46ba/s]
+Running tokenizer on prediction dataset #1:  83%|████████▎ | 5/6 [00:03<00:00,  1.51ba/s][ARunning tokenizer on prediction dataset #0:  83%|████████▎ | 5/6 [00:03<00:00,  1.49ba/s]
+Running tokenizer on prediction dataset #1: 100%|██████████| 6/6 [00:03<00:00,  1.71ba/s][ARunning tokenizer on prediction dataset #1: 100%|██████████| 6/6 [00:03<00:00,  1.58ba/s]
+Running tokenizer on prediction dataset #0: 100%|██████████| 6/6 [00:03<00:00,  1.71ba/s]Running tokenizer on prediction dataset #0: 100%|██████████| 6/6 [00:03<00:00,  1.58ba/s]
+tune model.encoder.layers.0.fc1.ef_lora_A
+tune model.encoder.layers.0.fc1.ef_lora_B
+tune model.encoder.layers.0.fc2.ef_lora_A
+tune model.encoder.layers.0.fc2.ef_lora_B
+tune model.encoder.layers.1.fc1.ef_lora_A
+tune model.encoder.layers.1.fc1.ef_lora_B
+tune model.encoder.layers.1.fc2.ef_lora_A
+tune model.encoder.layers.1.fc2.ef_lora_B
+tune model.encoder.layers.2.fc1.ef_lora_A
+tune model.encoder.layers.2.fc1.ef_lora_B
+tune model.encoder.layers.2.fc2.ef_lora_A
+tune model.encoder.layers.2.fc2.ef_lora_B
+tune model.encoder.layers.3.fc1.ef_lora_A
+tune model.encoder.layers.3.fc1.ef_lora_B
+tune model.encoder.layers.3.fc2.ef_lora_A
+tune model.encoder.layers.3.fc2.ef_lora_B
+tune model.encoder.layers.4.fc1.ef_lora_A
+tune model.encoder.layers.4.fc1.ef_lora_B
+tune model.encoder.layers.4.fc2.ef_lora_A
+tune model.encoder.layers.4.fc2.ef_lora_B
+tune model.encoder.layers.5.fc1.ef_lora_A
+tune model.encoder.layers.5.fc1.ef_lora_B
+tune model.encoder.layers.5.fc2.ef_lora_A
+tune model.encoder.layers.5.fc2.ef_lora_B
+tune model.encoder.layers.6.fc1.ef_lora_A
+tune model.encoder.layers.6.fc1.ef_lora_B
+tune model.encoder.layers.6.fc2.ef_lora_A
+tune model.encoder.layers.6.fc2.ef_lora_B
+tune model.encoder.layers.7.fc1.ef_lora_A
+tune model.encoder.layers.7.fc1.ef_lora_B
+tune model.encoder.layers.7.fc2.ef_lora_A
+tune model.encoder.layers.7.fc2.ef_lora_B
+tune model.encoder.layers.8.fc1.ef_lora_A
+tune model.encoder.layers.8.fc1.ef_lora_B
+tune model.encoder.layers.8.fc2.ef_lora_A
+tune model.encoder.layers.8.fc2.ef_lora_B
+tune model.encoder.layers.9.fc1.ef_lora_A
+tune model.encoder.layers.9.fc1.ef_lora_B
+tune model.encoder.layers.9.fc2.ef_lora_A
+tune model.encoder.layers.9.fc2.ef_lora_B
+tune model.encoder.layers.10.fc1.ef_lora_A
+tune model.encoder.layers.10.fc1.ef_lora_B
+tune model.encoder.layers.10.fc2.ef_lora_A
+tune model.encoder.layers.10.fc2.ef_lora_B
+tune model.encoder.layers.11.fc1.ef_lora_A
+tune model.encoder.layers.11.fc1.ef_lora_B
+tune model.encoder.layers.11.fc2.ef_lora_A
+tune model.encoder.layers.11.fc2.ef_lora_B
+tune model.decoder.layers.0.fc1.ef_lora_A
+tune model.decoder.layers.0.fc1.ef_lora_B
+tune model.decoder.layers.0.fc2.ef_lora_A
+tune model.decoder.layers.0.fc2.ef_lora_B
+tune model.decoder.layers.1.fc1.ef_lora_A
+tune model.decoder.layers.1.fc1.ef_lora_B
+tune model.decoder.layers.1.fc2.ef_lora_A
+tune model.decoder.layers.1.fc2.ef_lora_B
+tune model.decoder.layers.2.fc1.ef_lora_A
+tune model.decoder.layers.2.fc1.ef_lora_B
+tune model.decoder.layers.2.fc2.ef_lora_A
+tune model.decoder.layers.2.fc2.ef_lora_B
+tune model.decoder.layers.3.fc1.ef_lora_A
+tune model.decoder.layers.3.fc1.ef_lora_B
+tune model.decoder.layers.3.fc2.ef_lora_A
+tune model.decoder.layers.3.fc2.ef_lora_B
+tune model.decoder.layers.4.fc1.ef_lora_A
+tune model.decoder.layers.4.fc1.ef_lora_B
+tune model.decoder.layers.4.fc2.ef_lora_A
+tune model.decoder.layers.4.fc2.ef_lora_B
+tune model.decoder.layers.5.fc1.ef_lora_A
+tune model.decoder.layers.5.fc1.ef_lora_B
+tune model.decoder.layers.5.fc2.ef_lora_A
+tune model.decoder.layers.5.fc2.ef_lora_B
+tune model.decoder.layers.6.fc1.ef_lora_A
+tune model.decoder.layers.6.fc1.ef_lora_B
+tune model.decoder.layers.6.fc2.ef_lora_A
+tune model.decoder.layers.6.fc2.ef_lora_B
+tune model.decoder.layers.7.fc1.ef_lora_A
+tune model.decoder.layers.7.fc1.ef_lora_B
+tune model.decoder.layers.7.fc2.ef_lora_A
+tune model.decoder.layers.7.fc2.ef_lora_B
+tune model.decoder.layers.8.fc1.ef_lora_A
+tune model.decoder.layers.8.fc1.ef_lora_B
+tune model.decoder.layers.8.fc2.ef_lora_A
+tune model.decoder.layers.8.fc2.ef_lora_B
+tune model.decoder.layers.9.fc1.ef_lora_A
+tune model.decoder.layers.9.fc1.ef_lora_B
+tune model.decoder.layers.9.fc2.ef_lora_A
+tune model.decoder.layers.9.fc2.ef_lora_B
+tune model.decoder.layers.10.fc1.ef_lora_A
+tune model.decoder.layers.10.fc1.ef_lora_B
+tune model.decoder.layers.10.fc2.ef_lora_A
+tune model.decoder.layers.10.fc2.ef_lora_B
+tune model.decoder.layers.11.fc1.ef_lora_A
+tune model.decoder.layers.11.fc1.ef_lora_B
+tune model.decoder.layers.11.fc2.ef_lora_A
+tune model.decoder.layers.11.fc2.ef_lora_B
+max_steps is given, it will override any value given in num_train_epochs
+Using amp fp16 backend
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:430: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  self.scaler = torch.cuda.amp.GradScaler()
+***** Running training *****
+  Num examples = 204045
+  Num Epochs = 32
+  Instantaneous batch size per device = 16
+  Total train batch size (w. parallel, distributed & accumulation) = 64
+  Gradient Accumulation steps = 4
+  Total optimization steps = 100000
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 3.596, 'learning_rate': 4.9951098000000005e-05, 'epoch': 0.03}
+{'loss': 3.424, 'learning_rate': 4.9901198000000004e-05, 'epoch': 0.06}
+{'loss': 3.3856, 'learning_rate': 4.9851797e-05, 'epoch': 0.09}
+{'loss': 3.3615, 'learning_rate': 4.9802396000000005e-05, 'epoch': 0.13}
+{'loss': 3.3397, 'learning_rate': 4.9752496000000004e-05, 'epoch': 0.16}
+{'loss': 3.324, 'learning_rate': 4.9703095e-05, 'epoch': 0.19}
+{'loss': 3.3149, 'learning_rate': 4.9653195e-05, 'epoch': 0.22}
+{'loss': 3.2984, 'learning_rate': 4.9603295e-05, 'epoch': 0.25}
+{'loss': 3.2907, 'learning_rate': 4.9553395e-05, 'epoch': 0.28}
+{'loss': 3.2863, 'learning_rate': 4.9503495000000004e-05, 'epoch': 0.31}
+{'loss': 3.287, 'learning_rate': 4.9453595e-05, 'epoch': 0.35}
+{'loss': 3.2675, 'learning_rate': 4.9403695e-05, 'epoch': 0.38}
+{'loss': 3.2571, 'learning_rate': 4.9353795e-05, 'epoch': 0.41}
+{'loss': 3.2556, 'learning_rate': 4.9303895e-05, 'epoch': 0.44}
+{'loss': 3.2454, 'learning_rate': 4.9253995e-05, 'epoch': 0.47}
+{'loss': 3.2341, 'learning_rate': 4.9204095e-05, 'epoch': 0.5}
+{'loss': 3.2368, 'learning_rate': 4.9154195000000004e-05, 'epoch': 0.53}
+{'loss': 3.244, 'learning_rate': 4.9104295e-05, 'epoch': 0.56}
+{'loss': 3.2366, 'learning_rate': 4.9054395e-05, 'epoch': 0.6}
+{'loss': 3.2264, 'learning_rate': 4.9004495e-05, 'epoch': 0.63}
+{'loss': 3.2145, 'learning_rate': 4.8954595e-05, 'epoch': 0.66}
+{'loss': 3.2154, 'learning_rate': 4.8904695e-05, 'epoch': 0.69}
+{'loss': 3.2217, 'learning_rate': 4.8854795e-05, 'epoch': 0.72}
+{'loss': 3.2294, 'learning_rate': 4.8804895000000004e-05, 'epoch': 0.75}
+{'loss': 3.2013, 'learning_rate': 4.8754995e-05, 'epoch': 0.78}
+{'loss': 3.2033, 'learning_rate': 4.8705095e-05, 'epoch': 0.82}
+{'loss': 3.2043, 'learning_rate': 4.8655195e-05, 'epoch': 0.85}
+{'loss': 3.1982, 'learning_rate': 4.8605295e-05, 'epoch': 0.88}
+{'loss': 3.2066, 'learning_rate': 4.8555395e-05, 'epoch': 0.91}
+{'loss': 3.2074, 'learning_rate': 4.8505495e-05, 'epoch': 0.94}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/06/2026 23:34:54 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 3.035457134246826, 'eval_rouge1': 42.8858, 'eval_rouge2': 19.6577, 'eval_rougeL': 34.4434, 'eval_rougeLsum': 34.4789, 'eval_gen_len': 29.5762, 'eval_runtime': 346.0718, 'eval_samples_per_second': 4.623, 'eval_steps_per_second': 0.289, 'epoch': 0.94}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-3000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-3000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-3000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-3000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-3000/special_tokens_map.json
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 3.2014, 'learning_rate': 4.8455595000000004e-05, 'epoch': 0.97}
+{'loss': 3.1909, 'learning_rate': 4.8405695e-05, 'epoch': 1.0}
+{'loss': 3.1711, 'learning_rate': 4.8355795e-05, 'epoch': 1.04}
+{'loss': 3.1657, 'learning_rate': 4.8305895e-05, 'epoch': 1.07}
+{'loss': 3.1564, 'learning_rate': 4.8255995e-05, 'epoch': 1.1}
+{'loss': 3.1685, 'learning_rate': 4.8206095e-05, 'epoch': 1.13}
+{'loss': 3.1592, 'learning_rate': 4.8156195e-05, 'epoch': 1.16}
+{'loss': 3.1538, 'learning_rate': 4.8106295000000004e-05, 'epoch': 1.19}
+{'loss': 3.1606, 'learning_rate': 4.8056395e-05, 'epoch': 1.22}
+{'loss': 3.1582, 'learning_rate': 4.8006495e-05, 'epoch': 1.25}
+{'loss': 3.1469, 'learning_rate': 4.7956595e-05, 'epoch': 1.29}
+{'loss': 3.1597, 'learning_rate': 4.7906695e-05, 'epoch': 1.32}
+{'loss': 3.145, 'learning_rate': 4.7856795e-05, 'epoch': 1.35}
+{'loss': 3.162, 'learning_rate': 4.7806895e-05, 'epoch': 1.38}
+{'loss': 3.1518, 'learning_rate': 4.7756995e-05, 'epoch': 1.41}
+{'loss': 3.146, 'learning_rate': 4.7707095e-05, 'epoch': 1.44}
+{'loss': 3.1436, 'learning_rate': 4.7657195e-05, 'epoch': 1.47}
+{'loss': 3.1421, 'learning_rate': 4.7607295e-05, 'epoch': 1.51}
+{'loss': 3.1492, 'learning_rate': 4.7557395e-05, 'epoch': 1.54}
+{'loss': 3.1417, 'learning_rate': 4.7507495e-05, 'epoch': 1.57}
+{'loss': 3.1372, 'learning_rate': 4.7457595e-05, 'epoch': 1.6}
+{'loss': 3.1414, 'learning_rate': 4.7407695e-05, 'epoch': 1.63}
+{'loss': 3.1255, 'learning_rate': 4.7357795e-05, 'epoch': 1.66}
+{'loss': 3.1485, 'learning_rate': 4.730789500000001e-05, 'epoch': 1.69}
+{'loss': 3.1265, 'learning_rate': 4.7257995e-05, 'epoch': 1.73}
+{'loss': 3.1255, 'learning_rate': 4.7208095000000006e-05, 'epoch': 1.76}
+{'loss': 3.1348, 'learning_rate': 4.7158195e-05, 'epoch': 1.79}
+{'loss': 3.1328, 'learning_rate': 4.7108295000000004e-05, 'epoch': 1.82}
+{'loss': 3.1293, 'learning_rate': 4.7058394999999996e-05, 'epoch': 1.85}
+{'loss': 3.1416, 'learning_rate': 4.7008495e-05, 'epoch': 1.88}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 00:00:37 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 3.005321741104126, 'eval_rouge1': 43.5559, 'eval_rouge2': 20.1778, 'eval_rougeL': 35.1573, 'eval_rougeLsum': 35.1876, 'eval_gen_len': 28.8344, 'eval_runtime': 219.9536, 'eval_samples_per_second': 7.274, 'eval_steps_per_second': 0.455, 'epoch': 1.88}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-6000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-6000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-6000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-6000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-6000/special_tokens_map.json
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 3.1348, 'learning_rate': 4.695859500000001e-05, 'epoch': 1.91}
+{'loss': 3.1305, 'learning_rate': 4.690869500000001e-05, 'epoch': 1.94}
+{'loss': 3.127, 'learning_rate': 4.6858795e-05, 'epoch': 1.98}
+{'loss': 3.1264, 'learning_rate': 4.6808895000000005e-05, 'epoch': 2.01}
+{'loss': 3.0919, 'learning_rate': 4.6758995000000004e-05, 'epoch': 2.04}
+{'loss': 3.1047, 'learning_rate': 4.6709095e-05, 'epoch': 2.07}
+{'loss': 3.0938, 'learning_rate': 4.6659195e-05, 'epoch': 2.1}
+{'loss': 3.0929, 'learning_rate': 4.660929500000001e-05, 'epoch': 2.13}
+{'loss': 3.0918, 'learning_rate': 4.6559395000000007e-05, 'epoch': 2.16}
+{'loss': 3.095, 'learning_rate': 4.6509495000000006e-05, 'epoch': 2.2}
+{'loss': 3.0946, 'learning_rate': 4.6459595000000005e-05, 'epoch': 2.23}
+{'loss': 3.1071, 'learning_rate': 4.6409695000000004e-05, 'epoch': 2.26}
+{'loss': 3.1, 'learning_rate': 4.6359795e-05, 'epoch': 2.29}
+{'loss': 3.0842, 'learning_rate': 4.6309895e-05, 'epoch': 2.32}
+{'loss': 3.1068, 'learning_rate': 4.6260494e-05, 'epoch': 2.35}
+{'loss': 3.0984, 'learning_rate': 4.6210594000000005e-05, 'epoch': 2.38}
+{'loss': 3.0897, 'learning_rate': 4.6160694000000004e-05, 'epoch': 2.42}
+{'loss': 3.0915, 'learning_rate': 4.6110794e-05, 'epoch': 2.45}
+{'loss': 3.1007, 'learning_rate': 4.6060894e-05, 'epoch': 2.48}
+{'loss': 3.0987, 'learning_rate': 4.6010994e-05, 'epoch': 2.51}
+{'loss': 3.0808, 'learning_rate': 4.5961094e-05, 'epoch': 2.54}
+{'loss': 3.0764, 'learning_rate': 4.5911194e-05, 'epoch': 2.57}
+{'loss': 3.0913, 'learning_rate': 4.5861294000000004e-05, 'epoch': 2.6}
+{'loss': 3.0918, 'learning_rate': 4.5811394000000003e-05, 'epoch': 2.63}
+{'loss': 3.0863, 'learning_rate': 4.5761494e-05, 'epoch': 2.67}
+{'loss': 3.1008, 'learning_rate': 4.5711594e-05, 'epoch': 2.7}
+{'loss': 3.0936, 'learning_rate': 4.5661694e-05, 'epoch': 2.73}
+{'loss': 3.0858, 'learning_rate': 4.5611794e-05, 'epoch': 2.76}
+{'loss': 3.093, 'learning_rate': 4.5561894e-05, 'epoch': 2.79}
+{'loss': 3.1072, 'learning_rate': 4.5511994000000004e-05, 'epoch': 2.82}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 00:26:56 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.9838173389434814, 'eval_rouge1': 44.0258, 'eval_rouge2': 20.7741, 'eval_rougeL': 35.9902, 'eval_rougeLsum': 36.0312, 'eval_gen_len': 28.6331, 'eval_runtime': 245.5818, 'eval_samples_per_second': 6.515, 'eval_steps_per_second': 0.407, 'epoch': 2.82}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-9000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-9000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-9000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-9000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-9000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-3000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 3.094, 'learning_rate': 4.5462094e-05, 'epoch': 2.85}
+{'loss': 3.08, 'learning_rate': 4.5412194e-05, 'epoch': 2.89}
+{'loss': 3.0758, 'learning_rate': 4.5362294e-05, 'epoch': 2.92}
+{'loss': 3.0787, 'learning_rate': 4.5312394e-05, 'epoch': 2.95}
+{'loss': 3.0827, 'learning_rate': 4.5262494e-05, 'epoch': 2.98}
+{'loss': 3.081, 'learning_rate': 4.5212594e-05, 'epoch': 3.01}
+{'loss': 3.0583, 'learning_rate': 4.5162694000000004e-05, 'epoch': 3.04}
+{'loss': 3.049, 'learning_rate': 4.5112794e-05, 'epoch': 3.07}
+{'loss': 3.0491, 'learning_rate': 4.5062894e-05, 'epoch': 3.11}
+{'loss': 3.0506, 'learning_rate': 4.5012994e-05, 'epoch': 3.14}
+{'loss': 3.0506, 'learning_rate': 4.4963094e-05, 'epoch': 3.17}
+{'loss': 3.0597, 'learning_rate': 4.4913194e-05, 'epoch': 3.2}
+{'loss': 3.0546, 'learning_rate': 4.4863294e-05, 'epoch': 3.23}
+{'loss': 3.05, 'learning_rate': 4.4813394000000004e-05, 'epoch': 3.26}
+{'loss': 3.047, 'learning_rate': 4.4763494e-05, 'epoch': 3.29}
+{'loss': 3.0616, 'learning_rate': 4.4713594e-05, 'epoch': 3.32}
+{'loss': 3.0446, 'learning_rate': 4.4663694e-05, 'epoch': 3.36}
+{'loss': 3.0627, 'learning_rate': 4.4613794e-05, 'epoch': 3.39}
+{'loss': 3.0493, 'learning_rate': 4.4563894e-05, 'epoch': 3.42}
+{'loss': 3.0603, 'learning_rate': 4.4513994e-05, 'epoch': 3.45}
+{'loss': 3.0587, 'learning_rate': 4.4464094000000004e-05, 'epoch': 3.48}
+{'loss': 3.0621, 'learning_rate': 4.4414194e-05, 'epoch': 3.51}
+{'loss': 3.0512, 'learning_rate': 4.4364294e-05, 'epoch': 3.54}
+{'loss': 3.0609, 'learning_rate': 4.4314394e-05, 'epoch': 3.58}
+{'loss': 3.0712, 'learning_rate': 4.4264494e-05, 'epoch': 3.61}
+{'loss': 3.0563, 'learning_rate': 4.4214594e-05, 'epoch': 3.64}
+{'loss': 3.0502, 'learning_rate': 4.4164694e-05, 'epoch': 3.67}
+{'loss': 3.0464, 'learning_rate': 4.4114794000000004e-05, 'epoch': 3.7}
+{'loss': 3.0414, 'learning_rate': 4.4064894e-05, 'epoch': 3.73}
+{'loss': 3.0521, 'learning_rate': 4.4014994e-05, 'epoch': 3.76}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 00:53:28 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.9744820594787598, 'eval_rouge1': 43.6031, 'eval_rouge2': 20.375, 'eval_rougeL': 35.4138, 'eval_rougeLsum': 35.4347, 'eval_gen_len': 29.3375, 'eval_runtime': 299.6202, 'eval_samples_per_second': 5.34, 'eval_steps_per_second': 0.334, 'epoch': 3.76}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-12000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-12000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-12000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-12000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-12000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-6000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 3.064, 'learning_rate': 4.3965094e-05, 'epoch': 3.8}
+{'loss': 3.0591, 'learning_rate': 4.3915194e-05, 'epoch': 3.83}
+{'loss': 3.0538, 'learning_rate': 4.3865294e-05, 'epoch': 3.86}
+{'loss': 3.0522, 'learning_rate': 4.3815394000000004e-05, 'epoch': 3.89}
+{'loss': 3.0523, 'learning_rate': 4.3765493999999997e-05, 'epoch': 3.92}
+{'loss': 3.0448, 'learning_rate': 4.3715594e-05, 'epoch': 3.95}
+{'loss': 3.0363, 'learning_rate': 4.3666193000000006e-05, 'epoch': 3.98}
+{'loss': 3.027, 'learning_rate': 4.3616293000000005e-05, 'epoch': 4.02}
+{'loss': 3.0166, 'learning_rate': 4.3566393000000004e-05, 'epoch': 4.05}
+{'loss': 3.0132, 'learning_rate': 4.3516493000000003e-05, 'epoch': 4.08}
+{'loss': 3.0274, 'learning_rate': 4.3466593e-05, 'epoch': 4.11}
+{'loss': 3.0168, 'learning_rate': 4.3416693e-05, 'epoch': 4.14}
+{'loss': 3.0169, 'learning_rate': 4.3366793e-05, 'epoch': 4.17}
+{'loss': 3.0202, 'learning_rate': 4.3316893e-05, 'epoch': 4.2}
+{'loss': 3.0202, 'learning_rate': 4.3266993000000005e-05, 'epoch': 4.23}
+{'loss': 3.0358, 'learning_rate': 4.3217093000000004e-05, 'epoch': 4.27}
+{'loss': 3.0353, 'learning_rate': 4.3167193e-05, 'epoch': 4.3}
+{'loss': 3.035, 'learning_rate': 4.3117293e-05, 'epoch': 4.33}
+{'loss': 3.0263, 'learning_rate': 4.3067393e-05, 'epoch': 4.36}
+{'loss': 3.019, 'learning_rate': 4.3017493e-05, 'epoch': 4.39}
+{'loss': 3.0198, 'learning_rate': 4.2968092000000004e-05, 'epoch': 4.42}
+{'loss': 3.0218, 'learning_rate': 4.2918192e-05, 'epoch': 4.45}
+{'loss': 3.033, 'learning_rate': 4.2868292e-05, 'epoch': 4.49}
+{'loss': 3.0351, 'learning_rate': 4.2818392e-05, 'epoch': 4.52}
+{'loss': 3.0206, 'learning_rate': 4.276849200000001e-05, 'epoch': 4.55}
+{'loss': 3.0199, 'learning_rate': 4.2718592e-05, 'epoch': 4.58}
+{'loss': 3.0105, 'learning_rate': 4.2668692000000005e-05, 'epoch': 4.61}
+{'loss': 3.028, 'learning_rate': 4.2618792e-05, 'epoch': 4.64}
+{'loss': 3.0154, 'learning_rate': 4.2568892e-05, 'epoch': 4.67}
+{'loss': 3.0201, 'learning_rate': 4.2518992e-05, 'epoch': 4.71}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 01:20:02 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.9734504222869873, 'eval_rouge1': 44.1835, 'eval_rouge2': 20.7908, 'eval_rougeL': 35.8097, 'eval_rougeLsum': 35.8174, 'eval_gen_len': 29.7331, 'eval_runtime': 350.432, 'eval_samples_per_second': 4.566, 'eval_steps_per_second': 0.285, 'epoch': 4.71}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-15000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-15000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-15000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-15000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-15000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-9000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 3.0202, 'learning_rate': 4.246909200000001e-05, 'epoch': 4.74}
+{'loss': 3.0109, 'learning_rate': 4.2419192e-05, 'epoch': 4.77}
+{'loss': 3.0169, 'learning_rate': 4.2369292000000006e-05, 'epoch': 4.8}
+{'loss': 3.0235, 'learning_rate': 4.2319392e-05, 'epoch': 4.83}
+{'loss': 3.017, 'learning_rate': 4.2269492000000004e-05, 'epoch': 4.86}
+{'loss': 3.0264, 'learning_rate': 4.2219591999999996e-05, 'epoch': 4.89}
+{'loss': 3.0129, 'learning_rate': 4.2169692e-05, 'epoch': 4.92}
+{'loss': 3.0212, 'learning_rate': 4.2119792e-05, 'epoch': 4.96}
+{'loss': 3.016, 'learning_rate': 4.206989200000001e-05, 'epoch': 4.99}
+{'loss': 2.9999, 'learning_rate': 4.2019992e-05, 'epoch': 5.02}
+{'loss': 2.997, 'learning_rate': 4.1970092000000005e-05, 'epoch': 5.05}
+{'loss': 2.9941, 'learning_rate': 4.1920192e-05, 'epoch': 5.08}
+{'loss': 2.9898, 'learning_rate': 4.1870292e-05, 'epoch': 5.11}
+{'loss': 2.9836, 'learning_rate': 4.1820392e-05, 'epoch': 5.14}
+{'loss': 2.9823, 'learning_rate': 4.177049200000001e-05, 'epoch': 5.18}
+{'loss': 2.996, 'learning_rate': 4.1720592e-05, 'epoch': 5.21}
+{'loss': 2.9886, 'learning_rate': 4.1670692000000006e-05, 'epoch': 5.24}
+{'loss': 2.9943, 'learning_rate': 4.1620792e-05, 'epoch': 5.27}
+{'loss': 2.9838, 'learning_rate': 4.1570892000000004e-05, 'epoch': 5.3}
+{'loss': 2.9965, 'learning_rate': 4.1520992e-05, 'epoch': 5.33}
+{'loss': 2.9992, 'learning_rate': 4.1471092e-05, 'epoch': 5.36}
+{'loss': 3.0004, 'learning_rate': 4.142119200000001e-05, 'epoch': 5.4}
+{'loss': 2.9866, 'learning_rate': 4.1371292000000006e-05, 'epoch': 5.43}
+{'loss': 2.9881, 'learning_rate': 4.1321392000000005e-05, 'epoch': 5.46}
+{'loss': 2.9909, 'learning_rate': 4.1271492000000004e-05, 'epoch': 5.49}
+{'loss': 3.0036, 'learning_rate': 4.1221592e-05, 'epoch': 5.52}
+{'loss': 3.0077, 'learning_rate': 4.1171692e-05, 'epoch': 5.55}
+{'loss': 2.9921, 'learning_rate': 4.1121792e-05, 'epoch': 5.58}
+{'loss': 2.9957, 'learning_rate': 4.107189200000001e-05, 'epoch': 5.61}
+{'loss': 3.0007, 'learning_rate': 4.1021992000000006e-05, 'epoch': 5.65}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 01:46:11 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.9677581787109375, 'eval_rouge1': 44.4168, 'eval_rouge2': 20.9909, 'eval_rougeL': 36.1693, 'eval_rougeLsum': 36.1724, 'eval_gen_len': 28.905, 'eval_runtime': 369.2861, 'eval_samples_per_second': 4.333, 'eval_steps_per_second': 0.271, 'epoch': 5.65}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-18000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-18000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-18000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-18000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-18000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-12000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.9979, 'learning_rate': 4.0972092000000005e-05, 'epoch': 5.68}
+{'loss': 2.9959, 'learning_rate': 4.0922192000000004e-05, 'epoch': 5.71}
+{'loss': 3.0046, 'learning_rate': 4.0872292e-05, 'epoch': 5.74}
+{'loss': 2.9939, 'learning_rate': 4.0822392e-05, 'epoch': 5.77}
+{'loss': 2.9885, 'learning_rate': 4.0772492e-05, 'epoch': 5.8}
+{'loss': 2.9956, 'learning_rate': 4.072259200000001e-05, 'epoch': 5.83}
+{'loss': 2.9929, 'learning_rate': 4.0672692000000006e-05, 'epoch': 5.87}
+{'loss': 2.993, 'learning_rate': 4.0622792000000005e-05, 'epoch': 5.9}
+{'loss': 3.0064, 'learning_rate': 4.0572892000000004e-05, 'epoch': 5.93}
+{'loss': 2.9993, 'learning_rate': 4.0522992e-05, 'epoch': 5.96}
+{'loss': 2.9927, 'learning_rate': 4.0473092e-05, 'epoch': 5.99}
+{'loss': 2.9843, 'learning_rate': 4.0423192e-05, 'epoch': 6.02}
+{'loss': 2.9671, 'learning_rate': 4.0373791e-05, 'epoch': 6.05}
+{'loss': 2.9684, 'learning_rate': 4.0323891000000004e-05, 'epoch': 6.09}
+{'loss': 2.9677, 'learning_rate': 4.0273991e-05, 'epoch': 6.12}
+{'loss': 2.9587, 'learning_rate': 4.0224091e-05, 'epoch': 6.15}
+{'loss': 2.9591, 'learning_rate': 4.0174191e-05, 'epoch': 6.18}
+{'loss': 2.9624, 'learning_rate': 4.0124291e-05, 'epoch': 6.21}
+{'loss': 2.968, 'learning_rate': 4.0074391e-05, 'epoch': 6.24}
+{'loss': 2.9774, 'learning_rate': 4.0024491e-05, 'epoch': 6.27}
+{'loss': 2.9875, 'learning_rate': 3.9974591000000004e-05, 'epoch': 6.3}
+{'loss': 2.9707, 'learning_rate': 3.9924691e-05, 'epoch': 6.34}
+{'loss': 2.9674, 'learning_rate': 3.9874791e-05, 'epoch': 6.37}
+{'loss': 2.9801, 'learning_rate': 3.9824891e-05, 'epoch': 6.4}
+{'loss': 2.9784, 'learning_rate': 3.9774991e-05, 'epoch': 6.43}
+{'loss': 2.9649, 'learning_rate': 3.9725091e-05, 'epoch': 6.46}
+{'loss': 2.958, 'learning_rate': 3.9675191e-05, 'epoch': 6.49}
+{'loss': 2.9797, 'learning_rate': 3.9625291000000004e-05, 'epoch': 6.52}
+{'loss': 2.9635, 'learning_rate': 3.9575391e-05, 'epoch': 6.56}
+{'loss': 2.9703, 'learning_rate': 3.9525491e-05, 'epoch': 6.59}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 02:11:47 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.964559555053711, 'eval_rouge1': 44.3573, 'eval_rouge2': 20.9828, 'eval_rougeL': 36.2371, 'eval_rougeLsum': 36.2438, 'eval_gen_len': 27.8475, 'eval_runtime': 358.7197, 'eval_samples_per_second': 4.46, 'eval_steps_per_second': 0.279, 'epoch': 6.59}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-21000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-21000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-21000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-21000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-21000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-15000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.9664, 'learning_rate': 3.947559100000001e-05, 'epoch': 6.62}
+{'loss': 2.9892, 'learning_rate': 3.9425691e-05, 'epoch': 6.65}
+{'loss': 2.9809, 'learning_rate': 3.9375791000000005e-05, 'epoch': 6.68}
+{'loss': 2.9831, 'learning_rate': 3.9325891e-05, 'epoch': 6.71}
+{'loss': 2.9692, 'learning_rate': 3.9275991000000003e-05, 'epoch': 6.74}
+{'loss': 2.9796, 'learning_rate': 3.9226091e-05, 'epoch': 6.78}
+{'loss': 2.9693, 'learning_rate': 3.9176690000000007e-05, 'epoch': 6.81}
+{'loss': 2.9642, 'learning_rate': 3.9126790000000006e-05, 'epoch': 6.84}
+{'loss': 2.965, 'learning_rate': 3.9076890000000005e-05, 'epoch': 6.87}
+{'loss': 2.9733, 'learning_rate': 3.9026990000000004e-05, 'epoch': 6.9}
+{'loss': 2.973, 'learning_rate': 3.897709e-05, 'epoch': 6.93}
+{'loss': 2.9801, 'learning_rate': 3.892719e-05, 'epoch': 6.96}
+{'loss': 2.9689, 'learning_rate': 3.887729e-05, 'epoch': 6.99}
+{'loss': 2.9415, 'learning_rate': 3.8827390000000006e-05, 'epoch': 7.03}
+{'loss': 2.9364, 'learning_rate': 3.8777989000000004e-05, 'epoch': 7.06}
+{'loss': 2.9375, 'learning_rate': 3.8728089e-05, 'epoch': 7.09}
+{'loss': 2.9404, 'learning_rate': 3.8678189e-05, 'epoch': 7.12}
+{'loss': 2.9306, 'learning_rate': 3.8628289e-05, 'epoch': 7.15}
+{'loss': 2.9503, 'learning_rate': 3.8578389e-05, 'epoch': 7.18}
+{'loss': 2.9515, 'learning_rate': 3.8528489e-05, 'epoch': 7.21}
+{'loss': 2.953, 'learning_rate': 3.8478589e-05, 'epoch': 7.25}
+{'loss': 2.9451, 'learning_rate': 3.8428689000000004e-05, 'epoch': 7.28}
+{'loss': 2.945, 'learning_rate': 3.8378789e-05, 'epoch': 7.31}
+{'loss': 2.952, 'learning_rate': 3.832888900000001e-05, 'epoch': 7.34}
+{'loss': 2.9532, 'learning_rate': 3.8278989e-05, 'epoch': 7.37}
+{'loss': 2.9462, 'learning_rate': 3.8229089000000006e-05, 'epoch': 7.4}
+{'loss': 2.9388, 'learning_rate': 3.8179189e-05, 'epoch': 7.43}
+{'loss': 2.9651, 'learning_rate': 3.8129289000000004e-05, 'epoch': 7.47}
+{'loss': 2.9486, 'learning_rate': 3.8079389e-05, 'epoch': 7.5}
+{'loss': 2.9575, 'learning_rate': 3.8029489e-05, 'epoch': 7.53}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 02:38:01 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.962993860244751, 'eval_rouge1': 44.3052, 'eval_rouge2': 20.9769, 'eval_rougeL': 36.199, 'eval_rougeLsum': 36.2299, 'eval_gen_len': 28.3412, 'eval_runtime': 389.7884, 'eval_samples_per_second': 4.105, 'eval_steps_per_second': 0.257, 'epoch': 7.53}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-24000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-24000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-24000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-24000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-24000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-21000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.9528, 'learning_rate': 3.7979589e-05, 'epoch': 7.56}
+{'loss': 2.9613, 'learning_rate': 3.792968900000001e-05, 'epoch': 7.59}
+{'loss': 2.9571, 'learning_rate': 3.7879789e-05, 'epoch': 7.62}
+{'loss': 2.9503, 'learning_rate': 3.7829889000000005e-05, 'epoch': 7.65}
+{'loss': 2.9547, 'learning_rate': 3.7779989e-05, 'epoch': 7.69}
+{'loss': 2.9586, 'learning_rate': 3.7730089e-05, 'epoch': 7.72}
+{'loss': 2.9496, 'learning_rate': 3.7680189e-05, 'epoch': 7.75}
+{'loss': 2.9514, 'learning_rate': 3.763028900000001e-05, 'epoch': 7.78}
+{'loss': 2.961, 'learning_rate': 3.7580389e-05, 'epoch': 7.81}
+{'loss': 2.9566, 'learning_rate': 3.7530489000000006e-05, 'epoch': 7.84}
+{'loss': 2.9443, 'learning_rate': 3.7480589e-05, 'epoch': 7.87}
+{'loss': 2.9559, 'learning_rate': 3.7430689000000004e-05, 'epoch': 7.9}
+{'loss': 2.9538, 'learning_rate': 3.7380788999999996e-05, 'epoch': 7.94}
+{'loss': 2.9557, 'learning_rate': 3.7330889e-05, 'epoch': 7.97}
+{'loss': 2.9639, 'learning_rate': 3.7280989e-05, 'epoch': 8.0}
+{'loss': 2.9301, 'learning_rate': 3.723108900000001e-05, 'epoch': 8.03}
+{'loss': 2.9131, 'learning_rate': 3.7181189e-05, 'epoch': 8.06}
+{'loss': 2.9292, 'learning_rate': 3.7131289000000005e-05, 'epoch': 8.09}
+{'loss': 2.9202, 'learning_rate': 3.7081389e-05, 'epoch': 8.12}
+{'loss': 2.9408, 'learning_rate': 3.7031489e-05, 'epoch': 8.16}
+{'loss': 2.9293, 'learning_rate': 3.6981589e-05, 'epoch': 8.19}
+{'loss': 2.93, 'learning_rate': 3.693168900000001e-05, 'epoch': 8.22}
+{'loss': 2.9185, 'learning_rate': 3.6881789e-05, 'epoch': 8.25}
+{'loss': 2.9223, 'learning_rate': 3.6831889000000006e-05, 'epoch': 8.28}
+{'loss': 2.9307, 'learning_rate': 3.6781989e-05, 'epoch': 8.31}
+{'loss': 2.9364, 'learning_rate': 3.6732089000000004e-05, 'epoch': 8.34}
+{'loss': 2.9358, 'learning_rate': 3.6682188999999996e-05, 'epoch': 8.38}
+{'loss': 2.9235, 'learning_rate': 3.6632289e-05, 'epoch': 8.41}
+{'loss': 2.9307, 'learning_rate': 3.6582389e-05, 'epoch': 8.44}
+{'loss': 2.9303, 'learning_rate': 3.6532489000000006e-05, 'epoch': 8.47}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 03:04:20 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.9618396759033203, 'eval_rouge1': 44.6544, 'eval_rouge2': 21.1317, 'eval_rougeL': 36.3677, 'eval_rougeLsum': 36.4041, 'eval_gen_len': 28.4406, 'eval_runtime': 419.1211, 'eval_samples_per_second': 3.818, 'eval_steps_per_second': 0.239, 'epoch': 8.47}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-27000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-27000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-27000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-27000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-27000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-18000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.9278, 'learning_rate': 3.6482589e-05, 'epoch': 8.5}
+{'loss': 2.9337, 'learning_rate': 3.6432689000000004e-05, 'epoch': 8.53}
+{'loss': 2.9235, 'learning_rate': 3.6382788999999997e-05, 'epoch': 8.56}
+{'loss': 2.931, 'learning_rate': 3.6332889e-05, 'epoch': 8.59}
+{'loss': 2.9278, 'learning_rate': 3.6282989e-05, 'epoch': 8.63}
+{'loss': 2.9381, 'learning_rate': 3.623308900000001e-05, 'epoch': 8.66}
+{'loss': 2.9423, 'learning_rate': 3.6183189e-05, 'epoch': 8.69}
+{'loss': 2.9311, 'learning_rate': 3.6133289000000005e-05, 'epoch': 8.72}
+{'loss': 2.9359, 'learning_rate': 3.6083389e-05, 'epoch': 8.75}
+{'loss': 2.9454, 'learning_rate': 3.6033489e-05, 'epoch': 8.78}
+{'loss': 2.9446, 'learning_rate': 3.5983589e-05, 'epoch': 8.81}
+{'loss': 2.9382, 'learning_rate': 3.5933689e-05, 'epoch': 8.85}
+{'loss': 2.932, 'learning_rate': 3.588378900000001e-05, 'epoch': 8.88}
+{'loss': 2.9298, 'learning_rate': 3.5833889000000006e-05, 'epoch': 8.91}
+{'loss': 2.9487, 'learning_rate': 3.5783989000000005e-05, 'epoch': 8.94}
+{'loss': 2.9454, 'learning_rate': 3.5734588e-05, 'epoch': 8.97}
+{'loss': 2.9324, 'learning_rate': 3.5684688e-05, 'epoch': 9.0}
+{'loss': 2.9015, 'learning_rate': 3.5635287e-05, 'epoch': 9.03}
+{'loss': 2.8983, 'learning_rate': 3.5585387000000004e-05, 'epoch': 9.07}
+{'loss': 2.9161, 'learning_rate': 3.5535486999999997e-05, 'epoch': 9.1}
+{'loss': 2.9187, 'learning_rate': 3.5485587e-05, 'epoch': 9.13}
+{'loss': 2.9069, 'learning_rate': 3.5435687e-05, 'epoch': 9.16}
+{'loss': 2.9046, 'learning_rate': 3.538578700000001e-05, 'epoch': 9.19}
+{'loss': 2.9023, 'learning_rate': 3.5335887e-05, 'epoch': 9.22}
+{'loss': 2.9114, 'learning_rate': 3.5285987000000005e-05, 'epoch': 9.25}
+{'loss': 2.91, 'learning_rate': 3.5236087e-05, 'epoch': 9.28}
+{'loss': 2.9088, 'learning_rate': 3.5186187e-05, 'epoch': 9.32}
+{'loss': 2.9149, 'learning_rate': 3.5136286999999995e-05, 'epoch': 9.35}
+{'loss': 2.9239, 'learning_rate': 3.5086387e-05, 'epoch': 9.38}
+{'loss': 2.9196, 'learning_rate': 3.5036487e-05, 'epoch': 9.41}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 03:30:56 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.9637131690979004, 'eval_rouge1': 44.6024, 'eval_rouge2': 21.3363, 'eval_rougeL': 36.6191, 'eval_rougeLsum': 36.6597, 'eval_gen_len': 29.3038, 'eval_runtime': 469.7496, 'eval_samples_per_second': 3.406, 'eval_steps_per_second': 0.213, 'epoch': 9.41}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-30000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-30000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-30000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-30000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-30000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-24000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.917, 'learning_rate': 3.4986587000000006e-05, 'epoch': 9.44}
+{'loss': 2.9094, 'learning_rate': 3.4937186e-05, 'epoch': 9.47}
+{'loss': 2.9117, 'learning_rate': 3.4887286e-05, 'epoch': 9.5}
+{'loss': 2.9167, 'learning_rate': 3.4837386e-05, 'epoch': 9.54}
+{'loss': 2.9133, 'learning_rate': 3.4787486e-05, 'epoch': 9.57}
+{'loss': 2.9246, 'learning_rate': 3.4737586e-05, 'epoch': 9.6}
+{'loss': 2.9135, 'learning_rate': 3.4687686e-05, 'epoch': 9.63}
+{'loss': 2.9088, 'learning_rate': 3.4637786000000004e-05, 'epoch': 9.66}
+{'loss': 2.9146, 'learning_rate': 3.4587886e-05, 'epoch': 9.69}
+{'loss': 2.9226, 'learning_rate': 3.4537986e-05, 'epoch': 9.72}
+{'loss': 2.9253, 'learning_rate': 3.4488086e-05, 'epoch': 9.76}
+{'loss': 2.921, 'learning_rate': 3.4438186e-05, 'epoch': 9.79}
+{'loss': 2.9349, 'learning_rate': 3.4388286e-05, 'epoch': 9.82}
+{'loss': 2.9057, 'learning_rate': 3.4338386e-05, 'epoch': 9.85}
+{'loss': 2.9053, 'learning_rate': 3.4288486000000004e-05, 'epoch': 9.88}
+{'loss': 2.9219, 'learning_rate': 3.4238586e-05, 'epoch': 9.91}
+{'loss': 2.9217, 'learning_rate': 3.418868600000001e-05, 'epoch': 9.94}
+{'loss': 2.9227, 'learning_rate': 3.4138786e-05, 'epoch': 9.97}
+{'loss': 2.9248, 'learning_rate': 3.408888600000001e-05, 'epoch': 10.01}
+{'loss': 2.8905, 'learning_rate': 3.4038986e-05, 'epoch': 10.04}
+{'loss': 2.8862, 'learning_rate': 3.3989086000000005e-05, 'epoch': 10.07}
+{'loss': 2.8811, 'learning_rate': 3.3939186000000004e-05, 'epoch': 10.1}
+{'loss': 2.8933, 'learning_rate': 3.388928600000001e-05, 'epoch': 10.13}
+{'loss': 2.8885, 'learning_rate': 3.3839386e-05, 'epoch': 10.16}
+{'loss': 2.8875, 'learning_rate': 3.378948600000001e-05, 'epoch': 10.19}
+{'loss': 2.8991, 'learning_rate': 3.3739586e-05, 'epoch': 10.23}
+{'loss': 2.9022, 'learning_rate': 3.3690185000000004e-05, 'epoch': 10.26}
+{'loss': 2.8954, 'learning_rate': 3.3640285e-05, 'epoch': 10.29}
+{'loss': 2.9002, 'learning_rate': 3.3590385e-05, 'epoch': 10.32}
+{'loss': 2.895, 'learning_rate': 3.3540485e-05, 'epoch': 10.35}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 03:57:39 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.960556745529175, 'eval_rouge1': 44.5462, 'eval_rouge2': 21.3257, 'eval_rougeL': 36.3785, 'eval_rougeLsum': 36.3995, 'eval_gen_len': 28.8044, 'eval_runtime': 514.2876, 'eval_samples_per_second': 3.111, 'eval_steps_per_second': 0.194, 'epoch': 10.35}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-33000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-33000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-33000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-33000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-33000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-27000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.8964, 'learning_rate': 3.3490585000000007e-05, 'epoch': 10.38}
+{'loss': 2.9044, 'learning_rate': 3.3440685000000006e-05, 'epoch': 10.41}
+{'loss': 2.8895, 'learning_rate': 3.3390785000000005e-05, 'epoch': 10.45}
+{'loss': 2.9084, 'learning_rate': 3.3340885000000004e-05, 'epoch': 10.48}
+{'loss': 2.9066, 'learning_rate': 3.3290985e-05, 'epoch': 10.51}
+{'loss': 2.9014, 'learning_rate': 3.3241085e-05, 'epoch': 10.54}
+{'loss': 2.8996, 'learning_rate': 3.3191185e-05, 'epoch': 10.57}
+{'loss': 2.9147, 'learning_rate': 3.3141285000000006e-05, 'epoch': 10.6}
+{'loss': 2.8947, 'learning_rate': 3.3091385000000005e-05, 'epoch': 10.63}
+{'loss': 2.9043, 'learning_rate': 3.3041485000000004e-05, 'epoch': 10.66}
+{'loss': 2.897, 'learning_rate': 3.2991585000000003e-05, 'epoch': 10.7}
+{'loss': 2.895, 'learning_rate': 3.2941685e-05, 'epoch': 10.73}
+{'loss': 2.9071, 'learning_rate': 3.2891785e-05, 'epoch': 10.76}
+{'loss': 2.9069, 'learning_rate': 3.2841885e-05, 'epoch': 10.79}
+{'loss': 2.9076, 'learning_rate': 3.2791985000000006e-05, 'epoch': 10.82}
+{'loss': 2.9016, 'learning_rate': 3.2742085000000005e-05, 'epoch': 10.85}
+{'loss': 2.9004, 'learning_rate': 3.2692185000000004e-05, 'epoch': 10.88}
+{'loss': 2.9035, 'learning_rate': 3.2642285e-05, 'epoch': 10.92}
+{'loss': 2.9172, 'learning_rate': 3.2592385e-05, 'epoch': 10.95}
+{'loss': 2.8999, 'learning_rate': 3.2542485e-05, 'epoch': 10.98}
+{'loss': 2.8977, 'learning_rate': 3.2492585e-05, 'epoch': 11.01}
+{'loss': 2.8726, 'learning_rate': 3.2442685000000006e-05, 'epoch': 11.04}
+{'loss': 2.8736, 'learning_rate': 3.2392785000000005e-05, 'epoch': 11.07}
+{'loss': 2.8702, 'learning_rate': 3.2342885000000004e-05, 'epoch': 11.1}
+{'loss': 2.8774, 'learning_rate': 3.2292985e-05, 'epoch': 11.14}
+{'loss': 2.8683, 'learning_rate': 3.2243085e-05, 'epoch': 11.17}
+{'loss': 2.8766, 'learning_rate': 3.2193185e-05, 'epoch': 11.2}
+{'loss': 2.8763, 'learning_rate': 3.2143285e-05, 'epoch': 11.23}
+{'loss': 2.8745, 'learning_rate': 3.2093385e-05, 'epoch': 11.26}
+{'loss': 2.8809, 'learning_rate': 3.2043485000000005e-05, 'epoch': 11.29}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 04:24:04 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.9617316722869873, 'eval_rouge1': 44.7261, 'eval_rouge2': 21.4649, 'eval_rougeL': 36.6211, 'eval_rougeLsum': 36.6366, 'eval_gen_len': 27.9131, 'eval_runtime': 540.7411, 'eval_samples_per_second': 2.959, 'eval_steps_per_second': 0.185, 'epoch': 11.29}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-36000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-36000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-36000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-36000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-36000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-30000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.8768, 'learning_rate': 3.1993585000000004e-05, 'epoch': 11.32}
+{'loss': 2.8897, 'learning_rate': 3.1943685e-05, 'epoch': 11.36}
+{'loss': 2.8939, 'learning_rate': 3.1893785e-05, 'epoch': 11.39}
+{'loss': 2.8873, 'learning_rate': 3.1843885e-05, 'epoch': 11.42}
+{'loss': 2.8757, 'learning_rate': 3.1793985e-05, 'epoch': 11.45}
+{'loss': 2.8858, 'learning_rate': 3.1744085e-05, 'epoch': 11.48}
+{'loss': 2.8849, 'learning_rate': 3.1694185000000005e-05, 'epoch': 11.51}
+{'loss': 2.886, 'learning_rate': 3.1644285000000004e-05, 'epoch': 11.54}
+{'loss': 2.8904, 'learning_rate': 3.1594385e-05, 'epoch': 11.57}
+{'loss': 2.8813, 'learning_rate': 3.1544485e-05, 'epoch': 11.61}
+{'loss': 2.8967, 'learning_rate': 3.1494585e-05, 'epoch': 11.64}
+{'loss': 2.8914, 'learning_rate': 3.1444685e-05, 'epoch': 11.67}
+{'loss': 2.8883, 'learning_rate': 3.1394785e-05, 'epoch': 11.7}
+{'loss': 2.8865, 'learning_rate': 3.1344885000000004e-05, 'epoch': 11.73}
+{'loss': 2.8895, 'learning_rate': 3.1294985000000003e-05, 'epoch': 11.76}
+{'loss': 2.8928, 'learning_rate': 3.1245085e-05, 'epoch': 11.79}
+{'loss': 2.8813, 'learning_rate': 3.1195185e-05, 'epoch': 11.83}
+{'loss': 2.8987, 'learning_rate': 3.1145285e-05, 'epoch': 11.86}
+{'loss': 2.8934, 'learning_rate': 3.1095385e-05, 'epoch': 11.89}
+{'loss': 2.8968, 'learning_rate': 3.1045485e-05, 'epoch': 11.92}
+{'loss': 2.8974, 'learning_rate': 3.0995585000000004e-05, 'epoch': 11.95}
+{'loss': 2.8928, 'learning_rate': 3.0945685e-05, 'epoch': 11.98}
+{'loss': 2.8766, 'learning_rate': 3.0895785e-05, 'epoch': 12.01}
+{'loss': 2.8531, 'learning_rate': 3.0845885e-05, 'epoch': 12.05}
+{'loss': 2.8556, 'learning_rate': 3.0795985e-05, 'epoch': 12.08}
+{'loss': 2.8689, 'learning_rate': 3.0746085e-05, 'epoch': 12.11}
+{'loss': 2.8682, 'learning_rate': 3.0696683999999997e-05, 'epoch': 12.14}
+{'loss': 2.877, 'learning_rate': 3.0646784e-05, 'epoch': 12.17}
+{'loss': 2.8674, 'learning_rate': 3.0596883999999995e-05, 'epoch': 12.2}
+{'loss': 2.8622, 'learning_rate': 3.0546984e-05, 'epoch': 12.23}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 04:50:29 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.960642099380493, 'eval_rouge1': 44.756, 'eval_rouge2': 21.2353, 'eval_rougeL': 36.3928, 'eval_rougeLsum': 36.4065, 'eval_gen_len': 29.3712, 'eval_runtime': 570.8356, 'eval_samples_per_second': 2.803, 'eval_steps_per_second': 0.175, 'epoch': 12.23}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-39000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-39000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-39000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-39000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-39000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-33000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.8684, 'learning_rate': 3.0497084e-05, 'epoch': 12.26}
+{'loss': 2.8727, 'learning_rate': 3.0447184000000002e-05, 'epoch': 12.3}
+{'loss': 2.8721, 'learning_rate': 3.0397283999999994e-05, 'epoch': 12.33}
+{'loss': 2.8697, 'learning_rate': 3.0347384e-05, 'epoch': 12.36}
+{'loss': 2.8646, 'learning_rate': 3.0297483999999992e-05, 'epoch': 12.39}
+{'loss': 2.8633, 'learning_rate': 3.0247584e-05, 'epoch': 12.42}
+{'loss': 2.8572, 'learning_rate': 3.0198182999999995e-05, 'epoch': 12.45}
+{'loss': 2.8695, 'learning_rate': 3.0148283e-05, 'epoch': 12.48}
+{'loss': 2.8655, 'learning_rate': 3.0098382999999996e-05, 'epoch': 12.52}
+{'loss': 2.8833, 'learning_rate': 3.0048483e-05, 'epoch': 12.55}
+{'loss': 2.8796, 'learning_rate': 2.9998582999999998e-05, 'epoch': 12.58}
+{'loss': 2.8712, 'learning_rate': 2.9948683e-05, 'epoch': 12.61}
+{'loss': 2.8748, 'learning_rate': 2.9898782999999996e-05, 'epoch': 12.64}
+{'loss': 2.8752, 'learning_rate': 2.9848882999999998e-05, 'epoch': 12.67}
+{'loss': 2.8717, 'learning_rate': 2.9798982999999997e-05, 'epoch': 12.7}
+{'loss': 2.8801, 'learning_rate': 2.9749082999999993e-05, 'epoch': 12.74}
+{'loss': 2.8763, 'learning_rate': 2.9699183e-05, 'epoch': 12.77}
+{'loss': 2.8722, 'learning_rate': 2.9649283e-05, 'epoch': 12.8}
+{'loss': 2.8716, 'learning_rate': 2.9599382999999997e-05, 'epoch': 12.83}
+{'loss': 2.8875, 'learning_rate': 2.9549483e-05, 'epoch': 12.86}
+{'loss': 2.8749, 'learning_rate': 2.9499582999999998e-05, 'epoch': 12.89}
+{'loss': 2.8772, 'learning_rate': 2.9449683000000007e-05, 'epoch': 12.92}
+{'loss': 2.8779, 'learning_rate': 2.9399782999999996e-05, 'epoch': 12.95}
+{'loss': 2.8806, 'learning_rate': 2.9349883000000002e-05, 'epoch': 12.99}
+{'loss': 2.8671, 'learning_rate': 2.9300482000000003e-05, 'epoch': 13.02}
+{'loss': 2.8344, 'learning_rate': 2.925058199999999e-05, 'epoch': 13.05}
+{'loss': 2.8497, 'learning_rate': 2.9200682e-05, 'epoch': 13.08}
+{'loss': 2.8484, 'learning_rate': 2.9150782e-05, 'epoch': 13.11}
+{'loss': 2.8562, 'learning_rate': 2.9100882000000002e-05, 'epoch': 13.14}
+{'loss': 2.8519, 'learning_rate': 2.9050981999999994e-05, 'epoch': 13.17}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 05:16:30 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.961808681488037, 'eval_rouge1': 44.771, 'eval_rouge2': 21.4418, 'eval_rougeL': 36.6075, 'eval_rougeLsum': 36.6362, 'eval_gen_len': 28.4156, 'eval_runtime': 565.6388, 'eval_samples_per_second': 2.829, 'eval_steps_per_second': 0.177, 'epoch': 13.17}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-42000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-42000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-42000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-42000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-42000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-39000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.8576, 'learning_rate': 2.9001082e-05, 'epoch': 13.21}
+{'loss': 2.852, 'learning_rate': 2.8951182e-05, 'epoch': 13.24}
+{'loss': 2.8568, 'learning_rate': 2.8901282e-05, 'epoch': 13.27}
+{'loss': 2.8562, 'learning_rate': 2.8851881e-05, 'epoch': 13.3}
+{'loss': 2.8507, 'learning_rate': 2.8801981e-05, 'epoch': 13.33}
+{'loss': 2.856, 'learning_rate': 2.8752080999999997e-05, 'epoch': 13.36}
+{'loss': 2.862, 'learning_rate': 2.8702181e-05, 'epoch': 13.39}
+{'loss': 2.8527, 'learning_rate': 2.8652280999999998e-05, 'epoch': 13.43}
+{'loss': 2.8623, 'learning_rate': 2.8602380999999994e-05, 'epoch': 13.46}
+{'loss': 2.8547, 'learning_rate': 2.8552480999999996e-05, 'epoch': 13.49}
+{'loss': 2.8467, 'learning_rate': 2.8502581000000002e-05, 'epoch': 13.52}
+{'loss': 2.8596, 'learning_rate': 2.8452680999999997e-05, 'epoch': 13.55}
+{'loss': 2.8667, 'learning_rate': 2.8402781e-05, 'epoch': 13.58}
+{'loss': 2.8672, 'learning_rate': 2.8352881e-05, 'epoch': 13.61}
+{'loss': 2.8549, 'learning_rate': 2.8302981000000005e-05, 'epoch': 13.64}
+{'loss': 2.8582, 'learning_rate': 2.8253080999999997e-05, 'epoch': 13.68}
+{'loss': 2.8574, 'learning_rate': 2.8203181e-05, 'epoch': 13.71}
+{'loss': 2.8646, 'learning_rate': 2.8153280999999998e-05, 'epoch': 13.74}
+{'loss': 2.867, 'learning_rate': 2.8103381000000007e-05, 'epoch': 13.77}
+{'loss': 2.8684, 'learning_rate': 2.8053481e-05, 'epoch': 13.8}
+{'loss': 2.8631, 'learning_rate': 2.8003581000000002e-05, 'epoch': 13.83}
+{'loss': 2.8689, 'learning_rate': 2.7953680999999998e-05, 'epoch': 13.86}
+{'loss': 2.8856, 'learning_rate': 2.7903781e-05, 'epoch': 13.9}
+{'loss': 2.8621, 'learning_rate': 2.7853881e-05, 'epoch': 13.93}
+{'loss': 2.8691, 'learning_rate': 2.7803981e-05, 'epoch': 13.96}
+{'loss': 2.8718, 'learning_rate': 2.7754080999999997e-05, 'epoch': 13.99}
+{'loss': 2.8376, 'learning_rate': 2.7704181000000003e-05, 'epoch': 14.02}
+{'loss': 2.8437, 'learning_rate': 2.7654281e-05, 'epoch': 14.05}
+{'loss': 2.8466, 'learning_rate': 2.7604381e-05, 'epoch': 14.08}
+{'loss': 2.8377, 'learning_rate': 2.7554481e-05, 'epoch': 14.12}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 05:43:01 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.9625988006591797, 'eval_rouge1': 45.13, 'eval_rouge2': 21.7016, 'eval_rougeL': 36.8707, 'eval_rougeLsum': 36.8969, 'eval_gen_len': 28.5781, 'eval_runtime': 599.2995, 'eval_samples_per_second': 2.67, 'eval_steps_per_second': 0.167, 'epoch': 14.12}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-45000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-45000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-45000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-45000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-45000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-36000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.8378, 'learning_rate': 2.7504581000000002e-05, 'epoch': 14.15}
+{'loss': 2.8363, 'learning_rate': 2.7454680999999998e-05, 'epoch': 14.18}
+{'loss': 2.8301, 'learning_rate': 2.7404781e-05, 'epoch': 14.21}
+{'loss': 2.8312, 'learning_rate': 2.7354880999999993e-05, 'epoch': 14.24}
+{'loss': 2.8435, 'learning_rate': 2.7304981e-05, 'epoch': 14.27}
+{'loss': 2.8481, 'learning_rate': 2.7255080999999997e-05, 'epoch': 14.3}
+{'loss': 2.8407, 'learning_rate': 2.7205181000000003e-05, 'epoch': 14.33}
+{'loss': 2.8494, 'learning_rate': 2.7155280999999992e-05, 'epoch': 14.37}
+{'loss': 2.8486, 'learning_rate': 2.7105381e-05, 'epoch': 14.4}
+{'loss': 2.8541, 'learning_rate': 2.7055481e-05, 'epoch': 14.43}
+{'loss': 2.8581, 'learning_rate': 2.7005581000000002e-05, 'epoch': 14.46}
+{'loss': 2.8466, 'learning_rate': 2.6955680999999995e-05, 'epoch': 14.49}
+{'loss': 2.8407, 'learning_rate': 2.6905781e-05, 'epoch': 14.52}
+{'loss': 2.8515, 'learning_rate': 2.6855880999999993e-05, 'epoch': 14.55}
+{'loss': 2.8441, 'learning_rate': 2.6805981000000002e-05, 'epoch': 14.59}
+{'loss': 2.8471, 'learning_rate': 2.6756081e-05, 'epoch': 14.62}
+{'loss': 2.8524, 'learning_rate': 2.6706181000000003e-05, 'epoch': 14.65}
+{'loss': 2.8546, 'learning_rate': 2.6656280999999996e-05, 'epoch': 14.68}
+{'loss': 2.8553, 'learning_rate': 2.6606381e-05, 'epoch': 14.71}
+{'loss': 2.8517, 'learning_rate': 2.6556480999999994e-05, 'epoch': 14.74}
+{'loss': 2.8588, 'learning_rate': 2.6506581000000003e-05, 'epoch': 14.77}
+{'loss': 2.8518, 'learning_rate': 2.6456680999999995e-05, 'epoch': 14.81}
+{'loss': 2.8556, 'learning_rate': 2.6406781000000004e-05, 'epoch': 14.84}
+{'loss': 2.8544, 'learning_rate': 2.6356880999999993e-05, 'epoch': 14.87}
+{'loss': 2.8568, 'learning_rate': 2.6306981000000002e-05, 'epoch': 14.9}
+{'loss': 2.8526, 'learning_rate': 2.6257080999999994e-05, 'epoch': 14.93}
+{'loss': 2.8523, 'learning_rate': 2.6207181000000003e-05, 'epoch': 14.96}
+{'loss': 2.8479, 'learning_rate': 2.6157280999999996e-05, 'epoch': 14.99}
+{'loss': 2.8389, 'learning_rate': 2.6107381e-05, 'epoch': 15.03}
+{'loss': 2.8388, 'learning_rate': 2.6057480999999994e-05, 'epoch': 15.06}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 06:08:39 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.9621341228485107, 'eval_rouge1': 44.9448, 'eval_rouge2': 21.5939, 'eval_rougeL': 36.7362, 'eval_rougeLsum': 36.7505, 'eval_gen_len': 27.845, 'eval_runtime': 584.4, 'eval_samples_per_second': 2.738, 'eval_steps_per_second': 0.171, 'epoch': 15.06}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-48000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-48000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-48000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-48000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-48000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-42000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.8173, 'learning_rate': 2.6007580999999996e-05, 'epoch': 15.09}
+{'loss': 2.8299, 'learning_rate': 2.5957680999999995e-05, 'epoch': 15.12}
+{'loss': 2.8298, 'learning_rate': 2.5907781000000004e-05, 'epoch': 15.15}
+{'loss': 2.8319, 'learning_rate': 2.5857880999999997e-05, 'epoch': 15.18}
+{'loss': 2.8254, 'learning_rate': 2.5807981000000002e-05, 'epoch': 15.21}
+{'loss': 2.8291, 'learning_rate': 2.5758080999999995e-05, 'epoch': 15.24}
+{'loss': 2.8347, 'learning_rate': 2.5708180999999997e-05, 'epoch': 15.28}
+{'loss': 2.8307, 'learning_rate': 2.5658280999999996e-05, 'epoch': 15.31}
+{'loss': 2.8374, 'learning_rate': 2.5608381000000005e-05, 'epoch': 15.34}
+{'loss': 2.8221, 'learning_rate': 2.5558480999999994e-05, 'epoch': 15.37}
+{'loss': 2.8482, 'learning_rate': 2.5508581e-05, 'epoch': 15.4}
+{'loss': 2.8382, 'learning_rate': 2.5458680999999995e-05, 'epoch': 15.43}
+{'loss': 2.8424, 'learning_rate': 2.5408781000000004e-05, 'epoch': 15.46}
+{'loss': 2.8316, 'learning_rate': 2.5358880999999997e-05, 'epoch': 15.5}
+{'loss': 2.8347, 'learning_rate': 2.5308981e-05, 'epoch': 15.53}
+{'loss': 2.8282, 'learning_rate': 2.5259081e-05, 'epoch': 15.56}
+{'loss': 2.825, 'learning_rate': 2.5209180999999997e-05, 'epoch': 15.59}
+{'loss': 2.8476, 'learning_rate': 2.5159281000000003e-05, 'epoch': 15.62}
+{'loss': 2.8377, 'learning_rate': 2.5109381000000005e-05, 'epoch': 15.65}
+{'loss': 2.8375, 'learning_rate': 2.5059481e-05, 'epoch': 15.68}
+{'loss': 2.8444, 'learning_rate': 2.5009581e-05, 'epoch': 15.72}
+{'loss': 2.851, 'learning_rate': 2.4959681e-05, 'epoch': 15.75}
+{'loss': 2.8379, 'learning_rate': 2.4909781e-05, 'epoch': 15.78}
+{'loss': 2.8458, 'learning_rate': 2.486038e-05, 'epoch': 15.81}
+{'loss': 2.8318, 'learning_rate': 2.4810479999999998e-05, 'epoch': 15.84}
+{'loss': 2.8404, 'learning_rate': 2.4760579999999997e-05, 'epoch': 15.87}
+{'loss': 2.8428, 'learning_rate': 2.471068e-05, 'epoch': 15.9}
+{'loss': 2.8451, 'learning_rate': 2.4660779999999998e-05, 'epoch': 15.93}
+{'loss': 2.8395, 'learning_rate': 2.4610879999999997e-05, 'epoch': 15.97}
+{'loss': 2.8393, 'learning_rate': 2.4560979999999996e-05, 'epoch': 16.0}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 06:34:39 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.960031747817993, 'eval_rouge1': 44.9359, 'eval_rouge2': 21.5658, 'eval_rougeL': 36.6216, 'eval_rougeLsum': 36.6384, 'eval_gen_len': 28.3669, 'eval_runtime': 593.6473, 'eval_samples_per_second': 2.695, 'eval_steps_per_second': 0.168, 'epoch': 16.0}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-51000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-51000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-51000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-51000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-51000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-48000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.8215, 'learning_rate': 2.451108e-05, 'epoch': 16.03}
+{'loss': 2.8171, 'learning_rate': 2.4461179999999997e-05, 'epoch': 16.06}
+{'loss': 2.8243, 'learning_rate': 2.4411279999999996e-05, 'epoch': 16.09}
+{'loss': 2.8247, 'learning_rate': 2.4362378e-05, 'epoch': 16.12}
+{'loss': 2.8089, 'learning_rate': 2.4312477999999998e-05, 'epoch': 16.15}
+{'loss': 2.8122, 'learning_rate': 2.4262577999999997e-05, 'epoch': 16.19}
+{'loss': 2.8301, 'learning_rate': 2.4212678e-05, 'epoch': 16.22}
+{'loss': 2.8293, 'learning_rate': 2.4162777999999998e-05, 'epoch': 16.25}
+{'loss': 2.8243, 'learning_rate': 2.4112877999999997e-05, 'epoch': 16.28}
+{'loss': 2.8245, 'learning_rate': 2.4062978e-05, 'epoch': 16.31}
+{'loss': 2.8133, 'learning_rate': 2.4013078e-05, 'epoch': 16.34}
+{'loss': 2.8243, 'learning_rate': 2.3963177999999998e-05, 'epoch': 16.37}
+{'loss': 2.8268, 'learning_rate': 2.3913277999999997e-05, 'epoch': 16.41}
+{'loss': 2.8316, 'learning_rate': 2.3863378e-05, 'epoch': 16.44}
+{'loss': 2.8307, 'learning_rate': 2.3813477999999998e-05, 'epoch': 16.47}
+{'loss': 2.8287, 'learning_rate': 2.3763577999999997e-05, 'epoch': 16.5}
+{'loss': 2.8375, 'learning_rate': 2.3713677999999996e-05, 'epoch': 16.53}
+{'loss': 2.8251, 'learning_rate': 2.3663778e-05, 'epoch': 16.56}
+{'loss': 2.8244, 'learning_rate': 2.3613877999999997e-05, 'epoch': 16.59}
+{'loss': 2.8328, 'learning_rate': 2.3563977999999996e-05, 'epoch': 16.62}
+{'loss': 2.8255, 'learning_rate': 2.3514078e-05, 'epoch': 16.66}
+{'loss': 2.8236, 'learning_rate': 2.3464177999999998e-05, 'epoch': 16.69}
+{'loss': 2.8302, 'learning_rate': 2.3414277999999997e-05, 'epoch': 16.72}
+{'loss': 2.8242, 'learning_rate': 2.3364377999999996e-05, 'epoch': 16.75}
+{'loss': 2.8237, 'learning_rate': 2.3314477999999998e-05, 'epoch': 16.78}
+{'loss': 2.8263, 'learning_rate': 2.3264577999999997e-05, 'epoch': 16.81}
+{'loss': 2.8358, 'learning_rate': 2.3214677999999996e-05, 'epoch': 16.84}
+{'loss': 2.8223, 'learning_rate': 2.3164778e-05, 'epoch': 16.88}
+{'loss': 2.8287, 'learning_rate': 2.3114877999999998e-05, 'epoch': 16.91}
+{'loss': 2.8237, 'learning_rate': 2.3064977999999997e-05, 'epoch': 16.94}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 07:00:27 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.9639792442321777, 'eval_rouge1': 45.2193, 'eval_rouge2': 21.7603, 'eval_rougeL': 36.743, 'eval_rougeLsum': 36.7512, 'eval_gen_len': 28.3825, 'eval_runtime': 585.3626, 'eval_samples_per_second': 2.733, 'eval_steps_per_second': 0.171, 'epoch': 16.94}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-54000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-54000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-54000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-54000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-54000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-45000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.8337, 'learning_rate': 2.3015077999999996e-05, 'epoch': 16.97}
+{'loss': 2.8387, 'learning_rate': 2.2965177999999998e-05, 'epoch': 17.0}
+{'loss': 2.8052, 'learning_rate': 2.2915777e-05, 'epoch': 17.03}
+{'loss': 2.7996, 'learning_rate': 2.2865877e-05, 'epoch': 17.06}
+{'loss': 2.8053, 'learning_rate': 2.2815977e-05, 'epoch': 17.1}
+{'loss': 2.8034, 'learning_rate': 2.2766077e-05, 'epoch': 17.13}
+{'loss': 2.8027, 'learning_rate': 2.2716177e-05, 'epoch': 17.16}
+{'loss': 2.809, 'learning_rate': 2.2666277e-05, 'epoch': 17.19}
+{'loss': 2.8145, 'learning_rate': 2.2616377e-05, 'epoch': 17.22}
+{'loss': 2.8217, 'learning_rate': 2.2566477e-05, 'epoch': 17.25}
+{'loss': 2.8112, 'learning_rate': 2.2516577e-05, 'epoch': 17.28}
+{'loss': 2.7987, 'learning_rate': 2.2466677e-05, 'epoch': 17.31}
+{'loss': 2.8234, 'learning_rate': 2.2416777e-05, 'epoch': 17.35}
+{'loss': 2.8115, 'learning_rate': 2.2366877e-05, 'epoch': 17.38}
+{'loss': 2.8047, 'learning_rate': 2.2316977e-05, 'epoch': 17.41}
+{'loss': 2.8153, 'learning_rate': 2.2267077e-05, 'epoch': 17.44}
+{'loss': 2.8158, 'learning_rate': 2.2217177e-05, 'epoch': 17.47}
+{'loss': 2.8198, 'learning_rate': 2.2167277e-05, 'epoch': 17.5}
+{'loss': 2.8301, 'learning_rate': 2.2117377e-05, 'epoch': 17.53}
+{'loss': 2.8197, 'learning_rate': 2.2067477e-05, 'epoch': 17.57}
+{'loss': 2.82, 'learning_rate': 2.2017577e-05, 'epoch': 17.6}
+{'loss': 2.827, 'learning_rate': 2.1967677e-05, 'epoch': 17.63}
+{'loss': 2.8244, 'learning_rate': 2.1917777e-05, 'epoch': 17.66}
+{'loss': 2.8193, 'learning_rate': 2.1867876999999998e-05, 'epoch': 17.69}
+{'loss': 2.8267, 'learning_rate': 2.1817977e-05, 'epoch': 17.72}
+{'loss': 2.8255, 'learning_rate': 2.1768077e-05, 'epoch': 17.75}
+{'loss': 2.8133, 'learning_rate': 2.1718177e-05, 'epoch': 17.79}
+{'loss': 2.8268, 'learning_rate': 2.1668276999999998e-05, 'epoch': 17.82}
+{'loss': 2.8234, 'learning_rate': 2.1618377e-05, 'epoch': 17.85}
+{'loss': 2.8072, 'learning_rate': 2.1568477e-05, 'epoch': 17.88}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 07:26:55 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.967130422592163, 'eval_rouge1': 45.176, 'eval_rouge2': 21.6917, 'eval_rougeL': 36.8229, 'eval_rougeLsum': 36.8361, 'eval_gen_len': 28.69, 'eval_runtime': 621.3993, 'eval_samples_per_second': 2.575, 'eval_steps_per_second': 0.161, 'epoch': 17.88}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-57000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-57000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-57000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-57000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-57000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-51000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.8269, 'learning_rate': 2.1518576999999998e-05, 'epoch': 17.91}
+{'loss': 2.8142, 'learning_rate': 2.1468677e-05, 'epoch': 17.94}
+{'loss': 2.8408, 'learning_rate': 2.1418777e-05, 'epoch': 17.97}
+{'loss': 2.8237, 'learning_rate': 2.1368877e-05, 'epoch': 18.01}
+{'loss': 2.7875, 'learning_rate': 2.1318976999999997e-05, 'epoch': 18.04}
+{'loss': 2.7887, 'learning_rate': 2.1269077e-05, 'epoch': 18.07}
+{'loss': 2.8136, 'learning_rate': 2.1219177e-05, 'epoch': 18.1}
+{'loss': 2.8001, 'learning_rate': 2.1169276999999998e-05, 'epoch': 18.13}
+{'loss': 2.8022, 'learning_rate': 2.1119875999999995e-05, 'epoch': 18.16}
+{'loss': 2.8055, 'learning_rate': 2.1069975999999998e-05, 'epoch': 18.19}
+{'loss': 2.7953, 'learning_rate': 2.1020075999999997e-05, 'epoch': 18.22}
+{'loss': 2.8008, 'learning_rate': 2.0970175999999996e-05, 'epoch': 18.26}
+{'loss': 2.7991, 'learning_rate': 2.0920276e-05, 'epoch': 18.29}
+{'loss': 2.8131, 'learning_rate': 2.0870376e-05, 'epoch': 18.32}
+{'loss': 2.7986, 'learning_rate': 2.0820476000000003e-05, 'epoch': 18.35}
+{'loss': 2.8112, 'learning_rate': 2.0770576e-05, 'epoch': 18.38}
+{'loss': 2.8049, 'learning_rate': 2.0720676e-05, 'epoch': 18.41}
+{'loss': 2.8018, 'learning_rate': 2.0670776000000003e-05, 'epoch': 18.44}
+{'loss': 2.8053, 'learning_rate': 2.0620876000000002e-05, 'epoch': 18.48}
+{'loss': 2.8092, 'learning_rate': 2.0570976e-05, 'epoch': 18.51}
+{'loss': 2.804, 'learning_rate': 2.0521076e-05, 'epoch': 18.54}
+{'loss': 2.8104, 'learning_rate': 2.0471176000000002e-05, 'epoch': 18.57}
+{'loss': 2.8111, 'learning_rate': 2.0421276e-05, 'epoch': 18.6}
+{'loss': 2.8022, 'learning_rate': 2.0371376e-05, 'epoch': 18.63}
+{'loss': 2.8023, 'learning_rate': 2.0321476000000003e-05, 'epoch': 18.66}
+{'loss': 2.8108, 'learning_rate': 2.0271576000000002e-05, 'epoch': 18.7}
+{'loss': 2.8102, 'learning_rate': 2.0221676e-05, 'epoch': 18.73}
+{'loss': 2.8157, 'learning_rate': 2.0171776e-05, 'epoch': 18.76}
+{'loss': 2.8116, 'learning_rate': 2.0121876000000002e-05, 'epoch': 18.79}
+{'loss': 2.8071, 'learning_rate': 2.0071976e-05, 'epoch': 18.82}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 07:53:01 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.964038133621216, 'eval_rouge1': 44.8863, 'eval_rouge2': 21.3686, 'eval_rougeL': 36.4541, 'eval_rougeLsum': 36.4679, 'eval_gen_len': 28.8706, 'eval_runtime': 628.9107, 'eval_samples_per_second': 2.544, 'eval_steps_per_second': 0.159, 'epoch': 18.82}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-60000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-60000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-60000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-60000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-60000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-57000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.8143, 'learning_rate': 2.0022076e-05, 'epoch': 18.85}
+{'loss': 2.8194, 'learning_rate': 1.9972176e-05, 'epoch': 18.88}
+{'loss': 2.8232, 'learning_rate': 1.9922276000000002e-05, 'epoch': 18.91}
+{'loss': 2.8162, 'learning_rate': 1.9872875e-05, 'epoch': 18.95}
+{'loss': 2.8177, 'learning_rate': 1.9822974999999998e-05, 'epoch': 18.98}
+{'loss': 2.8054, 'learning_rate': 1.9773074999999997e-05, 'epoch': 19.01}
+{'loss': 2.7886, 'learning_rate': 1.9723175e-05, 'epoch': 19.04}
+{'loss': 2.7937, 'learning_rate': 1.9673275e-05, 'epoch': 19.07}
+{'loss': 2.7928, 'learning_rate': 1.9623374999999997e-05, 'epoch': 19.1}
+{'loss': 2.7874, 'learning_rate': 1.9573475e-05, 'epoch': 19.13}
+{'loss': 2.7875, 'learning_rate': 1.9523575e-05, 'epoch': 19.17}
+{'loss': 2.7959, 'learning_rate': 1.9473674999999998e-05, 'epoch': 19.2}
+{'loss': 2.7949, 'learning_rate': 1.9423774999999997e-05, 'epoch': 19.23}
+{'loss': 2.7856, 'learning_rate': 1.9373875e-05, 'epoch': 19.26}
+{'loss': 2.8032, 'learning_rate': 1.9323974999999998e-05, 'epoch': 19.29}
+{'loss': 2.802, 'learning_rate': 1.9274074999999997e-05, 'epoch': 19.32}
+{'loss': 2.7871, 'learning_rate': 1.9224175e-05, 'epoch': 19.35}
+{'loss': 2.796, 'learning_rate': 1.9174275e-05, 'epoch': 19.39}
+{'loss': 2.7978, 'learning_rate': 1.9124374999999998e-05, 'epoch': 19.42}
+{'loss': 2.7964, 'learning_rate': 1.9074474999999997e-05, 'epoch': 19.45}
+{'loss': 2.7982, 'learning_rate': 1.9024575e-05, 'epoch': 19.48}
+{'loss': 2.7896, 'learning_rate': 1.8974674999999998e-05, 'epoch': 19.51}
+{'loss': 2.7905, 'learning_rate': 1.8924774999999997e-05, 'epoch': 19.54}
+{'loss': 2.8038, 'learning_rate': 1.8874874999999996e-05, 'epoch': 19.57}
+{'loss': 2.8091, 'learning_rate': 1.8824975e-05, 'epoch': 19.6}
+{'loss': 2.8014, 'learning_rate': 1.8775074999999997e-05, 'epoch': 19.64}
+{'loss': 2.7926, 'learning_rate': 1.8725174999999996e-05, 'epoch': 19.67}
+{'loss': 2.7973, 'learning_rate': 1.8675275e-05, 'epoch': 19.7}
+{'loss': 2.8058, 'learning_rate': 1.8625374999999998e-05, 'epoch': 19.73}
+{'loss': 2.8132, 'learning_rate': 1.8575474999999997e-05, 'epoch': 19.76}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 08:19:07 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.966578960418701, 'eval_rouge1': 44.8385, 'eval_rouge2': 21.37, 'eval_rougeL': 36.5872, 'eval_rougeLsum': 36.5948, 'eval_gen_len': 28.8288, 'eval_runtime': 637.628, 'eval_samples_per_second': 2.509, 'eval_steps_per_second': 0.157, 'epoch': 19.76}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-63000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-63000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-63000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-63000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-63000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-60000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.7957, 'learning_rate': 1.8525574999999996e-05, 'epoch': 19.79}
+{'loss': 2.801, 'learning_rate': 1.8475674999999998e-05, 'epoch': 19.82}
+{'loss': 2.8052, 'learning_rate': 1.8425774999999997e-05, 'epoch': 19.86}
+{'loss': 2.8059, 'learning_rate': 1.8375874999999996e-05, 'epoch': 19.89}
+{'loss': 2.8128, 'learning_rate': 1.8325975e-05, 'epoch': 19.92}
+{'loss': 2.8041, 'learning_rate': 1.8276074999999998e-05, 'epoch': 19.95}
+{'loss': 2.81, 'learning_rate': 1.8226174999999997e-05, 'epoch': 19.98}
+{'loss': 2.8091, 'learning_rate': 1.8176274999999996e-05, 'epoch': 20.01}
+{'loss': 2.7829, 'learning_rate': 1.8126374999999998e-05, 'epoch': 20.04}
+{'loss': 2.7856, 'learning_rate': 1.8076474999999997e-05, 'epoch': 20.08}
+{'loss': 2.7895, 'learning_rate': 1.8026574999999996e-05, 'epoch': 20.11}
+{'loss': 2.7756, 'learning_rate': 1.7976675e-05, 'epoch': 20.14}
+{'loss': 2.7799, 'learning_rate': 1.7926774999999997e-05, 'epoch': 20.17}
+{'loss': 2.7832, 'learning_rate': 1.7876874999999996e-05, 'epoch': 20.2}
+{'loss': 2.7866, 'learning_rate': 1.7826974999999995e-05, 'epoch': 20.23}
+{'loss': 2.7848, 'learning_rate': 1.7777074999999998e-05, 'epoch': 20.26}
+{'loss': 2.7816, 'learning_rate': 1.7727174999999997e-05, 'epoch': 20.29}
+{'loss': 2.7944, 'learning_rate': 1.7677274999999996e-05, 'epoch': 20.33}
+{'loss': 2.7903, 'learning_rate': 1.7627374999999998e-05, 'epoch': 20.36}
+{'loss': 2.7719, 'learning_rate': 1.7577474999999997e-05, 'epoch': 20.39}
+{'loss': 2.7935, 'learning_rate': 1.7527574999999996e-05, 'epoch': 20.42}
+{'loss': 2.7891, 'learning_rate': 1.7477674999999995e-05, 'epoch': 20.45}
+{'loss': 2.7947, 'learning_rate': 1.7427774999999998e-05, 'epoch': 20.48}
+{'loss': 2.7864, 'learning_rate': 1.7377874999999997e-05, 'epoch': 20.51}
+{'loss': 2.7869, 'learning_rate': 1.7327974999999996e-05, 'epoch': 20.55}
+{'loss': 2.793, 'learning_rate': 1.7278074999999995e-05, 'epoch': 20.58}
+{'loss': 2.8026, 'learning_rate': 1.7228175e-05, 'epoch': 20.61}
+{'loss': 2.792, 'learning_rate': 1.7178275000000003e-05, 'epoch': 20.64}
+{'loss': 2.7916, 'learning_rate': 1.7128375000000002e-05, 'epoch': 20.67}
+{'loss': 2.8017, 'learning_rate': 1.7078475e-05, 'epoch': 20.7}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 08:45:11 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.967289924621582, 'eval_rouge1': 45.2426, 'eval_rouge2': 21.6877, 'eval_rougeL': 36.9527, 'eval_rougeLsum': 36.9797, 'eval_gen_len': 28.3725, 'eval_runtime': 638.4798, 'eval_samples_per_second': 2.506, 'eval_steps_per_second': 0.157, 'epoch': 20.7}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-66000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-66000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-66000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-66000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-66000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-63000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.7818, 'learning_rate': 1.7028575000000003e-05, 'epoch': 20.73}
+{'loss': 2.7978, 'learning_rate': 1.6978675000000002e-05, 'epoch': 20.77}
+{'loss': 2.7932, 'learning_rate': 1.6928775e-05, 'epoch': 20.8}
+{'loss': 2.8049, 'learning_rate': 1.6878875e-05, 'epoch': 20.83}
+{'loss': 2.8082, 'learning_rate': 1.6829473999999998e-05, 'epoch': 20.86}
+{'loss': 2.791, 'learning_rate': 1.6780072999999998e-05, 'epoch': 20.89}
+{'loss': 2.8034, 'learning_rate': 1.6730172999999997e-05, 'epoch': 20.92}
+{'loss': 2.7971, 'learning_rate': 1.6680272999999996e-05, 'epoch': 20.95}
+{'loss': 2.7995, 'learning_rate': 1.6630372999999995e-05, 'epoch': 20.98}
+{'loss': 2.797, 'learning_rate': 1.6580472999999998e-05, 'epoch': 21.02}
+{'loss': 2.7805, 'learning_rate': 1.6530572999999997e-05, 'epoch': 21.05}
+{'loss': 2.7797, 'learning_rate': 1.6480672999999996e-05, 'epoch': 21.08}
+{'loss': 2.7716, 'learning_rate': 1.6430772999999998e-05, 'epoch': 21.11}
+{'loss': 2.775, 'learning_rate': 1.6380872999999997e-05, 'epoch': 21.14}
+{'loss': 2.7766, 'learning_rate': 1.6330972999999996e-05, 'epoch': 21.17}
+{'loss': 2.7705, 'learning_rate': 1.6281072999999995e-05, 'epoch': 21.2}
+{'loss': 2.7789, 'learning_rate': 1.6231172999999997e-05, 'epoch': 21.24}
+{'loss': 2.7683, 'learning_rate': 1.6181272999999996e-05, 'epoch': 21.27}
+{'loss': 2.7851, 'learning_rate': 1.6131372999999995e-05, 'epoch': 21.3}
+{'loss': 2.7877, 'learning_rate': 1.6081473e-05, 'epoch': 21.33}
+{'loss': 2.7891, 'learning_rate': 1.6031573e-05, 'epoch': 21.36}
+{'loss': 2.776, 'learning_rate': 1.5981673000000003e-05, 'epoch': 21.39}
+{'loss': 2.7743, 'learning_rate': 1.5931773e-05, 'epoch': 21.42}
+{'loss': 2.782, 'learning_rate': 1.5882372e-05, 'epoch': 21.46}
+{'loss': 2.7739, 'learning_rate': 1.5832471999999998e-05, 'epoch': 21.49}
+{'loss': 2.7966, 'learning_rate': 1.5782572e-05, 'epoch': 21.52}
+{'loss': 2.7884, 'learning_rate': 1.5732672e-05, 'epoch': 21.55}
+{'loss': 2.7895, 'learning_rate': 1.5682772e-05, 'epoch': 21.58}
+{'loss': 2.7821, 'learning_rate': 1.5632872e-05, 'epoch': 21.61}
+{'loss': 2.7749, 'learning_rate': 1.5582972e-05, 'epoch': 21.64}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 09:10:59 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.9692296981811523, 'eval_rouge1': 45.1712, 'eval_rouge2': 21.7394, 'eval_rougeL': 36.8144, 'eval_rougeLsum': 36.8219, 'eval_gen_len': 29.0331, 'eval_runtime': 629.668, 'eval_samples_per_second': 2.541, 'eval_steps_per_second': 0.159, 'epoch': 21.64}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-69000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-69000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-69000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-69000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-69000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-66000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.7795, 'learning_rate': 1.5533072e-05, 'epoch': 21.67}
+{'loss': 2.7908, 'learning_rate': 1.5483171999999998e-05, 'epoch': 21.71}
+{'loss': 2.7854, 'learning_rate': 1.5433272e-05, 'epoch': 21.74}
+{'loss': 2.7826, 'learning_rate': 1.5383372e-05, 'epoch': 21.77}
+{'loss': 2.7936, 'learning_rate': 1.5333471999999998e-05, 'epoch': 21.8}
+{'loss': 2.7895, 'learning_rate': 1.5283572e-05, 'epoch': 21.83}
+{'loss': 2.7929, 'learning_rate': 1.5233672e-05, 'epoch': 21.86}
+{'loss': 2.793, 'learning_rate': 1.5183772000000002e-05, 'epoch': 21.89}
+{'loss': 2.7845, 'learning_rate': 1.5133872000000001e-05, 'epoch': 21.93}
+{'loss': 2.785, 'learning_rate': 1.5083971999999998e-05, 'epoch': 21.96}
+{'loss': 2.8026, 'learning_rate': 1.5034072000000002e-05, 'epoch': 21.99}
+{'loss': 2.7841, 'learning_rate': 1.4984172e-05, 'epoch': 22.02}
+{'loss': 2.7778, 'learning_rate': 1.4934271999999999e-05, 'epoch': 22.05}
+{'loss': 2.7687, 'learning_rate': 1.4884372e-05, 'epoch': 22.08}
+{'loss': 2.7687, 'learning_rate': 1.4834472e-05, 'epoch': 22.11}
+{'loss': 2.7732, 'learning_rate': 1.4784572000000002e-05, 'epoch': 22.15}
+{'loss': 2.7693, 'learning_rate': 1.4734672e-05, 'epoch': 22.18}
+{'loss': 2.7734, 'learning_rate': 1.4684771999999999e-05, 'epoch': 22.21}
+{'loss': 2.7634, 'learning_rate': 1.4634872e-05, 'epoch': 22.24}
+{'loss': 2.7731, 'learning_rate': 1.4584972e-05, 'epoch': 22.27}
+{'loss': 2.765, 'learning_rate': 1.4535072e-05, 'epoch': 22.3}
+{'loss': 2.7764, 'learning_rate': 1.4485172e-05, 'epoch': 22.33}
+{'loss': 2.7755, 'learning_rate': 1.4435271999999999e-05, 'epoch': 22.37}
+{'loss': 2.791, 'learning_rate': 1.4385372e-05, 'epoch': 22.4}
+{'loss': 2.778, 'learning_rate': 1.4335472e-05, 'epoch': 22.43}
+{'loss': 2.777, 'learning_rate': 1.4285572e-05, 'epoch': 22.46}
+{'loss': 2.7847, 'learning_rate': 1.4235672e-05, 'epoch': 22.49}
+{'loss': 2.7758, 'learning_rate': 1.4185772e-05, 'epoch': 22.52}
+{'loss': 2.7716, 'learning_rate': 1.4135872e-05, 'epoch': 22.55}
+{'loss': 2.7814, 'learning_rate': 1.4085972e-05, 'epoch': 22.58}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 09:36:40 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.970353364944458, 'eval_rouge1': 45.2314, 'eval_rouge2': 21.7146, 'eval_rougeL': 36.8725, 'eval_rougeLsum': 36.8808, 'eval_gen_len': 29.2406, 'eval_runtime': 610.2767, 'eval_samples_per_second': 2.622, 'eval_steps_per_second': 0.164, 'epoch': 22.58}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-72000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-72000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-72000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-72000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-72000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-69000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.7803, 'learning_rate': 1.4036072e-05, 'epoch': 22.62}
+{'loss': 2.7734, 'learning_rate': 1.3986172e-05, 'epoch': 22.65}
+{'loss': 2.7706, 'learning_rate': 1.3936272e-05, 'epoch': 22.68}
+{'loss': 2.7778, 'learning_rate': 1.3886372e-05, 'epoch': 22.71}
+{'loss': 2.7751, 'learning_rate': 1.3836471999999997e-05, 'epoch': 22.74}
+{'loss': 2.7906, 'learning_rate': 1.3786572000000001e-05, 'epoch': 22.77}
+{'loss': 2.7785, 'learning_rate': 1.3736671999999997e-05, 'epoch': 22.8}
+{'loss': 2.7754, 'learning_rate': 1.3686772000000001e-05, 'epoch': 22.84}
+{'loss': 2.7707, 'learning_rate': 1.3636871999999998e-05, 'epoch': 22.87}
+{'loss': 2.7812, 'learning_rate': 1.3587471000000002e-05, 'epoch': 22.9}
+{'loss': 2.7893, 'learning_rate': 1.3537571000000001e-05, 'epoch': 22.93}
+{'loss': 2.7753, 'learning_rate': 1.3487671000000002e-05, 'epoch': 22.96}
+{'loss': 2.787, 'learning_rate': 1.3437771000000001e-05, 'epoch': 22.99}
+{'loss': 2.7848, 'learning_rate': 1.3387871000000002e-05, 'epoch': 23.02}
+{'loss': 2.7568, 'learning_rate': 1.3337971000000002e-05, 'epoch': 23.06}
+{'loss': 2.7672, 'learning_rate': 1.3288071000000001e-05, 'epoch': 23.09}
+{'loss': 2.7635, 'learning_rate': 1.3238171000000002e-05, 'epoch': 23.12}
+{'loss': 2.7694, 'learning_rate': 1.3188271000000003e-05, 'epoch': 23.15}
+{'loss': 2.7736, 'learning_rate': 1.3138371000000002e-05, 'epoch': 23.18}
+{'loss': 2.7589, 'learning_rate': 1.3088471000000003e-05, 'epoch': 23.21}
+{'loss': 2.7577, 'learning_rate': 1.3038571000000002e-05, 'epoch': 23.24}
+{'loss': 2.7682, 'learning_rate': 1.2988671000000002e-05, 'epoch': 23.27}
+{'loss': 2.7771, 'learning_rate': 1.2938771000000003e-05, 'epoch': 23.31}
+{'loss': 2.7653, 'learning_rate': 1.2888871000000002e-05, 'epoch': 23.34}
+{'loss': 2.7637, 'learning_rate': 1.2838971e-05, 'epoch': 23.37}
+{'loss': 2.7735, 'learning_rate': 1.2789071000000003e-05, 'epoch': 23.4}
+{'loss': 2.7743, 'learning_rate': 1.2739171000000002e-05, 'epoch': 23.43}
+{'loss': 2.7758, 'learning_rate': 1.2689271000000003e-05, 'epoch': 23.46}
+{'loss': 2.7709, 'learning_rate': 1.2639371000000002e-05, 'epoch': 23.49}
+{'loss': 2.7595, 'learning_rate': 1.2589471e-05, 'epoch': 23.53}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 10:02:51 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.9736242294311523, 'eval_rouge1': 44.9483, 'eval_rouge2': 21.5003, 'eval_rougeL': 36.5464, 'eval_rougeLsum': 36.5609, 'eval_gen_len': 28.9706, 'eval_runtime': 621.4077, 'eval_samples_per_second': 2.575, 'eval_steps_per_second': 0.161, 'epoch': 23.53}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-75000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-75000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-75000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-75000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-75000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-72000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.7731, 'learning_rate': 1.2539571000000003e-05, 'epoch': 23.56}
+{'loss': 2.7833, 'learning_rate': 1.2489671e-05, 'epoch': 23.59}
+{'loss': 2.7763, 'learning_rate': 1.2439771000000001e-05, 'epoch': 23.62}
+{'loss': 2.7771, 'learning_rate': 1.2390369999999999e-05, 'epoch': 23.65}
+{'loss': 2.7687, 'learning_rate': 1.234047e-05, 'epoch': 23.68}
+{'loss': 2.7781, 'learning_rate': 1.2290569999999998e-05, 'epoch': 23.71}
+{'loss': 2.7771, 'learning_rate': 1.2240669999999999e-05, 'epoch': 23.75}
+{'loss': 2.7587, 'learning_rate': 1.2190769999999998e-05, 'epoch': 23.78}
+{'loss': 2.773, 'learning_rate': 1.2140869999999999e-05, 'epoch': 23.81}
+{'loss': 2.7722, 'learning_rate': 1.2091469000000001e-05, 'epoch': 23.84}
+{'loss': 2.7685, 'learning_rate': 1.2041569000000002e-05, 'epoch': 23.87}
+{'loss': 2.7728, 'learning_rate': 1.1991669000000003e-05, 'epoch': 23.9}
+{'loss': 2.7711, 'learning_rate': 1.1941769000000002e-05, 'epoch': 23.93}
+{'loss': 2.7688, 'learning_rate': 1.1891869000000002e-05, 'epoch': 23.96}
+{'loss': 2.7712, 'learning_rate': 1.1841969000000001e-05, 'epoch': 24.0}
+{'loss': 2.7675, 'learning_rate': 1.1792069000000002e-05, 'epoch': 24.03}
+{'loss': 2.7602, 'learning_rate': 1.1742169000000001e-05, 'epoch': 24.06}
+{'loss': 2.756, 'learning_rate': 1.1692269000000002e-05, 'epoch': 24.09}
+{'loss': 2.7681, 'learning_rate': 1.1642369e-05, 'epoch': 24.12}
+{'loss': 2.7553, 'learning_rate': 1.1592469000000001e-05, 'epoch': 24.15}
+{'loss': 2.7623, 'learning_rate': 1.1542569000000002e-05, 'epoch': 24.18}
+{'loss': 2.7513, 'learning_rate': 1.1492669000000001e-05, 'epoch': 24.22}
+{'loss': 2.7644, 'learning_rate': 1.1442769000000002e-05, 'epoch': 24.25}
+{'loss': 2.7465, 'learning_rate': 1.1392869000000001e-05, 'epoch': 24.28}
+{'loss': 2.7699, 'learning_rate': 1.1342969000000002e-05, 'epoch': 24.31}
+{'loss': 2.7655, 'learning_rate': 1.1293069e-05, 'epoch': 24.34}
+{'loss': 2.7584, 'learning_rate': 1.1243169000000001e-05, 'epoch': 24.37}
+{'loss': 2.7681, 'learning_rate': 1.1193269000000002e-05, 'epoch': 24.4}
+{'loss': 2.7577, 'learning_rate': 1.1143369000000001e-05, 'epoch': 24.44}
+{'loss': 2.7626, 'learning_rate': 1.1093469000000002e-05, 'epoch': 24.47}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 10:30:34 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.973513126373291, 'eval_rouge1': 44.9414, 'eval_rouge2': 21.552, 'eval_rougeL': 36.5632, 'eval_rougeLsum': 36.5913, 'eval_gen_len': 28.8688, 'eval_runtime': 664.4752, 'eval_samples_per_second': 2.408, 'eval_steps_per_second': 0.15, 'epoch': 24.47}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-78000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-78000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-78000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-78000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-78000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-75000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.7697, 'learning_rate': 1.1043569e-05, 'epoch': 24.5}
+{'loss': 2.7632, 'learning_rate': 1.0993669000000001e-05, 'epoch': 24.53}
+{'loss': 2.7643, 'learning_rate': 1.0943769e-05, 'epoch': 24.56}
+{'loss': 2.7679, 'learning_rate': 1.0893869000000001e-05, 'epoch': 24.59}
+{'loss': 2.7716, 'learning_rate': 1.0843969e-05, 'epoch': 24.62}
+{'loss': 2.7635, 'learning_rate': 1.0794069e-05, 'epoch': 24.65}
+{'loss': 2.7726, 'learning_rate': 1.0744169000000001e-05, 'epoch': 24.69}
+{'loss': 2.766, 'learning_rate': 1.0694269e-05, 'epoch': 24.72}
+{'loss': 2.7807, 'learning_rate': 1.0644369000000001e-05, 'epoch': 24.75}
+{'loss': 2.7711, 'learning_rate': 1.0594469e-05, 'epoch': 24.78}
+{'loss': 2.7616, 'learning_rate': 1.0544569000000001e-05, 'epoch': 24.81}
+{'loss': 2.7618, 'learning_rate': 1.0494669e-05, 'epoch': 24.84}
+{'loss': 2.7737, 'learning_rate': 1.0444769e-05, 'epoch': 24.87}
+{'loss': 2.7574, 'learning_rate': 1.0394869e-05, 'epoch': 24.91}
+{'loss': 2.7664, 'learning_rate': 1.0344969e-05, 'epoch': 24.94}
+{'loss': 2.7762, 'learning_rate': 1.0295069000000001e-05, 'epoch': 24.97}
+{'loss': 2.7586, 'learning_rate': 1.0245169e-05, 'epoch': 25.0}
+{'loss': 2.7697, 'learning_rate': 1.0195269e-05, 'epoch': 25.03}
+{'loss': 2.7572, 'learning_rate': 1.0145369e-05, 'epoch': 25.06}
+{'loss': 2.7569, 'learning_rate': 1.0095469e-05, 'epoch': 25.09}
+{'loss': 2.7678, 'learning_rate': 1.0045569e-05, 'epoch': 25.13}
+{'loss': 2.7486, 'learning_rate': 9.995669e-06, 'epoch': 25.16}
+{'loss': 2.749, 'learning_rate': 9.945769e-06, 'epoch': 25.19}
+{'loss': 2.7519, 'learning_rate': 9.895869e-06, 'epoch': 25.22}
+{'loss': 2.7595, 'learning_rate': 9.845969e-06, 'epoch': 25.25}
+{'loss': 2.7688, 'learning_rate': 9.796069e-06, 'epoch': 25.28}
+{'loss': 2.752, 'learning_rate': 9.746169e-06, 'epoch': 25.31}
+{'loss': 2.7588, 'learning_rate': 9.696269e-06, 'epoch': 25.35}
+{'loss': 2.7536, 'learning_rate': 9.646369e-06, 'epoch': 25.38}
+{'loss': 2.7567, 'learning_rate': 9.596468999999999e-06, 'epoch': 25.41}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 10:56:43 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.9739532470703125, 'eval_rouge1': 45.1088, 'eval_rouge2': 21.7575, 'eval_rougeL': 36.6923, 'eval_rougeLsum': 36.7022, 'eval_gen_len': 28.4781, 'eval_runtime': 658.2015, 'eval_samples_per_second': 2.431, 'eval_steps_per_second': 0.152, 'epoch': 25.41}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-81000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-81000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-81000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-81000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-81000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-78000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.7489, 'learning_rate': 9.546569e-06, 'epoch': 25.44}
+{'loss': 2.7621, 'learning_rate': 9.496669e-06, 'epoch': 25.47}
+{'loss': 2.7637, 'learning_rate': 9.446769e-06, 'epoch': 25.5}
+{'loss': 2.7557, 'learning_rate': 9.396869e-06, 'epoch': 25.53}
+{'loss': 2.7556, 'learning_rate': 9.346968999999999e-06, 'epoch': 25.56}
+{'loss': 2.7539, 'learning_rate': 9.297069e-06, 'epoch': 25.6}
+{'loss': 2.7624, 'learning_rate': 9.247168999999999e-06, 'epoch': 25.63}
+{'loss': 2.756, 'learning_rate': 9.197269e-06, 'epoch': 25.66}
+{'loss': 2.7707, 'learning_rate': 9.147369e-06, 'epoch': 25.69}
+{'loss': 2.7735, 'learning_rate': 9.097968000000002e-06, 'epoch': 25.72}
+{'loss': 2.7656, 'learning_rate': 9.048567e-06, 'epoch': 25.75}
+{'loss': 2.7563, 'learning_rate': 8.998667e-06, 'epoch': 25.78}
+{'loss': 2.7584, 'learning_rate': 8.948767e-06, 'epoch': 25.82}
+{'loss': 2.7654, 'learning_rate': 8.898867e-06, 'epoch': 25.85}
+{'loss': 2.7575, 'learning_rate': 8.848967e-06, 'epoch': 25.88}
+{'loss': 2.7606, 'learning_rate': 8.799067e-06, 'epoch': 25.91}
+{'loss': 2.7553, 'learning_rate': 8.749167e-06, 'epoch': 25.94}
+{'loss': 2.754, 'learning_rate': 8.699267e-06, 'epoch': 25.97}
+{'loss': 2.7689, 'learning_rate': 8.649367e-06, 'epoch': 26.0}
+{'loss': 2.7476, 'learning_rate': 8.599966000000003e-06, 'epoch': 26.04}
+{'loss': 2.7424, 'learning_rate': 8.550066000000003e-06, 'epoch': 26.07}
+{'loss': 2.7497, 'learning_rate': 8.500166000000002e-06, 'epoch': 26.1}
+{'loss': 2.7542, 'learning_rate': 8.450266000000003e-06, 'epoch': 26.13}
+{'loss': 2.7594, 'learning_rate': 8.400366000000002e-06, 'epoch': 26.16}
+{'loss': 2.7502, 'learning_rate': 8.350466000000003e-06, 'epoch': 26.19}
+{'loss': 2.7358, 'learning_rate': 8.300566000000003e-06, 'epoch': 26.22}
+{'loss': 2.7589, 'learning_rate': 8.250666000000002e-06, 'epoch': 26.25}
+{'loss': 2.7501, 'learning_rate': 8.200766000000003e-06, 'epoch': 26.29}
+{'loss': 2.7566, 'learning_rate': 8.150866000000002e-06, 'epoch': 26.32}
+{'loss': 2.7472, 'learning_rate': 8.100966000000003e-06, 'epoch': 26.35}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 11:22:47 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.9755706787109375, 'eval_rouge1': 45.0627, 'eval_rouge2': 21.5628, 'eval_rougeL': 36.7266, 'eval_rougeLsum': 36.7369, 'eval_gen_len': 28.5519, 'eval_runtime': 663.9677, 'eval_samples_per_second': 2.41, 'eval_steps_per_second': 0.151, 'epoch': 26.35}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-84000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-84000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-84000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-84000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-84000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-81000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.7552, 'learning_rate': 8.051066000000002e-06, 'epoch': 26.38}
+{'loss': 2.7641, 'learning_rate': 8.001166000000003e-06, 'epoch': 26.41}
+{'loss': 2.7586, 'learning_rate': 7.951266000000003e-06, 'epoch': 26.44}
+{'loss': 2.756, 'learning_rate': 7.901366000000002e-06, 'epoch': 26.47}
+{'loss': 2.7537, 'learning_rate': 7.851466000000003e-06, 'epoch': 26.51}
+{'loss': 2.7558, 'learning_rate': 7.801566000000002e-06, 'epoch': 26.54}
+{'loss': 2.7462, 'learning_rate': 7.751666000000003e-06, 'epoch': 26.57}
+{'loss': 2.7602, 'learning_rate': 7.701766000000002e-06, 'epoch': 26.6}
+{'loss': 2.7527, 'learning_rate': 7.651866000000002e-06, 'epoch': 26.63}
+{'loss': 2.7559, 'learning_rate': 7.601966000000002e-06, 'epoch': 26.66}
+{'loss': 2.7467, 'learning_rate': 7.552066e-06, 'epoch': 26.69}
+{'loss': 2.7575, 'learning_rate': 7.502166000000001e-06, 'epoch': 26.73}
+{'loss': 2.7482, 'learning_rate': 7.452266000000001e-06, 'epoch': 26.76}
+{'loss': 2.7593, 'learning_rate': 7.402366000000001e-06, 'epoch': 26.79}
+{'loss': 2.7603, 'learning_rate': 7.352466000000001e-06, 'epoch': 26.82}
+{'loss': 2.7555, 'learning_rate': 7.302566000000001e-06, 'epoch': 26.85}
+{'loss': 2.7511, 'learning_rate': 7.252666000000001e-06, 'epoch': 26.88}
+{'loss': 2.7598, 'learning_rate': 7.202766000000001e-06, 'epoch': 26.91}
+{'loss': 2.7525, 'learning_rate': 7.152866000000001e-06, 'epoch': 26.94}
+{'loss': 2.761, 'learning_rate': 7.102966000000001e-06, 'epoch': 26.98}
+{'loss': 2.7605, 'learning_rate': 7.0530660000000015e-06, 'epoch': 27.01}
+{'loss': 2.7499, 'learning_rate': 7.003166e-06, 'epoch': 27.04}
+{'loss': 2.7466, 'learning_rate': 6.953266000000001e-06, 'epoch': 27.07}
+{'loss': 2.7442, 'learning_rate': 6.903366000000001e-06, 'epoch': 27.1}
+{'loss': 2.7436, 'learning_rate': 6.853466000000002e-06, 'epoch': 27.13}
+{'loss': 2.7495, 'learning_rate': 6.803566e-06, 'epoch': 27.16}
+{'loss': 2.7448, 'learning_rate': 6.7536660000000006e-06, 'epoch': 27.2}
+{'loss': 2.7491, 'learning_rate': 6.703766e-06, 'epoch': 27.23}
+{'loss': 2.7445, 'learning_rate': 6.653866e-06, 'epoch': 27.26}
+{'loss': 2.747, 'learning_rate': 6.603966e-06, 'epoch': 27.29}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 11:49:12 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.9739067554473877, 'eval_rouge1': 44.986, 'eval_rouge2': 21.7355, 'eval_rougeL': 36.7185, 'eval_rougeLsum': 36.7279, 'eval_gen_len': 28.86, 'eval_runtime': 685.0477, 'eval_samples_per_second': 2.336, 'eval_steps_per_second': 0.146, 'epoch': 27.29}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-87000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-87000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-87000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-87000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-87000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-84000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.7436, 'learning_rate': 6.554066e-06, 'epoch': 27.32}
+{'loss': 2.7499, 'learning_rate': 6.504166000000001e-06, 'epoch': 27.35}
+{'loss': 2.7455, 'learning_rate': 6.4542660000000005e-06, 'epoch': 27.38}
+{'loss': 2.7438, 'learning_rate': 6.404366e-06, 'epoch': 27.42}
+{'loss': 2.7525, 'learning_rate': 6.354466e-06, 'epoch': 27.45}
+{'loss': 2.7469, 'learning_rate': 6.304566000000001e-06, 'epoch': 27.48}
+{'loss': 2.7448, 'learning_rate': 6.255164999999997e-06, 'epoch': 27.51}
+{'loss': 2.7485, 'learning_rate': 6.205264999999998e-06, 'epoch': 27.54}
+{'loss': 2.7497, 'learning_rate': 6.155364999999998e-06, 'epoch': 27.57}
+{'loss': 2.7502, 'learning_rate': 6.105464999999998e-06, 'epoch': 27.6}
+{'loss': 2.7585, 'learning_rate': 6.055564999999998e-06, 'epoch': 27.63}
+{'loss': 2.7517, 'learning_rate': 6.0056649999999975e-06, 'epoch': 27.67}
+{'loss': 2.7519, 'learning_rate': 5.955764999999997e-06, 'epoch': 27.7}
+{'loss': 2.7494, 'learning_rate': 5.905864999999997e-06, 'epoch': 27.73}
+{'loss': 2.7522, 'learning_rate': 5.855964999999998e-06, 'epoch': 27.76}
+{'loss': 2.756, 'learning_rate': 5.806064999999998e-06, 'epoch': 27.79}
+{'loss': 2.7571, 'learning_rate': 5.756164999999998e-06, 'epoch': 27.82}
+{'loss': 2.7535, 'learning_rate': 5.7062649999999974e-06, 'epoch': 27.85}
+{'loss': 2.7552, 'learning_rate': 5.656364999999997e-06, 'epoch': 27.89}
+{'loss': 2.7456, 'learning_rate': 5.606464999999997e-06, 'epoch': 27.92}
+{'loss': 2.7592, 'learning_rate': 5.556564999999997e-06, 'epoch': 27.95}
+{'loss': 2.7522, 'learning_rate': 5.506664999999997e-06, 'epoch': 27.98}
+{'loss': 2.7541, 'learning_rate': 5.4567649999999976e-06, 'epoch': 28.01}
+{'loss': 2.7395, 'learning_rate': 5.406864999999997e-06, 'epoch': 28.04}
+{'loss': 2.7482, 'learning_rate': 5.356965000000002e-06, 'epoch': 28.07}
+{'loss': 2.7393, 'learning_rate': 5.307065000000002e-06, 'epoch': 28.11}
+{'loss': 2.7448, 'learning_rate': 5.257165000000003e-06, 'epoch': 28.14}
+{'loss': 2.742, 'learning_rate': 5.207265000000003e-06, 'epoch': 28.17}
+{'loss': 2.7442, 'learning_rate': 5.157365000000003e-06, 'epoch': 28.2}
+{'loss': 2.7436, 'learning_rate': 5.1074650000000024e-06, 'epoch': 28.23}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 12:15:30 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.9745514392852783, 'eval_rouge1': 44.9674, 'eval_rouge2': 21.5934, 'eval_rougeL': 36.6396, 'eval_rougeLsum': 36.6455, 'eval_gen_len': 28.9475, 'eval_runtime': 703.2794, 'eval_samples_per_second': 2.275, 'eval_steps_per_second': 0.142, 'epoch': 28.23}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-90000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-90000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-90000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-90000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-90000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-87000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.7507, 'learning_rate': 5.057565000000002e-06, 'epoch': 28.26}
+{'loss': 2.74, 'learning_rate': 5.007665000000002e-06, 'epoch': 28.29}
+{'loss': 2.7344, 'learning_rate': 4.957765000000002e-06, 'epoch': 28.32}
+{'loss': 2.755, 'learning_rate': 4.907865000000002e-06, 'epoch': 28.36}
+{'loss': 2.7379, 'learning_rate': 4.858464e-06, 'epoch': 28.39}
+{'loss': 2.7571, 'learning_rate': 4.809062999999997e-06, 'epoch': 28.42}
+{'loss': 2.7403, 'learning_rate': 4.759162999999997e-06, 'epoch': 28.45}
+{'loss': 2.7394, 'learning_rate': 4.709262999999998e-06, 'epoch': 28.48}
+{'loss': 2.7431, 'learning_rate': 4.659362999999998e-06, 'epoch': 28.51}
+{'loss': 2.744, 'learning_rate': 4.609462999999998e-06, 'epoch': 28.54}
+{'loss': 2.7463, 'learning_rate': 4.5595629999999974e-06, 'epoch': 28.58}
+{'loss': 2.7502, 'learning_rate': 4.509662999999997e-06, 'epoch': 28.61}
+{'loss': 2.7445, 'learning_rate': 4.459762999999997e-06, 'epoch': 28.64}
+{'loss': 2.7435, 'learning_rate': 4.409862999999997e-06, 'epoch': 28.67}
+{'loss': 2.754, 'learning_rate': 4.359962999999997e-06, 'epoch': 28.7}
+{'loss': 2.7543, 'learning_rate': 4.3100629999999975e-06, 'epoch': 28.73}
+{'loss': 2.7345, 'learning_rate': 4.2601630000000025e-06, 'epoch': 28.76}
+{'loss': 2.748, 'learning_rate': 4.210263000000002e-06, 'epoch': 28.8}
+{'loss': 2.7541, 'learning_rate': 4.160363000000002e-06, 'epoch': 28.83}
+{'loss': 2.7553, 'learning_rate': 4.110463000000003e-06, 'epoch': 28.86}
+{'loss': 2.7526, 'learning_rate': 4.060563000000003e-06, 'epoch': 28.89}
+{'loss': 2.7415, 'learning_rate': 4.0106630000000026e-06, 'epoch': 28.92}
+{'loss': 2.7534, 'learning_rate': 3.960763000000002e-06, 'epoch': 28.95}
+{'loss': 2.7391, 'learning_rate': 3.910863000000002e-06, 'epoch': 28.98}
+{'loss': 2.7437, 'learning_rate': 3.860963000000002e-06, 'epoch': 29.02}
+{'loss': 2.7474, 'learning_rate': 3.8110630000000024e-06, 'epoch': 29.05}
+{'loss': 2.7358, 'learning_rate': 3.7611630000000022e-06, 'epoch': 29.08}
+{'loss': 2.7343, 'learning_rate': 3.7112630000000025e-06, 'epoch': 29.11}
+{'loss': 2.7373, 'learning_rate': 3.6613630000000015e-06, 'epoch': 29.14}
+{'loss': 2.727, 'learning_rate': 3.6114630000000022e-06, 'epoch': 29.17}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 12:41:39 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.9761621952056885, 'eval_rouge1': 44.9834, 'eval_rouge2': 21.6354, 'eval_rougeL': 36.6288, 'eval_rougeLsum': 36.6615, 'eval_gen_len': 28.4169, 'eval_runtime': 698.5667, 'eval_samples_per_second': 2.29, 'eval_steps_per_second': 0.143, 'epoch': 29.17}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-93000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-93000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-93000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-93000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-93000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-90000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.7553, 'learning_rate': 3.5615630000000016e-06, 'epoch': 29.2}
+{'loss': 2.7349, 'learning_rate': 3.511663000000002e-06, 'epoch': 29.23}
+{'loss': 2.7336, 'learning_rate': 3.4617630000000018e-06, 'epoch': 29.27}
+{'loss': 2.74, 'learning_rate': 3.411863000000002e-06, 'epoch': 29.3}
+{'loss': 2.7431, 'learning_rate': 3.361963000000002e-06, 'epoch': 29.33}
+{'loss': 2.7413, 'learning_rate': 3.312063000000002e-06, 'epoch': 29.36}
+{'loss': 2.7424, 'learning_rate': 3.2621630000000016e-06, 'epoch': 29.39}
+{'loss': 2.7471, 'learning_rate': 3.2122630000000023e-06, 'epoch': 29.42}
+{'loss': 2.7369, 'learning_rate': 3.1623630000000017e-06, 'epoch': 29.45}
+{'loss': 2.7449, 'learning_rate': 3.1124630000000016e-06, 'epoch': 29.49}
+{'loss': 2.7384, 'learning_rate': 3.0625630000000014e-06, 'epoch': 29.52}
+{'loss': 2.7335, 'learning_rate': 3.0126630000000017e-06, 'epoch': 29.55}
+{'loss': 2.7394, 'learning_rate': 2.9627630000000016e-06, 'epoch': 29.58}
+{'loss': 2.7418, 'learning_rate': 2.9128630000000014e-06, 'epoch': 29.61}
+{'loss': 2.7415, 'learning_rate': 2.8629630000000013e-06, 'epoch': 29.64}
+{'loss': 2.7568, 'learning_rate': 2.8130630000000015e-06, 'epoch': 29.67}
+{'loss': 2.7436, 'learning_rate': 2.763661999999999e-06, 'epoch': 29.71}
+{'loss': 2.737, 'learning_rate': 2.713761999999999e-06, 'epoch': 29.74}
+{'loss': 2.7372, 'learning_rate': 2.663861999999999e-06, 'epoch': 29.77}
+{'loss': 2.7443, 'learning_rate': 2.613961999999999e-06, 'epoch': 29.8}
+{'loss': 2.7532, 'learning_rate': 2.5640619999999987e-06, 'epoch': 29.83}
+{'loss': 2.7457, 'learning_rate': 2.514161999999999e-06, 'epoch': 29.86}
+{'loss': 2.7367, 'learning_rate': 2.464261999999999e-06, 'epoch': 29.89}
+{'loss': 2.7413, 'learning_rate': 2.4143619999999987e-06, 'epoch': 29.92}
+{'loss': 2.7446, 'learning_rate': 2.3644619999999985e-06, 'epoch': 29.96}
+{'loss': 2.7502, 'learning_rate': 2.3145619999999988e-06, 'epoch': 29.99}
+{'loss': 2.7506, 'learning_rate': 2.2646619999999986e-06, 'epoch': 30.02}
+{'loss': 2.7403, 'learning_rate': 2.2147619999999985e-06, 'epoch': 30.05}
+{'loss': 2.746, 'learning_rate': 2.1648619999999983e-06, 'epoch': 30.08}
+{'loss': 2.7363, 'learning_rate': 2.1149619999999986e-06, 'epoch': 30.11}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 13:07:38 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.975123882293701, 'eval_rouge1': 44.945, 'eval_rouge2': 21.6015, 'eval_rougeL': 36.6088, 'eval_rougeLsum': 36.6519, 'eval_gen_len': 28.3962, 'eval_runtime': 696.6497, 'eval_samples_per_second': 2.297, 'eval_steps_per_second': 0.144, 'epoch': 30.11}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-96000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-96000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-96000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-96000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-96000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-93000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.7542, 'learning_rate': 2.0650619999999985e-06, 'epoch': 30.14}
+{'loss': 2.7297, 'learning_rate': 2.0151619999999983e-06, 'epoch': 30.18}
+{'loss': 2.739, 'learning_rate': 1.9652619999999986e-06, 'epoch': 30.21}
+{'loss': 2.7283, 'learning_rate': 1.9153619999999984e-06, 'epoch': 30.24}
+{'loss': 2.7396, 'learning_rate': 1.8654619999999983e-06, 'epoch': 30.27}
+{'loss': 2.7312, 'learning_rate': 1.8155619999999981e-06, 'epoch': 30.3}
+{'loss': 2.735, 'learning_rate': 1.7656619999999984e-06, 'epoch': 30.33}
+{'loss': 2.7458, 'learning_rate': 1.7157619999999983e-06, 'epoch': 30.36}
+{'loss': 2.7401, 'learning_rate': 1.6658619999999983e-06, 'epoch': 30.4}
+{'loss': 2.7471, 'learning_rate': 1.615961999999998e-06, 'epoch': 30.43}
+{'loss': 2.7353, 'learning_rate': 1.5660619999999984e-06, 'epoch': 30.46}
+{'loss': 2.748, 'learning_rate': 1.516161999999998e-06, 'epoch': 30.49}
+{'loss': 2.7309, 'learning_rate': 1.466261999999998e-06, 'epoch': 30.52}
+{'loss': 2.7387, 'learning_rate': 1.4163619999999978e-06, 'epoch': 30.55}
+{'loss': 2.7386, 'learning_rate': 1.366461999999998e-06, 'epoch': 30.58}
+{'loss': 2.7324, 'learning_rate': 1.316561999999998e-06, 'epoch': 30.61}
+{'loss': 2.7508, 'learning_rate': 1.2666619999999978e-06, 'epoch': 30.65}
+{'loss': 2.7351, 'learning_rate': 1.2167619999999976e-06, 'epoch': 30.68}
+{'loss': 2.7385, 'learning_rate': 1.1668619999999979e-06, 'epoch': 30.71}
+{'loss': 2.7351, 'learning_rate': 1.1169619999999977e-06, 'epoch': 30.74}
+{'loss': 2.743, 'learning_rate': 1.0670619999999976e-06, 'epoch': 30.77}
+{'loss': 2.7456, 'learning_rate': 1.0171619999999974e-06, 'epoch': 30.8}
+{'loss': 2.7454, 'learning_rate': 9.672619999999975e-07, 'epoch': 30.83}
+{'loss': 2.7391, 'learning_rate': 9.173619999999975e-07, 'epoch': 30.87}
+{'loss': 2.7282, 'learning_rate': 8.679610000000006e-07, 'epoch': 30.9}
+{'loss': 2.7437, 'learning_rate': 8.180610000000007e-07, 'epoch': 30.93}
+{'loss': 2.7341, 'learning_rate': 7.681610000000006e-07, 'epoch': 30.96}
+{'loss': 2.7346, 'learning_rate': 7.182610000000006e-07, 'epoch': 30.99}
+{'loss': 2.7489, 'learning_rate': 6.683610000000005e-07, 'epoch': 31.02}
+{'loss': 2.7259, 'learning_rate': 6.184610000000005e-07, 'epoch': 31.05}
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 13:28:44 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.975518226623535, 'eval_rouge1': 44.8959, 'eval_rouge2': 21.6243, 'eval_rougeL': 36.5838, 'eval_rougeLsum': 36.6024, 'eval_gen_len': 28.6606, 'eval_runtime': 390.5559, 'eval_samples_per_second': 4.097, 'eval_steps_per_second': 0.256, 'epoch': 31.05}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-99000
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-99000/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-99000/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-99000/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-99000/special_tokens_map.json
+Deleting older checkpoint [checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-96000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.7433, 'learning_rate': 5.685610000000005e-07, 'epoch': 31.09}
+{'loss': 2.7337, 'learning_rate': 5.186610000000004e-07, 'epoch': 31.12}
+{'loss': 2.7431, 'learning_rate': 4.6876100000000037e-07, 'epoch': 31.15}
+{'loss': 2.7309, 'learning_rate': 4.188610000000003e-07, 'epoch': 31.18}
+{'loss': 2.7278, 'learning_rate': 3.689610000000003e-07, 'epoch': 31.21}
+{'loss': 2.7406, 'learning_rate': 3.1906100000000024e-07, 'epoch': 31.24}
+{'loss': 2.7439, 'learning_rate': 2.691610000000002e-07, 'epoch': 31.27}
+{'loss': 2.7443, 'learning_rate': 2.1926100000000015e-07, 'epoch': 31.3}
+{'loss': 2.7232, 'learning_rate': 1.693610000000001e-07, 'epoch': 31.34}
+{'loss': 2.7411, 'learning_rate': 1.1946100000000007e-07, 'epoch': 31.37}
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+Loading best model from checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/checkpoint-54000 (score: 21.7603).
+{'train_runtime': 51816.7482, 'train_samples_per_second': 123.512, 'train_steps_per_second': 1.93, 'train_loss': 2.8747081466674804, 'epoch': 31.37}
+Saving model checkpoint to checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01
+Configuration saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/config.json
+Model weights saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/pytorch_model.bin
+tokenizer config file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/tokenizer_config.json
+Special tokens file saved in checkpoints/xsum/20261006/xsum.lora_s4.am_none.ao_none.fm_lora.fo_none.abn200.fbn102.ac_add.fl_none.finit_bert.fs_1.unfrz_ef_.ms100000.ls0.1.warm0.wd0.01/special_tokens_map.json
+***** train metrics *****
+  epoch                    =       31.37
+  train_loss               =      2.8747
+  train_runtime            = 14:23:36.74
+  train_samples            =      204045
+  train_samples_per_second =     123.512
+  train_steps_per_second   =        1.93
+10/07/2026 13:33:15 - INFO - __main__ -   *** Evaluate ***
+***** Running Evaluation *****
+  Num examples = 1600
+  Batch size = 16
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 13:36:39 - INFO - absl -   Using default tokenizer.
+{'eval_loss': 2.9639792442321777, 'eval_rouge1': 45.2193, 'eval_rouge2': 21.7603, 'eval_rougeL': 36.743, 'eval_rougeLsum': 36.7512, 'eval_gen_len': 28.3825, 'eval_runtime': 205.0976, 'eval_samples_per_second': 7.801, 'eval_steps_per_second': 0.488, 'epoch': 31.37}
+***** eval metrics *****
+  epoch                   =      31.37
+  eval_gen_len            =    28.3825
+  eval_loss               =      2.964
+  eval_rouge1             =    45.2193
+  eval_rouge2             =    21.7603
+  eval_rougeL             =     36.743
+  eval_rougeLsum          =    36.7512
+  eval_runtime            = 0:03:25.09
+  eval_samples            =       1600
+  eval_samples_per_second =      7.801
+  eval_steps_per_second   =      0.488
+10/07/2026 13:36:40 - INFO - __main__ -   *** Predict ***
+***** Running Prediction *****
+  Num examples = 11334
+  Batch size = 16
+10/07/2026 13:59:32 - INFO - absl -   Using default tokenizer.
+***** predict metrics *****
+  predict_gen_len            =    28.4391
+  predict_loss               =     2.9826
+  predict_rouge1             =    44.6427
+  predict_rouge2             =    21.3568
+  predict_rougeL             =    36.3508
+  predict_rougeLsum          =    36.3351
+  predict_runtime            = 0:22:58.76
+  predict_samples            =      11334
+  predict_samples_per_second =       8.22
+  predict_steps_per_second   =      0.514
