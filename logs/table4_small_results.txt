@@ -1,0 +1,6 @@
+Run: checkpoints/wmt16_table4_small/20261007_175503_475486
+method               test BLEU (paper metric)  paper   diff  raw sacreBLEU  best dev BLEU
+Prefix, l=30                             34.6   35.2   -0.6        24.6975          25.71
+- gating, l=30                           34.4   34.9   -0.5         24.497          25.58
+PA (attn), r=30                          33.9   33.7   +0.2        24.1494          25.01
+MH PA (attn), r=30                       34.5   35.3   -0.8        24.5894          25.56

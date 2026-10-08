@@ -1,0 +1,1266 @@
+10/07/2026 17:55:09 - WARNING - __main__ -   Process rank: -1, device: cuda:0, n_gpu: 1distributed training: False, 16-bits training: True
+10/07/2026 17:55:09 - INFO - __main__ -   Training/evaluation parameters Seq2SeqTrainingArguments(
+_n_gpu=1,
+adafactor=False,
+adam_beta1=0.9,
+adam_beta2=0.98,
+adam_epsilon=1e-06,
+dataloader_drop_last=False,
+dataloader_num_workers=0,
+dataloader_pin_memory=True,
+ddp_find_unused_parameters=False,
+debug=[],
+deepspeed=None,
+disable_tqdm=True,
+do_eval=True,
+do_predict=True,
+do_train=True,
+eval_accumulation_steps=None,
+eval_steps=5000,
+evaluation_strategy=IntervalStrategy.STEPS,
+fp16=True,
+fp16_backend=auto,
+fp16_full_eval=False,
+fp16_opt_level=O1,
+gradient_accumulation_steps=4,
+greater_is_better=False,
+group_by_length=False,
+ignore_data_skip=False,
+label_names=None,
+label_smoothing_factor=0.1,
+learning_rate=5e-05,
+length_column_name=length,
+load_best_model_at_end=True,
+local_rank=-1,
+log_level=-1,
+log_level_replica=-1,
+log_on_each_node=True,
+logging_dir=/work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/runs/Oct07_17-55-06_j-12413260-job-0,
+logging_first_step=False,
+logging_steps=100,
+logging_strategy=IntervalStrategy.STEPS,
+lr_scheduler_type=SchedulerType.POLYNOMIAL,
+max_grad_norm=1.0,
+max_steps=50000,
+metric_for_best_model=loss,
+mp_parameters=,
+no_cuda=False,
+num_train_epochs=30.0,
+output_dir=/work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix,
+overwrite_output_dir=True,
+past_index=-1,
+per_device_eval_batch_size=10,
+per_device_train_batch_size=10,
+predict_with_generate=True,
+prediction_loss_only=False,
+push_to_hub=False,
+push_to_hub_model_id=prefix,
+push_to_hub_organization=None,
+push_to_hub_token=None,
+remove_unused_columns=True,
+report_to=[],
+resume_from_checkpoint=None,
+run_name=wmt16.20261007_175503_475486.prefix.seed42,
+save_steps=5000,
+save_strategy=IntervalStrategy.STEPS,
+save_total_limit=2,
+seed=42,
+sharded_ddp=[],
+skip_memory_metrics=True,
+sortish_sampler=False,
+tpu_metrics_debug=False,
+tpu_num_cores=None,
+use_legacy_prediction_loop=False,
+warmup_ratio=0.0,
+warmup_steps=0,
+weight_decay=0.01,
+)
+10/07/2026 17:55:09 - WARNING - datasets.builder -   Using custom data configuration default-db27b96b73f0d349
+10/07/2026 17:55:09 - INFO - datasets.builder -   Overwrite dataset info from restored data version.
+10/07/2026 17:55:09 - INFO - datasets.info -   Loading Dataset info from /work/unify-parameter-efficient-tuning/checkpoints/hf_model/json/default-db27b96b73f0d349/0.0.0/45636811569ec4a6630521c18235dfbbab83b7ab572e3393c5ba68ccabe98264
+10/07/2026 17:55:09 - WARNING - datasets.builder -   Reusing dataset json (/work/unify-parameter-efficient-tuning/checkpoints/hf_model/json/default-db27b96b73f0d349/0.0.0/45636811569ec4a6630521c18235dfbbab83b7ab572e3393c5ba68ccabe98264)
+10/07/2026 17:55:09 - INFO - datasets.info -   Loading Dataset info from /work/unify-parameter-efficient-tuning/checkpoints/hf_model/json/default-db27b96b73f0d349/0.0.0/45636811569ec4a6630521c18235dfbbab83b7ab572e3393c5ba68ccabe98264
+  0%|          | 0/3 [00:00<?, ?it/s]100%|██████████| 3/3 [00:00<00:00, 180.59it/s]
+loading configuration file /work/unify-parameter-efficient-tuning/_setup/models/mbart-large-cc25/config.json
+Model config MBartConfig {
+  "_num_labels": 3,
+  "activation_dropout": 0.0,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": true,
+  "architectures": [
+    "MBartForConditionalGeneration"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "classifier_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "dropout": 0.1,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "forced_eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_length": 1024,
+  "max_position_embeddings": 1024,
+  "model_type": "mbart",
+  "normalize_before": true,
+  "normalize_embedding": true,
+  "num_beams": 5,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 1,
+  "scale_embedding": true,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "translation_en_to_ro": {
+      "decoder_start_token_id": 250020
+    }
+  },
+  "transformers_version": "4.9.0.dev0",
+  "use_cache": true,
+  "vocab_size": 250027
+}
+
+Could not locate the tokenizer configuration file, will try to use the model config instead.
+loading configuration file /work/unify-parameter-efficient-tuning/_setup/models/mbart-large-cc25/config.json
+Model config MBartConfig {
+  "_num_labels": 3,
+  "activation_dropout": 0.0,
+  "activation_function": "gelu",
+  "add_bias_logits": false,
+  "add_final_layer_norm": true,
+  "architectures": [
+    "MBartForConditionalGeneration"
+  ],
+  "attention_dropout": 0.0,
+  "bos_token_id": 0,
+  "classif_dropout": 0.0,
+  "classifier_dropout": 0.0,
+  "d_model": 1024,
+  "decoder_attention_heads": 16,
+  "decoder_ffn_dim": 4096,
+  "decoder_layerdrop": 0.0,
+  "decoder_layers": 12,
+  "dropout": 0.1,
+  "encoder_attention_heads": 16,
+  "encoder_ffn_dim": 4096,
+  "encoder_layerdrop": 0.0,
+  "encoder_layers": 12,
+  "eos_token_id": 2,
+  "forced_eos_token_id": 2,
+  "gradient_checkpointing": false,
+  "id2label": {
+    "0": "LABEL_0",
+    "1": "LABEL_1",
+    "2": "LABEL_2"
+  },
+  "init_std": 0.02,
+  "is_encoder_decoder": true,
+  "label2id": {
+    "LABEL_0": 0,
+    "LABEL_1": 1,
+    "LABEL_2": 2
+  },
+  "max_length": 1024,
+  "max_position_embeddings": 1024,
+  "model_type": "mbart",
+  "normalize_before": true,
+  "normalize_embedding": true,
+  "num_beams": 5,
+  "num_hidden_layers": 12,
+  "output_past": true,
+  "pad_token_id": 1,
+  "scale_embedding": true,
+  "static_position_embeddings": false,
+  "task_specific_params": {
+    "translation_en_to_ro": {
+      "decoder_start_token_id": 250020
+    }
+  },
+  "transformers_version": "4.9.0.dev0",
+  "use_cache": true,
+  "vocab_size": 250027
+}
+
+Didn't find file /work/unify-parameter-efficient-tuning/_setup/models/mbart-large-cc25/added_tokens.json. We won't load it.
+Didn't find file /work/unify-parameter-efficient-tuning/_setup/models/mbart-large-cc25/special_tokens_map.json. We won't load it.
+Didn't find file /work/unify-parameter-efficient-tuning/_setup/models/mbart-large-cc25/tokenizer_config.json. We won't load it.
+loading file /work/unify-parameter-efficient-tuning/_setup/models/mbart-large-cc25/sentencepiece.bpe.model
+loading file /work/unify-parameter-efficient-tuning/_setup/models/mbart-large-cc25/tokenizer.json
+loading file None
+loading file None
+loading file None
+Assigning ['ar_AR', 'cs_CZ', 'de_DE', 'en_XX', 'es_XX', 'et_EE', 'fi_FI', 'fr_XX', 'gu_IN', 'hi_IN', 'it_IT', 'ja_XX', 'kk_KZ', 'ko_KR', 'lt_LT', 'lv_LV', 'my_MM', 'ne_NP', 'nl_XX', 'ro_RO', 'ru_RU', 'si_LK', 'tr_TR', 'vi_VN', 'zh_CN'] to the additional_special_tokens key of the tokenizer
+loading weights file /work/unify-parameter-efficient-tuning/_setup/models/mbart-large-cc25/pytorch_model.bin
+All model checkpoint weights were used when initializing MBartForConditionalGeneration.
+
+All the weights of MBartForConditionalGeneration were initialized from the model checkpoint at /work/unify-parameter-efficient-tuning/_setup/models/mbart-large-cc25.
+If your task is similar to the task the model of the checkpoint was trained on, you can already use MBartForConditionalGeneration for predictions without further training.
+10/07/2026 17:55:18 - INFO - datasets.arrow_dataset -   Spawning 2 processes
+10/07/2026 17:55:19 - WARNING - datasets.fingerprint -   Parameter 'function'=<function main.<locals>.preprocess_function at 0x7f8c2888dee0> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+Running tokenizer on train dataset #0:   0%|          | 0/306 [00:00<?, ?ba/s]10/07/2026 17:55:19 - WARNING - datasets.fingerprint -   Parameter 'function'=<function main.<locals>.preprocess_function at 0x7f8c2888dee0> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+
+Running tokenizer on train dataset #1:   0%|          | 0/306 [00:00<?, ?ba/s][ARunning tokenizer on train dataset #0:   0%|          | 1/306 [00:00<01:05,  4.66ba/s]Running tokenizer on train dataset #0:   1%|▏         | 4/306 [00:00<00:23, 12.83ba/s]
+Running tokenizer on train dataset #1:   0%|          | 1/306 [00:00<01:56,  2.62ba/s][A
+Running tokenizer on train dataset #1:   1%|          | 2/306 [00:00<01:09,  4.38ba/s][ARunning tokenizer on train dataset #0:   2%|▏         | 6/306 [00:00<00:28, 10.51ba/s]
+Running tokenizer on train dataset #1:   1%|          | 3/306 [00:00<00:54,  5.55ba/s][A
+Running tokenizer on train dataset #1:   1%|▏         | 4/306 [00:00<00:49,  6.14ba/s][ARunning tokenizer on train dataset #0:   3%|▎         | 8/306 [00:00<00:31,  9.51ba/s]
+Running tokenizer on train dataset #1:   2%|▏         | 5/306 [00:00<00:47,  6.37ba/s][A
+Running tokenizer on train dataset #1:   2%|▏         | 6/306 [00:01<00:42,  7.00ba/s][ARunning tokenizer on train dataset #0:   3%|▎         | 10/306 [00:01<00:32,  9.19ba/s]
+Running tokenizer on train dataset #1:   2%|▏         | 7/306 [00:01<00:40,  7.45ba/s][A
+Running tokenizer on train dataset #1:   3%|▎         | 8/306 [00:01<00:37,  7.89ba/s][ARunning tokenizer on train dataset #0:   4%|▎         | 11/306 [00:01<00:39,  7.46ba/s]
+Running tokenizer on train dataset #1:   3%|▎         | 9/306 [00:01<00:36,  8.24ba/s][ARunning tokenizer on train dataset #0:   4%|▍         | 12/306 [00:01<00:39,  7.47ba/s]
+Running tokenizer on train dataset #1:   3%|▎         | 10/306 [00:01<00:34,  8.51ba/s][ARunning tokenizer on train dataset #0:   4%|▍         | 13/306 [00:01<00:37,  7.82ba/s]Running tokenizer on train dataset #0:   5%|▍         | 14/306 [00:01<00:35,  8.16ba/s]
+Running tokenizer on train dataset #1:   4%|▎         | 11/306 [00:01<00:49,  6.01ba/s][ARunning tokenizer on train dataset #0:   5%|▍         | 15/306 [00:01<00:35,  8.30ba/s]
+Running tokenizer on train dataset #1:   4%|▍         | 12/306 [00:01<00:45,  6.52ba/s][ARunning tokenizer on train dataset #0:   5%|▌         | 16/306 [00:01<00:34,  8.31ba/s]
+Running tokenizer on train dataset #1:   4%|▍         | 13/306 [00:01<00:41,  7.09ba/s][ARunning tokenizer on train dataset #0:   6%|▌         | 17/306 [00:02<00:34,  8.27ba/s]
+Running tokenizer on train dataset #1:   5%|▍         | 14/306 [00:02<00:38,  7.51ba/s][ARunning tokenizer on train dataset #0:   6%|▌         | 18/306 [00:02<00:34,  8.42ba/s]
+Running tokenizer on train dataset #1:   5%|▍         | 15/306 [00:02<00:38,  7.60ba/s][ARunning tokenizer on train dataset #0:   6%|▌         | 19/306 [00:02<00:34,  8.40ba/s]Running tokenizer on train dataset #0:   7%|▋         | 20/306 [00:02<00:33,  8.48ba/s]
+Running tokenizer on train dataset #1:   5%|▌         | 16/306 [00:02<00:38,  7.62ba/s][ARunning tokenizer on train dataset #0:   7%|▋         | 21/306 [00:02<00:33,  8.46ba/s]
+Running tokenizer on train dataset #1:   6%|▌         | 17/306 [00:02<00:36,  7.94ba/s][ARunning tokenizer on train dataset #0:   7%|▋         | 22/306 [00:02<00:33,  8.58ba/s]
+Running tokenizer on train dataset #1:   6%|▌         | 18/306 [00:02<00:35,  8.10ba/s][ARunning tokenizer on train dataset #0:   8%|▊         | 23/306 [00:02<00:33,  8.57ba/s]
+Running tokenizer on train dataset #1:   6%|▌         | 19/306 [00:02<00:34,  8.43ba/s][A
+Running tokenizer on train dataset #1:   7%|▋         | 20/306 [00:02<00:32,  8.70ba/s][ARunning tokenizer on train dataset #0:   8%|▊         | 24/306 [00:02<00:32,  8.55ba/s]
+Running tokenizer on train dataset #1:   7%|▋         | 21/306 [00:02<00:34,  8.36ba/s][ARunning tokenizer on train dataset #0:   8%|▊         | 25/306 [00:03<00:43,  6.49ba/s]
+Running tokenizer on train dataset #1:   7%|▋         | 22/306 [00:03<00:34,  8.31ba/s][A
+Running tokenizer on train dataset #1:   8%|▊         | 23/306 [00:03<00:33,  8.56ba/s][ARunning tokenizer on train dataset #0:   8%|▊         | 26/306 [00:03<00:40,  6.87ba/s]
+Running tokenizer on train dataset #1:   8%|▊         | 24/306 [00:03<00:32,  8.59ba/s][ARunning tokenizer on train dataset #0:   9%|▉         | 27/306 [00:03<00:39,  7.13ba/s]Running tokenizer on train dataset #0:   9%|▉         | 28/306 [00:03<00:36,  7.61ba/s]Running tokenizer on train dataset #0:   9%|▉         | 29/306 [00:03<00:38,  7.21ba/s]
+Running tokenizer on train dataset #1:   8%|▊         | 25/306 [00:03<00:49,  5.73ba/s][ARunning tokenizer on train dataset #0:  10%|▉         | 30/306 [00:03<00:40,  6.87ba/s]
+Running tokenizer on train dataset #1:   8%|▊         | 26/306 [00:03<00:47,  5.91ba/s][A
+Running tokenizer on train dataset #1:   9%|▉         | 27/306 [00:03<00:45,  6.10ba/s][ARunning tokenizer on train dataset #0:  10%|█         | 31/306 [00:03<00:41,  6.55ba/s]
+Running tokenizer on train dataset #1:   9%|▉         | 28/306 [00:04<00:44,  6.28ba/s][ARunning tokenizer on train dataset #0:  10%|█         | 32/306 [00:04<00:42,  6.48ba/s]
+Running tokenizer on train dataset #1:   9%|▉         | 29/306 [00:04<00:43,  6.36ba/s][ARunning tokenizer on train dataset #0:  11%|█         | 33/306 [00:04<00:41,  6.52ba/s]
+Running tokenizer on train dataset #1:  10%|▉         | 30/306 [00:04<00:43,  6.29ba/s][ARunning tokenizer on train dataset #0:  11%|█         | 34/306 [00:04<00:42,  6.38ba/s]Running tokenizer on train dataset #0:  11%|█▏        | 35/306 [00:04<00:41,  6.61ba/s]
+Running tokenizer on train dataset #1:  10%|█         | 31/306 [00:04<00:44,  6.15ba/s][ARunning tokenizer on train dataset #0:  12%|█▏        | 36/306 [00:04<00:39,  6.76ba/s]
+Running tokenizer on train dataset #1:  10%|█         | 32/306 [00:04<00:43,  6.28ba/s][A
+Running tokenizer on train dataset #1:  11%|█         | 33/306 [00:04<00:41,  6.55ba/s][ARunning tokenizer on train dataset #0:  12%|█▏        | 37/306 [00:04<00:52,  5.12ba/s]
+Running tokenizer on train dataset #1:  11%|█         | 34/306 [00:04<00:40,  6.68ba/s][A
+Running tokenizer on train dataset #1:  11%|█▏        | 35/306 [00:05<00:37,  7.15ba/s][ARunning tokenizer on train dataset #0:  12%|█▏        | 38/306 [00:05<00:47,  5.60ba/s]Running tokenizer on train dataset #0:  13%|█▎        | 39/306 [00:05<00:43,  6.08ba/s]
+Running tokenizer on train dataset #1:  12%|█▏        | 36/306 [00:05<00:38,  6.94ba/s][ARunning tokenizer on train dataset #0:  13%|█▎        | 40/306 [00:05<00:43,  6.18ba/s]Running tokenizer on train dataset #0:  13%|█▎        | 41/306 [00:05<00:42,  6.23ba/s]
+Running tokenizer on train dataset #1:  12%|█▏        | 37/306 [00:05<00:55,  4.87ba/s][ARunning tokenizer on train dataset #0:  14%|█▎        | 42/306 [00:05<00:41,  6.43ba/s]
+Running tokenizer on train dataset #1:  12%|█▏        | 38/306 [00:05<00:48,  5.51ba/s][ARunning tokenizer on train dataset #0:  14%|█▍        | 43/306 [00:05<00:40,  6.52ba/s]
+Running tokenizer on train dataset #1:  13%|█▎        | 39/306 [00:05<00:45,  5.91ba/s][ARunning tokenizer on train dataset #0:  14%|█▍        | 44/306 [00:05<00:39,  6.65ba/s]
+Running tokenizer on train dataset #1:  13%|█▎        | 40/306 [00:05<00:42,  6.32ba/s][ARunning tokenizer on train dataset #0:  15%|█▍        | 45/306 [00:06<00:38,  6.82ba/s]
+Running tokenizer on train dataset #1:  13%|█▎        | 41/306 [00:06<00:41,  6.35ba/s][ARunning tokenizer on train dataset #0:  15%|█▌        | 46/306 [00:06<00:37,  7.02ba/s]
+Running tokenizer on train dataset #1:  14%|█▎        | 42/306 [00:06<00:41,  6.33ba/s][ARunning tokenizer on train dataset #0:  15%|█▌        | 47/306 [00:06<00:37,  6.89ba/s]
+Running tokenizer on train dataset #1:  14%|█▍        | 43/306 [00:06<00:40,  6.48ba/s][ARunning tokenizer on train dataset #0:  16%|█▌        | 48/306 [00:06<00:37,  6.81ba/s]
+Running tokenizer on train dataset #1:  14%|█▍        | 44/306 [00:06<00:39,  6.60ba/s][A
+Running tokenizer on train dataset #1:  15%|█▍        | 45/306 [00:06<00:37,  6.88ba/s][ARunning tokenizer on train dataset #0:  16%|█▌        | 49/306 [00:06<00:48,  5.29ba/s]
+Running tokenizer on train dataset #1:  15%|█▌        | 46/306 [00:06<00:37,  6.87ba/s][ARunning tokenizer on train dataset #0:  16%|█▋        | 50/306 [00:07<00:46,  5.52ba/s]
+Running tokenizer on train dataset #1:  15%|█▌        | 47/306 [00:07<00:38,  6.66ba/s][ARunning tokenizer on train dataset #0:  17%|█▋        | 51/306 [00:07<00:44,  5.76ba/s]
+Running tokenizer on train dataset #1:  16%|█▌        | 48/306 [00:07<00:38,  6.62ba/s][ARunning tokenizer on train dataset #0:  17%|█▋        | 52/306 [00:07<00:43,  5.77ba/s]Running tokenizer on train dataset #0:  17%|█▋        | 53/306 [00:07<00:42,  5.89ba/s]
+Running tokenizer on train dataset #1:  16%|█▌        | 49/306 [00:07<00:55,  4.62ba/s][ARunning tokenizer on train dataset #0:  18%|█▊        | 54/306 [00:07<00:40,  6.16ba/s]
+Running tokenizer on train dataset #1:  16%|█▋        | 50/306 [00:07<00:50,  5.06ba/s][ARunning tokenizer on train dataset #0:  18%|█▊        | 55/306 [00:07<00:40,  6.17ba/s]
+Running tokenizer on train dataset #1:  17%|█▋        | 51/306 [00:07<00:46,  5.47ba/s][ARunning tokenizer on train dataset #0:  18%|█▊        | 56/306 [00:07<00:40,  6.21ba/s]
+Running tokenizer on train dataset #1:  17%|█▋        | 52/306 [00:07<00:42,  6.02ba/s][A
+Running tokenizer on train dataset #1:  17%|█▋        | 53/306 [00:08<00:38,  6.49ba/s][ARunning tokenizer on train dataset #0:  19%|█▊        | 57/306 [00:08<00:39,  6.35ba/s]Running tokenizer on train dataset #0:  19%|█▉        | 58/306 [00:08<00:37,  6.57ba/s]
+Running tokenizer on train dataset #1:  18%|█▊        | 54/306 [00:08<00:38,  6.51ba/s][ARunning tokenizer on train dataset #0:  19%|█▉        | 59/306 [00:08<00:36,  6.76ba/s]
+Running tokenizer on train dataset #1:  18%|█▊        | 55/306 [00:08<00:37,  6.70ba/s][A
+Running tokenizer on train dataset #1:  18%|█▊        | 56/306 [00:08<00:34,  7.32ba/s][A
+Running tokenizer on train dataset #1:  19%|█▊        | 57/306 [00:08<00:32,  7.67ba/s][ARunning tokenizer on train dataset #0:  20%|█▉        | 60/306 [00:08<00:45,  5.37ba/s]
+Running tokenizer on train dataset #1:  19%|█▉        | 58/306 [00:08<00:31,  7.81ba/s][ARunning tokenizer on train dataset #0:  20%|█▉        | 61/306 [00:08<00:43,  5.65ba/s]
+Running tokenizer on train dataset #1:  19%|█▉        | 59/306 [00:08<00:29,  8.25ba/s][ARunning tokenizer on train dataset #0:  20%|██        | 62/306 [00:08<00:41,  5.92ba/s]
+Running tokenizer on train dataset #1:  20%|█▉        | 60/306 [00:09<00:40,  6.04ba/s][ARunning tokenizer on train dataset #0:  21%|██        | 63/306 [00:09<00:40,  6.05ba/s]
+Running tokenizer on train dataset #1:  20%|█▉        | 61/306 [00:09<00:37,  6.51ba/s][ARunning tokenizer on train dataset #0:  21%|██        | 64/306 [00:09<00:39,  6.17ba/s]
+Running tokenizer on train dataset #1:  20%|██        | 62/306 [00:09<00:35,  6.79ba/s][ARunning tokenizer on train dataset #0:  21%|██        | 65/306 [00:09<00:38,  6.32ba/s]
+Running tokenizer on train dataset #1:  21%|██        | 63/306 [00:09<00:33,  7.21ba/s][ARunning tokenizer on train dataset #0:  22%|██▏       | 66/306 [00:09<00:36,  6.66ba/s]
+Running tokenizer on train dataset #1:  21%|██        | 64/306 [00:09<00:31,  7.73ba/s][ARunning tokenizer on train dataset #0:  22%|██▏       | 67/306 [00:09<00:33,  7.04ba/s]
+Running tokenizer on train dataset #1:  21%|██        | 65/306 [00:09<00:29,  8.08ba/s][ARunning tokenizer on train dataset #0:  22%|██▏       | 68/306 [00:09<00:34,  6.99ba/s]
+Running tokenizer on train dataset #1:  22%|██▏       | 66/306 [00:09<00:29,  8.15ba/s][A
+Running tokenizer on train dataset #1:  22%|██▏       | 67/306 [00:09<00:29,  8.03ba/s][ARunning tokenizer on train dataset #0:  23%|██▎       | 69/306 [00:09<00:34,  6.83ba/s]
+Running tokenizer on train dataset #1:  22%|██▏       | 68/306 [00:10<00:30,  7.92ba/s][ARunning tokenizer on train dataset #0:  23%|██▎       | 70/306 [00:10<00:34,  6.91ba/s]
+Running tokenizer on train dataset #1:  23%|██▎       | 69/306 [00:10<00:29,  8.17ba/s][A
+Running tokenizer on train dataset #1:  23%|██▎       | 70/306 [00:10<00:28,  8.42ba/s][ARunning tokenizer on train dataset #0:  23%|██▎       | 71/306 [00:10<00:41,  5.60ba/s]Running tokenizer on train dataset #0:  24%|██▎       | 72/306 [00:10<00:39,  5.94ba/s]
+Running tokenizer on train dataset #1:  23%|██▎       | 71/306 [00:10<00:38,  6.07ba/s][ARunning tokenizer on train dataset #0:  24%|██▍       | 73/306 [00:10<00:37,  6.18ba/s]
+Running tokenizer on train dataset #1:  24%|██▎       | 72/306 [00:10<00:34,  6.73ba/s][A
+Running tokenizer on train dataset #1:  24%|██▍       | 73/306 [00:10<00:33,  6.98ba/s][ARunning tokenizer on train dataset #0:  24%|██▍       | 74/306 [00:10<00:37,  6.24ba/s]
+Running tokenizer on train dataset #1:  24%|██▍       | 74/306 [00:10<00:31,  7.38ba/s][ARunning tokenizer on train dataset #0:  25%|██▍       | 75/306 [00:10<00:35,  6.50ba/s]
+Running tokenizer on train dataset #1:  25%|██▍       | 75/306 [00:11<00:29,  7.76ba/s][ARunning tokenizer on train dataset #0:  25%|██▍       | 76/306 [00:11<00:33,  6.78ba/s]
+Running tokenizer on train dataset #1:  25%|██▍       | 76/306 [00:11<00:28,  8.19ba/s][ARunning tokenizer on train dataset #0:  25%|██▌       | 77/306 [00:11<00:33,  6.81ba/s]
+Running tokenizer on train dataset #1:  25%|██▌       | 77/306 [00:11<00:27,  8.48ba/s][ARunning tokenizer on train dataset #0:  25%|██▌       | 78/306 [00:11<00:33,  6.73ba/s]
+Running tokenizer on train dataset #1:  25%|██▌       | 78/306 [00:11<00:29,  7.81ba/s][ARunning tokenizer on train dataset #0:  26%|██▌       | 79/306 [00:11<00:34,  6.66ba/s]
+Running tokenizer on train dataset #1:  26%|██▌       | 79/306 [00:11<00:29,  7.68ba/s][A
+Running tokenizer on train dataset #1:  26%|██▌       | 80/306 [00:11<00:29,  7.67ba/s][ARunning tokenizer on train dataset #0:  26%|██▌       | 80/306 [00:11<00:34,  6.64ba/s]
+Running tokenizer on train dataset #1:  26%|██▋       | 81/306 [00:11<00:28,  7.92ba/s][ARunning tokenizer on train dataset #0:  26%|██▋       | 81/306 [00:11<00:33,  6.66ba/s]
+Running tokenizer on train dataset #1:  27%|██▋       | 82/306 [00:12<00:37,  5.90ba/s][ARunning tokenizer on train dataset #0:  27%|██▋       | 82/306 [00:12<00:42,  5.24ba/s]
+Running tokenizer on train dataset #1:  27%|██▋       | 83/306 [00:12<00:33,  6.65ba/s][ARunning tokenizer on train dataset #0:  27%|██▋       | 83/306 [00:12<00:38,  5.73ba/s]
+Running tokenizer on train dataset #1:  27%|██▋       | 84/306 [00:12<00:31,  7.08ba/s][A
+Running tokenizer on train dataset #1:  28%|██▊       | 85/306 [00:12<00:29,  7.58ba/s][ARunning tokenizer on train dataset #0:  27%|██▋       | 84/306 [00:12<00:37,  5.95ba/s]
+Running tokenizer on train dataset #1:  28%|██▊       | 86/306 [00:12<00:27,  8.08ba/s][ARunning tokenizer on train dataset #0:  28%|██▊       | 85/306 [00:12<00:35,  6.31ba/s]
+Running tokenizer on train dataset #1:  28%|██▊       | 87/306 [00:12<00:26,  8.33ba/s][ARunning tokenizer on train dataset #0:  28%|██▊       | 86/306 [00:12<00:32,  6.83ba/s]
+Running tokenizer on train dataset #1:  29%|██▉       | 88/306 [00:12<00:25,  8.61ba/s][ARunning tokenizer on train dataset #0:  28%|██▊       | 87/306 [00:12<00:31,  6.94ba/s]
+Running tokenizer on train dataset #1:  29%|██▉       | 89/306 [00:12<00:24,  8.71ba/s][ARunning tokenizer on train dataset #0:  29%|██▉       | 88/306 [00:12<00:30,  7.11ba/s]
+Running tokenizer on train dataset #1:  29%|██▉       | 90/306 [00:12<00:24,  8.74ba/s][ARunning tokenizer on train dataset #0:  29%|██▉       | 89/306 [00:13<00:30,  7.21ba/s]
+Running tokenizer on train dataset #1:  30%|██▉       | 91/306 [00:13<00:26,  8.19ba/s][ARunning tokenizer on train dataset #0:  29%|██▉       | 90/306 [00:13<00:29,  7.23ba/s]
+Running tokenizer on train dataset #1:  30%|███       | 92/306 [00:13<00:27,  7.82ba/s][ARunning tokenizer on train dataset #0:  30%|██▉       | 91/306 [00:13<00:29,  7.27ba/s]Running tokenizer on train dataset #0:  30%|███       | 92/306 [00:13<00:29,  7.22ba/s]
+Running tokenizer on train dataset #1:  30%|███       | 93/306 [00:13<00:37,  5.75ba/s][A
+Running tokenizer on train dataset #1:  31%|███       | 95/306 [00:13<00:29,  7.14ba/s][ARunning tokenizer on train dataset #0:  30%|███       | 93/306 [00:13<00:37,  5.74ba/s]
+Running tokenizer on train dataset #1:  31%|███▏      | 96/306 [00:13<00:28,  7.36ba/s][ARunning tokenizer on train dataset #0:  31%|███       | 94/306 [00:13<00:33,  6.35ba/s]
+Running tokenizer on train dataset #1:  32%|███▏      | 97/306 [00:13<00:27,  7.61ba/s][ARunning tokenizer on train dataset #0:  31%|███       | 95/306 [00:14<00:31,  6.70ba/s]
+Running tokenizer on train dataset #1:  32%|███▏      | 98/306 [00:14<00:26,  7.80ba/s][ARunning tokenizer on train dataset #0:  31%|███▏      | 96/306 [00:14<00:30,  6.91ba/s]
+Running tokenizer on train dataset #1:  32%|███▏      | 99/306 [00:14<00:26,  7.94ba/s][ARunning tokenizer on train dataset #0:  32%|███▏      | 97/306 [00:14<00:29,  7.05ba/s]
+Running tokenizer on train dataset #1:  33%|███▎      | 100/306 [00:14<00:25,  8.02ba/s][ARunning tokenizer on train dataset #0:  32%|███▏      | 98/306 [00:14<00:29,  7.02ba/s]
+Running tokenizer on train dataset #1:  33%|███▎      | 101/306 [00:14<00:25,  8.11ba/s][ARunning tokenizer on train dataset #0:  32%|███▏      | 99/306 [00:14<00:28,  7.23ba/s]
+Running tokenizer on train dataset #1:  33%|███▎      | 102/306 [00:14<00:24,  8.22ba/s][A
+Running tokenizer on train dataset #1:  34%|███▎      | 103/306 [00:14<00:24,  8.20ba/s][ARunning tokenizer on train dataset #0:  33%|███▎      | 100/306 [00:14<00:28,  7.18ba/s]Running tokenizer on train dataset #0:  33%|███▎      | 101/306 [00:14<00:27,  7.33ba/s]Running tokenizer on train dataset #0:  33%|███▎      | 102/306 [00:14<00:28,  7.28ba/s]
+Running tokenizer on train dataset #1:  34%|███▍      | 104/306 [00:14<00:33,  5.98ba/s][A
+Running tokenizer on train dataset #1:  34%|███▍      | 105/306 [00:15<00:30,  6.49ba/s][ARunning tokenizer on train dataset #0:  34%|███▎      | 103/306 [00:15<00:28,  7.16ba/s]
+Running tokenizer on train dataset #1:  35%|███▍      | 106/306 [00:15<00:28,  6.99ba/s][A
+Running tokenizer on train dataset #1:  35%|███▍      | 107/306 [00:15<00:27,  7.32ba/s][ARunning tokenizer on train dataset #0:  34%|███▍      | 104/306 [00:15<00:36,  5.47ba/s]
+Running tokenizer on train dataset #1:  35%|███▌      | 108/306 [00:15<00:26,  7.56ba/s][ARunning tokenizer on train dataset #0:  34%|███▍      | 105/306 [00:15<00:34,  5.83ba/s]
+Running tokenizer on train dataset #1:  36%|███▌      | 109/306 [00:15<00:25,  7.78ba/s][ARunning tokenizer on train dataset #0:  35%|███▍      | 106/306 [00:15<00:30,  6.47ba/s]
+Running tokenizer on train dataset #1:  36%|███▌      | 110/306 [00:15<00:24,  7.98ba/s][ARunning tokenizer on train dataset #0:  35%|███▍      | 107/306 [00:15<00:28,  6.89ba/s]
+Running tokenizer on train dataset #1:  36%|███▋      | 111/306 [00:15<00:24,  8.08ba/s][ARunning tokenizer on train dataset #0:  35%|███▌      | 108/306 [00:15<00:28,  6.86ba/s]
+Running tokenizer on train dataset #1:  37%|███▋      | 112/306 [00:15<00:23,  8.14ba/s][A
+Running tokenizer on train dataset #1:  37%|███▋      | 113/306 [00:16<00:23,  8.19ba/s][ARunning tokenizer on train dataset #0:  36%|███▌      | 109/306 [00:16<00:28,  6.99ba/s]
+Running tokenizer on train dataset #1:  37%|███▋      | 114/306 [00:16<00:23,  8.19ba/s][ARunning tokenizer on train dataset #0:  36%|███▌      | 110/306 [00:16<00:28,  6.95ba/s]Running tokenizer on train dataset #0:  36%|███▋      | 111/306 [00:16<00:27,  6.97ba/s]
+Running tokenizer on train dataset #1:  38%|███▊      | 115/306 [00:16<00:32,  5.86ba/s][ARunning tokenizer on train dataset #0:  37%|███▋      | 112/306 [00:16<00:27,  7.02ba/s]
+Running tokenizer on train dataset #1:  38%|███▊      | 116/306 [00:16<00:29,  6.40ba/s][ARunning tokenizer on train dataset #0:  37%|███▋      | 113/306 [00:16<00:28,  6.85ba/s]
+Running tokenizer on train dataset #1:  38%|███▊      | 117/306 [00:16<00:27,  6.89ba/s][ARunning tokenizer on train dataset #0:  37%|███▋      | 114/306 [00:16<00:27,  6.97ba/s]
+Running tokenizer on train dataset #1:  39%|███▊      | 118/306 [00:16<00:25,  7.28ba/s][A
+Running tokenizer on train dataset #1:  39%|███▉      | 119/306 [00:16<00:25,  7.48ba/s][ARunning tokenizer on train dataset #0:  38%|███▊      | 115/306 [00:17<00:34,  5.53ba/s]
+Running tokenizer on train dataset #1:  39%|███▉      | 120/306 [00:17<00:24,  7.68ba/s][A
+Running tokenizer on train dataset #1:  40%|███▉      | 121/306 [00:17<00:23,  7.80ba/s][ARunning tokenizer on train dataset #0:  38%|███▊      | 116/306 [00:17<00:32,  5.89ba/s]
+Running tokenizer on train dataset #1:  40%|███▉      | 122/306 [00:17<00:23,  7.92ba/s][ARunning tokenizer on train dataset #0:  38%|███▊      | 117/306 [00:17<00:31,  6.02ba/s]
+Running tokenizer on train dataset #1:  40%|████      | 123/306 [00:17<00:22,  8.07ba/s][ARunning tokenizer on train dataset #0:  39%|███▊      | 118/306 [00:17<00:30,  6.19ba/s]
+Running tokenizer on train dataset #1:  41%|████      | 124/306 [00:17<00:22,  8.15ba/s][ARunning tokenizer on train dataset #0:  39%|███▉      | 119/306 [00:17<00:30,  6.19ba/s]
+Running tokenizer on train dataset #1:  41%|████      | 125/306 [00:17<00:22,  8.19ba/s][ARunning tokenizer on train dataset #0:  39%|███▉      | 120/306 [00:17<00:29,  6.35ba/s]
+Running tokenizer on train dataset #1:  41%|████      | 126/306 [00:17<00:30,  5.94ba/s][ARunning tokenizer on train dataset #0:  40%|███▉      | 121/306 [00:17<00:28,  6.51ba/s]
+Running tokenizer on train dataset #1:  42%|████▏     | 127/306 [00:18<00:27,  6.48ba/s][ARunning tokenizer on train dataset #0:  40%|███▉      | 122/306 [00:18<00:27,  6.60ba/s]
+Running tokenizer on train dataset #1:  42%|████▏     | 128/306 [00:18<00:25,  6.92ba/s][ARunning tokenizer on train dataset #0:  40%|████      | 123/306 [00:18<00:28,  6.50ba/s]
+Running tokenizer on train dataset #1:  42%|████▏     | 129/306 [00:18<00:24,  7.33ba/s][ARunning tokenizer on train dataset #0:  41%|████      | 124/306 [00:18<00:27,  6.72ba/s]
+Running tokenizer on train dataset #1:  42%|████▏     | 130/306 [00:18<00:23,  7.62ba/s][ARunning tokenizer on train dataset #0:  41%|████      | 125/306 [00:18<00:26,  6.93ba/s]
+Running tokenizer on train dataset #1:  43%|████▎     | 131/306 [00:18<00:22,  7.85ba/s][A
+Running tokenizer on train dataset #1:  43%|████▎     | 132/306 [00:18<00:21,  8.01ba/s][A
+Running tokenizer on train dataset #1:  43%|████▎     | 133/306 [00:18<00:21,  8.19ba/s][ARunning tokenizer on train dataset #0:  41%|████      | 126/306 [00:18<00:31,  5.70ba/s]
+Running tokenizer on train dataset #1:  44%|████▍     | 134/306 [00:18<00:20,  8.25ba/s][ARunning tokenizer on train dataset #0:  42%|████▏     | 127/306 [00:18<00:28,  6.26ba/s]
+Running tokenizer on train dataset #1:  44%|████▍     | 135/306 [00:19<00:20,  8.20ba/s][ARunning tokenizer on train dataset #0:  42%|████▏     | 128/306 [00:19<00:27,  6.54ba/s]
+Running tokenizer on train dataset #1:  44%|████▍     | 136/306 [00:19<00:20,  8.24ba/s][ARunning tokenizer on train dataset #0:  42%|████▏     | 129/306 [00:19<00:26,  6.76ba/s]Running tokenizer on train dataset #0:  42%|████▏     | 130/306 [00:19<00:25,  6.88ba/s]
+Running tokenizer on train dataset #1:  45%|████▍     | 137/306 [00:19<00:26,  6.39ba/s][ARunning tokenizer on train dataset #0:  43%|████▎     | 131/306 [00:19<00:24,  7.02ba/s]
+Running tokenizer on train dataset #1:  45%|████▌     | 138/306 [00:19<00:24,  6.87ba/s][ARunning tokenizer on train dataset #0:  43%|████▎     | 132/306 [00:19<00:24,  7.03ba/s]
+Running tokenizer on train dataset #1:  45%|████▌     | 139/306 [00:19<00:23,  7.22ba/s][ARunning tokenizer on train dataset #0:  43%|████▎     | 133/306 [00:19<00:24,  7.18ba/s]
+Running tokenizer on train dataset #1:  46%|████▌     | 140/306 [00:19<00:21,  7.55ba/s][A
+Running tokenizer on train dataset #1:  46%|████▌     | 141/306 [00:19<00:21,  7.76ba/s][ARunning tokenizer on train dataset #0:  44%|████▍     | 134/306 [00:19<00:23,  7.18ba/s]
+Running tokenizer on train dataset #1:  46%|████▋     | 142/306 [00:19<00:20,  7.88ba/s][ARunning tokenizer on train dataset #0:  44%|████▍     | 135/306 [00:19<00:23,  7.34ba/s]
+Running tokenizer on train dataset #1:  47%|████▋     | 143/306 [00:20<00:20,  7.97ba/s][ARunning tokenizer on train dataset #0:  44%|████▍     | 136/306 [00:20<00:23,  7.31ba/s]
+Running tokenizer on train dataset #1:  47%|████▋     | 144/306 [00:20<00:19,  8.12ba/s][A
+Running tokenizer on train dataset #1:  47%|████▋     | 145/306 [00:20<00:19,  8.12ba/s][ARunning tokenizer on train dataset #0:  45%|████▍     | 137/306 [00:20<00:29,  5.77ba/s]
+Running tokenizer on train dataset #1:  48%|████▊     | 146/306 [00:20<00:19,  8.14ba/s][ARunning tokenizer on train dataset #0:  45%|████▌     | 138/306 [00:20<00:27,  6.08ba/s]
+Running tokenizer on train dataset #1:  48%|████▊     | 147/306 [00:20<00:19,  8.12ba/s][ARunning tokenizer on train dataset #0:  45%|████▌     | 139/306 [00:20<00:26,  6.30ba/s]Running tokenizer on train dataset #0:  46%|████▌     | 140/306 [00:20<00:25,  6.62ba/s]
+Running tokenizer on train dataset #1:  48%|████▊     | 148/306 [00:20<00:24,  6.44ba/s][A
+Running tokenizer on train dataset #1:  49%|████▊     | 149/306 [00:20<00:22,  6.88ba/s][ARunning tokenizer on train dataset #0:  46%|████▌     | 141/306 [00:20<00:24,  6.73ba/s]
+Running tokenizer on train dataset #1:  49%|████▉     | 150/306 [00:21<00:21,  7.29ba/s][ARunning tokenizer on train dataset #0:  46%|████▋     | 142/306 [00:21<00:23,  6.85ba/s]
+Running tokenizer on train dataset #1:  49%|████▉     | 151/306 [00:21<00:20,  7.59ba/s][ARunning tokenizer on train dataset #0:  47%|████▋     | 143/306 [00:21<00:24,  6.73ba/s]
+Running tokenizer on train dataset #1:  50%|████▉     | 152/306 [00:21<00:19,  7.84ba/s][ARunning tokenizer on train dataset #0:  47%|████▋     | 144/306 [00:21<00:24,  6.72ba/s]
+Running tokenizer on train dataset #1:  50%|█████     | 153/306 [00:21<00:19,  8.02ba/s][A
+Running tokenizer on train dataset #1:  50%|█████     | 154/306 [00:21<00:18,  8.05ba/s][ARunning tokenizer on train dataset #0:  47%|████▋     | 145/306 [00:21<00:24,  6.62ba/s]
+Running tokenizer on train dataset #1:  51%|█████     | 155/306 [00:21<00:18,  8.16ba/s][ARunning tokenizer on train dataset #0:  48%|████▊     | 146/306 [00:21<00:23,  6.68ba/s]
+Running tokenizer on train dataset #1:  51%|█████     | 156/306 [00:21<00:18,  8.25ba/s][ARunning tokenizer on train dataset #0:  48%|████▊     | 147/306 [00:21<00:22,  6.96ba/s]
+Running tokenizer on train dataset #1:  51%|█████▏    | 157/306 [00:21<00:17,  8.32ba/s][A
+Running tokenizer on train dataset #1:  52%|█████▏    | 158/306 [00:22<00:17,  8.36ba/s][ARunning tokenizer on train dataset #0:  48%|████▊     | 148/306 [00:22<00:28,  5.63ba/s]Running tokenizer on train dataset #0:  49%|████▊     | 149/306 [00:22<00:26,  6.00ba/s]
+Running tokenizer on train dataset #1:  52%|█████▏    | 159/306 [00:22<00:22,  6.52ba/s][A
+Running tokenizer on train dataset #1:  52%|█████▏    | 160/306 [00:22<00:20,  6.98ba/s][ARunning tokenizer on train dataset #0:  49%|████▉     | 150/306 [00:22<00:25,  6.21ba/s]
+Running tokenizer on train dataset #1:  53%|█████▎    | 161/306 [00:22<00:19,  7.34ba/s][ARunning tokenizer on train dataset #0:  49%|████▉     | 151/306 [00:22<00:23,  6.50ba/s]
+Running tokenizer on train dataset #1:  53%|█████▎    | 162/306 [00:22<00:19,  7.57ba/s][ARunning tokenizer on train dataset #0:  50%|████▉     | 152/306 [00:22<00:22,  7.00ba/s]
+Running tokenizer on train dataset #1:  53%|█████▎    | 163/306 [00:22<00:18,  7.76ba/s][ARunning tokenizer on train dataset #0:  50%|█████     | 153/306 [00:22<00:21,  7.06ba/s]
+Running tokenizer on train dataset #1:  54%|█████▎    | 164/306 [00:22<00:17,  7.93ba/s][ARunning tokenizer on train dataset #0:  50%|█████     | 154/306 [00:22<00:21,  7.07ba/s]
+Running tokenizer on train dataset #1:  54%|█████▍    | 165/306 [00:22<00:17,  8.04ba/s][ARunning tokenizer on train dataset #0:  51%|█████     | 155/306 [00:23<00:21,  7.13ba/s]
+Running tokenizer on train dataset #1:  54%|█████▍    | 166/306 [00:23<00:17,  8.06ba/s][ARunning tokenizer on train dataset #0:  51%|█████     | 156/306 [00:23<00:20,  7.25ba/s]
+Running tokenizer on train dataset #1:  55%|█████▍    | 167/306 [00:23<00:16,  8.18ba/s][A
+Running tokenizer on train dataset #1:  55%|█████▍    | 168/306 [00:23<00:16,  8.20ba/s][ARunning tokenizer on train dataset #0:  51%|█████▏    | 157/306 [00:23<00:21,  6.93ba/s]
+Running tokenizer on train dataset #1:  55%|█████▌    | 169/306 [00:23<00:16,  8.18ba/s][ARunning tokenizer on train dataset #0:  52%|█████▏    | 158/306 [00:23<00:21,  6.93ba/s]
+Running tokenizer on train dataset #1:  56%|█████▌    | 170/306 [00:23<00:21,  6.37ba/s][ARunning tokenizer on train dataset #0:  52%|█████▏    | 159/306 [00:23<00:26,  5.58ba/s]
+Running tokenizer on train dataset #1:  56%|█████▌    | 171/306 [00:23<00:19,  6.80ba/s][ARunning tokenizer on train dataset #0:  52%|█████▏    | 160/306 [00:23<00:24,  5.87ba/s]
+Running tokenizer on train dataset #1:  56%|█████▌    | 172/306 [00:23<00:18,  7.21ba/s][ARunning tokenizer on train dataset #0:  53%|█████▎    | 161/306 [00:24<00:23,  6.06ba/s]
+Running tokenizer on train dataset #1:  57%|█████▋    | 173/306 [00:24<00:17,  7.55ba/s][A
+Running tokenizer on train dataset #1:  57%|█████▋    | 174/306 [00:24<00:16,  7.79ba/s][ARunning tokenizer on train dataset #0:  53%|█████▎    | 162/306 [00:24<00:22,  6.32ba/s]
+Running tokenizer on train dataset #1:  57%|█████▋    | 175/306 [00:24<00:16,  7.88ba/s][ARunning tokenizer on train dataset #0:  53%|█████▎    | 163/306 [00:24<00:22,  6.32ba/s]
+Running tokenizer on train dataset #1:  58%|█████▊    | 176/306 [00:24<00:16,  8.02ba/s][ARunning tokenizer on train dataset #0:  54%|█████▎    | 164/306 [00:24<00:21,  6.46ba/s]
+Running tokenizer on train dataset #1:  58%|█████▊    | 177/306 [00:24<00:15,  8.16ba/s][ARunning tokenizer on train dataset #0:  54%|█████▍    | 165/306 [00:24<00:21,  6.45ba/s]
+Running tokenizer on train dataset #1:  58%|█████▊    | 178/306 [00:24<00:15,  8.24ba/s][A
+Running tokenizer on train dataset #1:  58%|█████▊    | 179/306 [00:24<00:15,  8.21ba/s][ARunning tokenizer on train dataset #0:  54%|█████▍    | 166/306 [00:24<00:21,  6.50ba/s]
+Running tokenizer on train dataset #1:  59%|█████▉    | 180/306 [00:24<00:15,  8.24ba/s][ARunning tokenizer on train dataset #0:  55%|█████▍    | 167/306 [00:24<00:21,  6.61ba/s]Running tokenizer on train dataset #0:  55%|█████▍    | 168/306 [00:25<00:19,  7.00ba/s]
+Running tokenizer on train dataset #1:  59%|█████▉    | 181/306 [00:25<00:19,  6.44ba/s][ARunning tokenizer on train dataset #0:  55%|█████▌    | 169/306 [00:25<00:18,  7.27ba/s]
+Running tokenizer on train dataset #1:  59%|█████▉    | 182/306 [00:25<00:17,  6.93ba/s][A
+Running tokenizer on train dataset #1:  60%|█████▉    | 183/306 [00:25<00:16,  7.29ba/s][ARunning tokenizer on train dataset #0:  56%|█████▌    | 170/306 [00:25<00:24,  5.66ba/s]
+Running tokenizer on train dataset #1:  60%|██████    | 184/306 [00:25<00:16,  7.59ba/s][A
+Running tokenizer on train dataset #1:  60%|██████    | 185/306 [00:25<00:15,  7.81ba/s][ARunning tokenizer on train dataset #0:  56%|█████▌    | 171/306 [00:25<00:22,  5.96ba/s]
+Running tokenizer on train dataset #1:  61%|██████    | 186/306 [00:25<00:15,  7.94ba/s][ARunning tokenizer on train dataset #0:  56%|█████▌    | 172/306 [00:25<00:21,  6.26ba/s]
+Running tokenizer on train dataset #1:  61%|██████    | 187/306 [00:25<00:14,  7.98ba/s][ARunning tokenizer on train dataset #0:  57%|█████▋    | 173/306 [00:25<00:20,  6.53ba/s]
+Running tokenizer on train dataset #1:  61%|██████▏   | 188/306 [00:25<00:14,  8.01ba/s][ARunning tokenizer on train dataset #0:  57%|█████▋    | 174/306 [00:26<00:20,  6.54ba/s]
+Running tokenizer on train dataset #1:  62%|██████▏   | 189/306 [00:26<00:14,  8.10ba/s][ARunning tokenizer on train dataset #0:  57%|█████▋    | 175/306 [00:26<00:19,  6.63ba/s]
+Running tokenizer on train dataset #1:  62%|██████▏   | 190/306 [00:26<00:14,  8.18ba/s][ARunning tokenizer on train dataset #0:  58%|█████▊    | 176/306 [00:26<00:19,  6.62ba/s]
+Running tokenizer on train dataset #1:  62%|██████▏   | 191/306 [00:26<00:14,  8.14ba/s][ARunning tokenizer on train dataset #0:  58%|█████▊    | 177/306 [00:26<00:19,  6.69ba/s]
+Running tokenizer on train dataset #1:  63%|██████▎   | 192/306 [00:26<00:18,  6.31ba/s][ARunning tokenizer on train dataset #0:  58%|█████▊    | 178/306 [00:26<00:19,  6.69ba/s]
+Running tokenizer on train dataset #1:  63%|██████▎   | 193/306 [00:26<00:16,  6.77ba/s][ARunning tokenizer on train dataset #0:  58%|█████▊    | 179/306 [00:26<00:18,  6.80ba/s]
+Running tokenizer on train dataset #1:  63%|██████▎   | 194/306 [00:26<00:15,  7.16ba/s][ARunning tokenizer on train dataset #0:  59%|█████▉    | 180/306 [00:26<00:18,  6.90ba/s]
+Running tokenizer on train dataset #1:  64%|██████▎   | 195/306 [00:26<00:14,  7.42ba/s][A
+Running tokenizer on train dataset #1:  64%|██████▍   | 196/306 [00:27<00:14,  7.64ba/s][A
+Running tokenizer on train dataset #1:  64%|██████▍   | 197/306 [00:27<00:13,  7.91ba/s][ARunning tokenizer on train dataset #0:  59%|█████▉    | 181/306 [00:27<00:22,  5.45ba/s]
+Running tokenizer on train dataset #1:  65%|██████▍   | 198/306 [00:27<00:13,  8.01ba/s][ARunning tokenizer on train dataset #0:  59%|█████▉    | 182/306 [00:27<00:21,  5.74ba/s]
+Running tokenizer on train dataset #1:  65%|██████▌   | 199/306 [00:27<00:13,  8.04ba/s][ARunning tokenizer on train dataset #0:  60%|█████▉    | 183/306 [00:27<00:19,  6.22ba/s]
+Running tokenizer on train dataset #1:  65%|██████▌   | 200/306 [00:27<00:13,  8.00ba/s][ARunning tokenizer on train dataset #0:  60%|██████    | 184/306 [00:27<00:19,  6.23ba/s]
+Running tokenizer on train dataset #1:  66%|██████▌   | 201/306 [00:27<00:12,  8.15ba/s][ARunning tokenizer on train dataset #0:  60%|██████    | 185/306 [00:27<00:18,  6.57ba/s]
+Running tokenizer on train dataset #1:  66%|██████▌   | 202/306 [00:27<00:12,  8.25ba/s][ARunning tokenizer on train dataset #0:  61%|██████    | 186/306 [00:27<00:18,  6.64ba/s]
+Running tokenizer on train dataset #1:  66%|██████▋   | 203/306 [00:28<00:15,  6.45ba/s][ARunning tokenizer on train dataset #0:  61%|██████    | 187/306 [00:28<00:17,  6.84ba/s]
+Running tokenizer on train dataset #1:  67%|██████▋   | 204/306 [00:28<00:14,  6.90ba/s][ARunning tokenizer on train dataset #0:  61%|██████▏   | 188/306 [00:28<00:16,  7.25ba/s]
+Running tokenizer on train dataset #1:  67%|██████▋   | 205/306 [00:28<00:13,  7.31ba/s][ARunning tokenizer on train dataset #0:  62%|██████▏   | 189/306 [00:28<00:15,  7.46ba/s]
+Running tokenizer on train dataset #1:  67%|██████▋   | 206/306 [00:28<00:13,  7.58ba/s][ARunning tokenizer on train dataset #0:  62%|██████▏   | 190/306 [00:28<00:15,  7.28ba/s]
+Running tokenizer on train dataset #1:  68%|██████▊   | 207/306 [00:28<00:12,  7.85ba/s][ARunning tokenizer on train dataset #0:  62%|██████▏   | 191/306 [00:28<00:15,  7.23ba/s]
+Running tokenizer on train dataset #1:  68%|██████▊   | 208/306 [00:28<00:12,  8.03ba/s][A
+Running tokenizer on train dataset #1:  68%|██████▊   | 209/306 [00:28<00:11,  8.16ba/s][ARunning tokenizer on train dataset #0:  63%|██████▎   | 192/306 [00:28<00:19,  5.85ba/s]
+Running tokenizer on train dataset #1:  69%|██████▊   | 210/306 [00:28<00:11,  8.22ba/s][ARunning tokenizer on train dataset #0:  63%|██████▎   | 193/306 [00:28<00:17,  6.31ba/s]
+Running tokenizer on train dataset #1:  69%|██████▉   | 211/306 [00:28<00:11,  8.25ba/s][ARunning tokenizer on train dataset #0:  63%|██████▎   | 194/306 [00:29<00:16,  6.66ba/s]
+Running tokenizer on train dataset #1:  69%|██████▉   | 212/306 [00:29<00:11,  8.24ba/s][A
+Running tokenizer on train dataset #1:  70%|██████▉   | 213/306 [00:29<00:11,  8.26ba/s][ARunning tokenizer on train dataset #0:  64%|██████▎   | 195/306 [00:29<00:16,  6.59ba/s]Running tokenizer on train dataset #0:  64%|██████▍   | 196/306 [00:29<00:16,  6.53ba/s]
+Running tokenizer on train dataset #1:  70%|██████▉   | 214/306 [00:29<00:14,  6.42ba/s][ARunning tokenizer on train dataset #0:  64%|██████▍   | 197/306 [00:29<00:16,  6.78ba/s]
+Running tokenizer on train dataset #1:  70%|███████   | 215/306 [00:29<00:13,  6.88ba/s][ARunning tokenizer on train dataset #0:  65%|██████▍   | 198/306 [00:29<00:15,  6.78ba/s]
+Running tokenizer on train dataset #1:  71%|███████   | 216/306 [00:29<00:12,  7.22ba/s][A
+Running tokenizer on train dataset #1:  71%|███████   | 217/306 [00:29<00:11,  7.51ba/s][ARunning tokenizer on train dataset #0:  65%|██████▌   | 199/306 [00:29<00:15,  6.78ba/s]
+Running tokenizer on train dataset #1:  71%|███████   | 218/306 [00:29<00:11,  7.72ba/s][ARunning tokenizer on train dataset #0:  65%|██████▌   | 200/306 [00:29<00:15,  6.71ba/s]
+Running tokenizer on train dataset #1:  72%|███████▏  | 219/306 [00:30<00:10,  7.91ba/s][ARunning tokenizer on train dataset #0:  66%|██████▌   | 201/306 [00:30<00:15,  6.67ba/s]
+Running tokenizer on train dataset #1:  72%|███████▏  | 220/306 [00:30<00:10,  8.08ba/s][ARunning tokenizer on train dataset #0:  66%|██████▌   | 202/306 [00:30<00:15,  6.67ba/s]
+Running tokenizer on train dataset #1:  72%|███████▏  | 221/306 [00:30<00:10,  8.17ba/s][A
+Running tokenizer on train dataset #1:  73%|███████▎  | 222/306 [00:30<00:10,  8.23ba/s][A
+Running tokenizer on train dataset #1:  73%|███████▎  | 223/306 [00:30<00:09,  8.40ba/s][ARunning tokenizer on train dataset #0:  66%|██████▋   | 203/306 [00:30<00:19,  5.38ba/s]
+Running tokenizer on train dataset #1:  73%|███████▎  | 224/306 [00:30<00:09,  8.38ba/s][ARunning tokenizer on train dataset #0:  67%|██████▋   | 204/306 [00:30<00:18,  5.56ba/s]
+Running tokenizer on train dataset #1:  74%|███████▎  | 225/306 [00:30<00:12,  6.54ba/s][ARunning tokenizer on train dataset #0:  67%|██████▋   | 205/306 [00:30<00:17,  5.67ba/s]
+Running tokenizer on train dataset #1:  74%|███████▍  | 226/306 [00:31<00:11,  6.78ba/s][ARunning tokenizer on train dataset #0:  67%|██████▋   | 206/306 [00:31<00:16,  6.08ba/s]Running tokenizer on train dataset #0:  68%|██████▊   | 207/306 [00:31<00:15,  6.55ba/s]
+Running tokenizer on train dataset #1:  74%|███████▍  | 227/306 [00:31<00:11,  7.03ba/s][ARunning tokenizer on train dataset #0:  68%|██████▊   | 208/306 [00:31<00:14,  6.83ba/s]
+Running tokenizer on train dataset #1:  75%|███████▍  | 228/306 [00:31<00:11,  6.91ba/s][ARunning tokenizer on train dataset #0:  68%|██████▊   | 209/306 [00:31<00:14,  6.90ba/s]
+Running tokenizer on train dataset #1:  75%|███████▍  | 229/306 [00:31<00:10,  7.05ba/s][A
+Running tokenizer on train dataset #1:  75%|███████▌  | 230/306 [00:31<00:10,  7.27ba/s][ARunning tokenizer on train dataset #0:  69%|██████▊   | 210/306 [00:31<00:14,  6.83ba/s]
+Running tokenizer on train dataset #1:  75%|███████▌  | 231/306 [00:31<00:09,  7.51ba/s][ARunning tokenizer on train dataset #0:  69%|██████▉   | 211/306 [00:31<00:13,  6.97ba/s]
+Running tokenizer on train dataset #1:  76%|███████▌  | 232/306 [00:31<00:09,  7.67ba/s][ARunning tokenizer on train dataset #0:  69%|██████▉   | 212/306 [00:31<00:13,  6.92ba/s]
+Running tokenizer on train dataset #1:  76%|███████▌  | 233/306 [00:31<00:09,  7.82ba/s][ARunning tokenizer on train dataset #0:  70%|██████▉   | 213/306 [00:31<00:13,  6.98ba/s]
+Running tokenizer on train dataset #1:  76%|███████▋  | 234/306 [00:32<00:09,  7.92ba/s][A
+Running tokenizer on train dataset #1:  77%|███████▋  | 235/306 [00:32<00:08,  8.05ba/s][ARunning tokenizer on train dataset #0:  70%|██████▉   | 214/306 [00:32<00:16,  5.73ba/s]Running tokenizer on train dataset #0:  70%|███████   | 215/306 [00:32<00:14,  6.15ba/s]
+Running tokenizer on train dataset #1:  77%|███████▋  | 236/306 [00:32<00:11,  6.35ba/s][ARunning tokenizer on train dataset #0:  71%|███████   | 216/306 [00:32<00:13,  6.46ba/s]
+Running tokenizer on train dataset #1:  77%|███████▋  | 237/306 [00:32<00:10,  6.83ba/s][A
+Running tokenizer on train dataset #1:  78%|███████▊  | 238/306 [00:32<00:09,  7.21ba/s][ARunning tokenizer on train dataset #0:  71%|███████   | 217/306 [00:32<00:13,  6.52ba/s]
+Running tokenizer on train dataset #1:  78%|███████▊  | 239/306 [00:32<00:08,  7.49ba/s][ARunning tokenizer on train dataset #0:  71%|███████   | 218/306 [00:32<00:13,  6.73ba/s]
+Running tokenizer on train dataset #1:  78%|███████▊  | 240/306 [00:32<00:08,  7.58ba/s][ARunning tokenizer on train dataset #0:  72%|███████▏  | 219/306 [00:32<00:12,  6.76ba/s]
+Running tokenizer on train dataset #1:  79%|███████▉  | 241/306 [00:33<00:08,  7.90ba/s][ARunning tokenizer on train dataset #0:  72%|███████▏  | 220/306 [00:33<00:12,  6.83ba/s]
+Running tokenizer on train dataset #1:  79%|███████▉  | 242/306 [00:33<00:08,  7.99ba/s][ARunning tokenizer on train dataset #0:  72%|███████▏  | 221/306 [00:33<00:12,  6.85ba/s]
+Running tokenizer on train dataset #1:  79%|███████▉  | 243/306 [00:33<00:07,  7.89ba/s][A
+Running tokenizer on train dataset #1:  80%|███████▉  | 244/306 [00:33<00:07,  7.84ba/s][ARunning tokenizer on train dataset #0:  73%|███████▎  | 222/306 [00:33<00:12,  6.57ba/s]
+Running tokenizer on train dataset #1:  80%|████████  | 245/306 [00:33<00:07,  7.63ba/s][ARunning tokenizer on train dataset #0:  73%|███████▎  | 223/306 [00:33<00:12,  6.82ba/s]
+Running tokenizer on train dataset #1:  80%|████████  | 246/306 [00:33<00:08,  7.49ba/s][ARunning tokenizer on train dataset #0:  73%|███████▎  | 224/306 [00:33<00:12,  6.66ba/s]
+Running tokenizer on train dataset #1:  81%|████████  | 247/306 [00:33<00:09,  6.09ba/s][ARunning tokenizer on train dataset #0:  74%|███████▎  | 225/306 [00:33<00:15,  5.39ba/s]
+Running tokenizer on train dataset #1:  81%|████████  | 248/306 [00:34<00:08,  6.59ba/s][ARunning tokenizer on train dataset #0:  74%|███████▍  | 226/306 [00:34<00:13,  5.93ba/s]
+Running tokenizer on train dataset #1:  81%|████████▏ | 249/306 [00:34<00:08,  7.02ba/s][ARunning tokenizer on train dataset #0:  74%|███████▍  | 227/306 [00:34<00:12,  6.38ba/s]
+Running tokenizer on train dataset #1:  82%|████████▏ | 250/306 [00:34<00:07,  7.20ba/s][ARunning tokenizer on train dataset #0:  75%|███████▍  | 228/306 [00:34<00:12,  6.27ba/s]
+Running tokenizer on train dataset #1:  82%|████████▏ | 251/306 [00:34<00:07,  7.48ba/s][ARunning tokenizer on train dataset #0:  75%|███████▍  | 229/306 [00:34<00:11,  6.57ba/s]
+Running tokenizer on train dataset #1:  82%|████████▏ | 252/306 [00:34<00:06,  7.76ba/s][A
+Running tokenizer on train dataset #1:  83%|████████▎ | 253/306 [00:34<00:06,  7.90ba/s][ARunning tokenizer on train dataset #0:  75%|███████▌  | 230/306 [00:34<00:11,  6.74ba/s]
+Running tokenizer on train dataset #1:  83%|████████▎ | 254/306 [00:34<00:06,  7.87ba/s][ARunning tokenizer on train dataset #0:  75%|███████▌  | 231/306 [00:34<00:10,  6.90ba/s]
+Running tokenizer on train dataset #1:  83%|████████▎ | 255/306 [00:34<00:06,  8.00ba/s][ARunning tokenizer on train dataset #0:  76%|███████▌  | 232/306 [00:34<00:10,  6.96ba/s]
+Running tokenizer on train dataset #1:  84%|████████▎ | 256/306 [00:35<00:06,  8.12ba/s][ARunning tokenizer on train dataset #0:  76%|███████▌  | 233/306 [00:35<00:10,  6.86ba/s]
+Running tokenizer on train dataset #1:  84%|████████▍ | 257/306 [00:35<00:06,  8.15ba/s][ARunning tokenizer on train dataset #0:  76%|███████▋  | 234/306 [00:35<00:10,  7.06ba/s]
+Running tokenizer on train dataset #1:  84%|████████▍ | 258/306 [00:35<00:07,  6.37ba/s][ARunning tokenizer on train dataset #0:  77%|███████▋  | 235/306 [00:35<00:10,  6.85ba/s]
+Running tokenizer on train dataset #1:  85%|████████▍ | 259/306 [00:35<00:06,  6.85ba/s][A
+Running tokenizer on train dataset #1:  85%|████████▍ | 260/306 [00:35<00:06,  7.17ba/s][ARunning tokenizer on train dataset #0:  77%|███████▋  | 236/306 [00:35<00:12,  5.54ba/s]
+Running tokenizer on train dataset #1:  85%|████████▌ | 261/306 [00:35<00:06,  7.44ba/s][ARunning tokenizer on train dataset #0:  77%|███████▋  | 237/306 [00:35<00:11,  5.91ba/s]
+Running tokenizer on train dataset #1:  86%|████████▌ | 262/306 [00:35<00:05,  7.63ba/s][ARunning tokenizer on train dataset #0:  78%|███████▊  | 238/306 [00:35<00:11,  5.89ba/s]
+Running tokenizer on train dataset #1:  86%|████████▌ | 263/306 [00:35<00:05,  7.76ba/s][A
+Running tokenizer on train dataset #1:  86%|████████▋ | 264/306 [00:36<00:05,  8.05ba/s][ARunning tokenizer on train dataset #0:  78%|███████▊  | 239/306 [00:36<00:11,  5.92ba/s]
+Running tokenizer on train dataset #1:  87%|████████▋ | 265/306 [00:36<00:05,  8.09ba/s][ARunning tokenizer on train dataset #0:  78%|███████▊  | 240/306 [00:36<00:10,  6.15ba/s]
+Running tokenizer on train dataset #1:  87%|████████▋ | 266/306 [00:36<00:04,  8.12ba/s][ARunning tokenizer on train dataset #0:  79%|███████▉  | 241/306 [00:36<00:10,  6.33ba/s]
+Running tokenizer on train dataset #1:  87%|████████▋ | 267/306 [00:36<00:04,  8.19ba/s][ARunning tokenizer on train dataset #0:  79%|███████▉  | 242/306 [00:36<00:09,  6.58ba/s]
+Running tokenizer on train dataset #1:  88%|████████▊ | 268/306 [00:36<00:04,  7.95ba/s][ARunning tokenizer on train dataset #0:  79%|███████▉  | 243/306 [00:36<00:09,  6.37ba/s]
+Running tokenizer on train dataset #1:  88%|████████▊ | 269/306 [00:36<00:05,  6.33ba/s][ARunning tokenizer on train dataset #0:  80%|███████▉  | 244/306 [00:36<00:09,  6.48ba/s]
+Running tokenizer on train dataset #1:  88%|████████▊ | 270/306 [00:36<00:05,  6.72ba/s][ARunning tokenizer on train dataset #0:  80%|████████  | 245/306 [00:36<00:08,  6.80ba/s]
+Running tokenizer on train dataset #1:  89%|████████▊ | 271/306 [00:37<00:05,  6.72ba/s][ARunning tokenizer on train dataset #0:  80%|████████  | 246/306 [00:37<00:08,  6.95ba/s]
+Running tokenizer on train dataset #1:  89%|████████▉ | 272/306 [00:37<00:05,  6.79ba/s][A
+Running tokenizer on train dataset #1:  89%|████████▉ | 273/306 [00:37<00:04,  6.93ba/s][ARunning tokenizer on train dataset #0:  81%|████████  | 247/306 [00:37<00:10,  5.43ba/s]
+Running tokenizer on train dataset #1:  90%|████████▉ | 274/306 [00:37<00:04,  7.01ba/s][ARunning tokenizer on train dataset #0:  81%|████████  | 248/306 [00:37<00:10,  5.73ba/s]
+Running tokenizer on train dataset #1:  90%|████████▉ | 275/306 [00:37<00:04,  7.20ba/s][ARunning tokenizer on train dataset #0:  81%|████████▏ | 249/306 [00:37<00:09,  5.78ba/s]
+Running tokenizer on train dataset #1:  90%|█████████ | 276/306 [00:37<00:04,  7.27ba/s][ARunning tokenizer on train dataset #0:  82%|████████▏ | 250/306 [00:37<00:09,  6.06ba/s]
+Running tokenizer on train dataset #1:  91%|█████████ | 277/306 [00:37<00:03,  7.35ba/s][ARunning tokenizer on train dataset #0:  82%|████████▏ | 251/306 [00:38<00:08,  6.17ba/s]
+Running tokenizer on train dataset #1:  91%|█████████ | 278/306 [00:38<00:03,  7.61ba/s][A
+Running tokenizer on train dataset #1:  91%|█████████ | 279/306 [00:38<00:03,  7.76ba/s][ARunning tokenizer on train dataset #0:  82%|████████▏ | 252/306 [00:38<00:08,  6.52ba/s]Running tokenizer on train dataset #0:  83%|████████▎ | 253/306 [00:38<00:07,  6.74ba/s]
+Running tokenizer on train dataset #1:  92%|█████████▏| 280/306 [00:38<00:04,  6.22ba/s][ARunning tokenizer on train dataset #0:  83%|████████▎ | 254/306 [00:38<00:07,  6.55ba/s]
+Running tokenizer on train dataset #1:  92%|█████████▏| 281/306 [00:38<00:03,  6.50ba/s][ARunning tokenizer on train dataset #0:  83%|████████▎ | 255/306 [00:38<00:08,  6.11ba/s]
+Running tokenizer on train dataset #1:  92%|█████████▏| 282/306 [00:38<00:03,  6.73ba/s][ARunning tokenizer on train dataset #0:  84%|████████▎ | 256/306 [00:38<00:07,  6.39ba/s]
+Running tokenizer on train dataset #1:  92%|█████████▏| 283/306 [00:38<00:03,  7.01ba/s][A
+Running tokenizer on train dataset #1:  93%|█████████▎| 284/306 [00:38<00:02,  7.36ba/s][ARunning tokenizer on train dataset #0:  84%|████████▍ | 257/306 [00:38<00:07,  6.43ba/s]
+Running tokenizer on train dataset #1:  93%|█████████▎| 285/306 [00:39<00:02,  7.47ba/s][A
+Running tokenizer on train dataset #1:  93%|█████████▎| 286/306 [00:39<00:02,  7.68ba/s][ARunning tokenizer on train dataset #0:  84%|████████▍ | 258/306 [00:39<00:09,  5.20ba/s]
+Running tokenizer on train dataset #1:  94%|█████████▍| 287/306 [00:39<00:02,  7.83ba/s][ARunning tokenizer on train dataset #0:  85%|████████▍ | 259/306 [00:39<00:08,  5.73ba/s]
+Running tokenizer on train dataset #1:  94%|█████████▍| 288/306 [00:39<00:02,  7.99ba/s][ARunning tokenizer on train dataset #0:  85%|████████▍ | 260/306 [00:39<00:07,  5.88ba/s]
+Running tokenizer on train dataset #1:  94%|█████████▍| 289/306 [00:39<00:02,  8.05ba/s][A
+Running tokenizer on train dataset #1:  95%|█████████▍| 290/306 [00:39<00:01,  8.12ba/s][ARunning tokenizer on train dataset #0:  85%|████████▌ | 261/306 [00:39<00:07,  6.22ba/s]Running tokenizer on train dataset #0:  86%|████████▌ | 262/306 [00:39<00:06,  6.38ba/s]
+Running tokenizer on train dataset #1:  95%|█████████▌| 291/306 [00:39<00:02,  6.40ba/s][ARunning tokenizer on train dataset #0:  86%|████████▌ | 263/306 [00:39<00:06,  6.77ba/s]
+Running tokenizer on train dataset #1:  95%|█████████▌| 292/306 [00:40<00:02,  6.84ba/s][ARunning tokenizer on train dataset #0:  86%|████████▋ | 264/306 [00:40<00:06,  6.87ba/s]
+Running tokenizer on train dataset #1:  96%|█████████▌| 293/306 [00:40<00:01,  7.19ba/s][ARunning tokenizer on train dataset #0:  87%|████████▋ | 265/306 [00:40<00:06,  6.64ba/s]
+Running tokenizer on train dataset #1:  96%|█████████▌| 294/306 [00:40<00:01,  7.46ba/s][A
+Running tokenizer on train dataset #1:  96%|█████████▋| 295/306 [00:40<00:01,  7.42ba/s][ARunning tokenizer on train dataset #0:  87%|████████▋ | 266/306 [00:40<00:06,  6.49ba/s]
+Running tokenizer on train dataset #1:  97%|█████████▋| 296/306 [00:40<00:01,  7.69ba/s][ARunning tokenizer on train dataset #0:  87%|████████▋ | 267/306 [00:40<00:06,  6.46ba/s]
+Running tokenizer on train dataset #1:  97%|█████████▋| 297/306 [00:40<00:01,  7.63ba/s][ARunning tokenizer on train dataset #0:  88%|████████▊ | 268/306 [00:40<00:05,  6.44ba/s]
+Running tokenizer on train dataset #1:  97%|█████████▋| 298/306 [00:40<00:01,  7.52ba/s][A
+Running tokenizer on train dataset #1:  98%|█████████▊| 299/306 [00:40<00:00,  7.63ba/s][ARunning tokenizer on train dataset #0:  88%|████████▊ | 269/306 [00:40<00:07,  5.24ba/s]
+Running tokenizer on train dataset #1:  98%|█████████▊| 300/306 [00:41<00:00,  7.70ba/s][ARunning tokenizer on train dataset #0:  88%|████████▊ | 270/306 [00:41<00:06,  5.67ba/s]
+Running tokenizer on train dataset #1:  98%|█████████▊| 301/306 [00:41<00:00,  7.82ba/s][ARunning tokenizer on train dataset #0:  89%|████████▊ | 271/306 [00:41<00:06,  5.61ba/s]
+Running tokenizer on train dataset #1:  99%|█████████▊| 302/306 [00:41<00:00,  6.20ba/s][ARunning tokenizer on train dataset #0:  89%|████████▉ | 272/306 [00:41<00:05,  5.87ba/s]
+Running tokenizer on train dataset #1:  99%|█████████▉| 303/306 [00:41<00:00,  6.68ba/s][ARunning tokenizer on train dataset #0:  89%|████████▉ | 273/306 [00:41<00:05,  6.23ba/s]
+Running tokenizer on train dataset #1:  99%|█████████▉| 304/306 [00:41<00:00,  6.86ba/s][ARunning tokenizer on train dataset #0:  90%|████████▉ | 274/306 [00:41<00:04,  6.42ba/s]
+Running tokenizer on train dataset #1: 100%|█████████▉| 305/306 [00:41<00:00,  7.25ba/s][ARunning tokenizer on train dataset #1: 100%|██████████| 306/306 [00:41<00:00,  7.32ba/s]
+Running tokenizer on train dataset #0:  90%|████████▉ | 275/306 [00:41<00:04,  6.36ba/s]Running tokenizer on train dataset #0:  90%|█████████ | 276/306 [00:42<00:04,  6.50ba/s]Running tokenizer on train dataset #0:  91%|█████████ | 277/306 [00:42<00:04,  6.57ba/s]Running tokenizer on train dataset #0:  91%|█████████ | 278/306 [00:42<00:04,  6.36ba/s]Running tokenizer on train dataset #0:  91%|█████████ | 279/306 [00:42<00:04,  6.14ba/s]Running tokenizer on train dataset #0:  92%|█████████▏| 280/306 [00:42<00:04,  5.22ba/s]Running tokenizer on train dataset #0:  92%|█████████▏| 281/306 [00:42<00:04,  5.81ba/s]Running tokenizer on train dataset #0:  92%|█████████▏| 282/306 [00:43<00:03,  6.32ba/s]Running tokenizer on train dataset #0:  92%|█████████▏| 283/306 [00:43<00:03,  6.81ba/s]Running tokenizer on train dataset #0:  93%|█████████▎| 284/306 [00:43<00:03,  7.22ba/s]Running tokenizer on train dataset #0:  93%|█████████▎| 285/306 [00:43<00:02,  7.49ba/s]Running tokenizer on train dataset #0:  93%|█████████▎| 286/306 [00:43<00:02,  7.79ba/s]Running tokenizer on train dataset #0:  94%|█████████▍| 287/306 [00:43<00:02,  7.81ba/s]Running tokenizer on train dataset #0:  94%|█████████▍| 288/306 [00:43<00:02,  7.92ba/s]Running tokenizer on train dataset #0:  94%|█████████▍| 289/306 [00:43<00:02,  8.00ba/s]Running tokenizer on train dataset #0:  95%|█████████▍| 290/306 [00:44<00:01,  8.11ba/s]Running tokenizer on train dataset #0:  95%|█████████▌| 291/306 [00:44<00:02,  6.45ba/s]Running tokenizer on train dataset #0:  95%|█████████▌| 292/306 [00:44<00:01,  7.11ba/s]Running tokenizer on train dataset #0:  96%|█████████▌| 293/306 [00:44<00:01,  7.27ba/s]Running tokenizer on train dataset #0:  96%|█████████▌| 294/306 [00:44<00:01,  7.18ba/s]Running tokenizer on train dataset #0:  96%|█████████▋| 295/306 [00:44<00:01,  7.33ba/s]Running tokenizer on train dataset #0:  97%|█████████▋| 296/306 [00:44<00:01,  7.66ba/s]Running tokenizer on train dataset #0:  97%|█████████▋| 297/306 [00:44<00:01,  8.01ba/s]Running tokenizer on train dataset #0:  97%|█████████▋| 298/306 [00:45<00:00,  8.01ba/s]Running tokenizer on train dataset #0:  98%|█████████▊| 299/306 [00:45<00:00,  8.11ba/s]Running tokenizer on train dataset #0:  98%|█████████▊| 300/306 [00:45<00:00,  8.43ba/s]Running tokenizer on train dataset #0:  98%|█████████▊| 301/306 [00:45<00:00,  8.64ba/s]Running tokenizer on train dataset #0:  99%|█████████▊| 302/306 [00:45<00:00,  6.56ba/s]Running tokenizer on train dataset #0:  99%|█████████▉| 303/306 [00:45<00:00,  7.02ba/s]Running tokenizer on train dataset #0:  99%|█████████▉| 304/306 [00:45<00:00,  7.20ba/s]Running tokenizer on train dataset #0: 100%|█████████▉| 305/306 [00:46<00:00,  7.24ba/s]Running tokenizer on train dataset #0: 100%|██████████| 306/306 [00:46<00:00,  6.64ba/s]
+10/07/2026 17:56:05 - INFO - datasets.arrow_dataset -   Concatenating 2 shards from multiprocessing
+full eval examples = 1999
+10/07/2026 17:56:39 - INFO - datasets.arrow_dataset -   Spawning 2 processes
+10/07/2026 17:56:39 - WARNING - datasets.fingerprint -   Parameter 'function'=<function main.<locals>.preprocess_function at 0x7f8c28913e50> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+Running tokenizer on validation dataset #0:   0%|          | 0/1 [00:00<?, ?ba/s]10/07/2026 17:56:39 - WARNING - datasets.fingerprint -   Parameter 'function'=<function main.<locals>.preprocess_function at 0x7f8c28913e50> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+
+Running tokenizer on validation dataset #1:   0%|          | 0/1 [00:00<?, ?ba/s][ARunning tokenizer on validation dataset #0: 100%|██████████| 1/1 [00:00<00:00,  6.91ba/s]Running tokenizer on validation dataset #0: 100%|██████████| 1/1 [00:00<00:00,  6.90ba/s]
+
+Running tokenizer on validation dataset #1: 100%|██████████| 1/1 [00:00<00:00,  7.30ba/s][ARunning tokenizer on validation dataset #1: 100%|██████████| 1/1 [00:00<00:00,  7.29ba/s]
+10/07/2026 17:56:39 - INFO - datasets.arrow_dataset -   Concatenating 2 shards from multiprocessing
+10/07/2026 17:56:40 - INFO - datasets.arrow_dataset -   Spawning 2 processes
+10/07/2026 17:56:40 - WARNING - datasets.fingerprint -   Parameter 'function'=<function main.<locals>.preprocess_function at 0x7f8c2888ddc0> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+Running tokenizer on prediction dataset #0:   0%|          | 0/1 [00:00<?, ?ba/s]10/07/2026 17:56:40 - WARNING - datasets.fingerprint -   Parameter 'function'=<function main.<locals>.preprocess_function at 0x7f8c2888ddc0> of the transform datasets.arrow_dataset.Dataset._map_single couldn't be hashed properly, a random hash was used instead. Make sure your transforms and parameters are serializable with pickle or dill for the dataset fingerprinting and caching to work. If you reuse this transform, the caching mechanism will consider it to be different from the previous calls and recompute everything. This warning is only showed once. Subsequent hashing failures won't be showed.
+
+Running tokenizer on prediction dataset #1:   0%|          | 0/1 [00:00<?, ?ba/s][ARunning tokenizer on prediction dataset #0: 100%|██████████| 1/1 [00:00<00:00,  8.12ba/s]Running tokenizer on prediction dataset #0: 100%|██████████| 1/1 [00:00<00:00,  8.10ba/s]
+
+Running tokenizer on prediction dataset #1: 100%|██████████| 1/1 [00:00<00:00,  7.99ba/s][ARunning tokenizer on prediction dataset #1: 100%|██████████| 1/1 [00:00<00:00,  7.98ba/s]
+10/07/2026 17:56:40 - INFO - datasets.arrow_dataset -   Concatenating 2 shards from multiprocessing
+10/07/2026 17:56:41 - INFO - datasets.load -   Found main folder for metric https://raw.githubusercontent.com/huggingface/datasets/1.11.0/metrics/sacrebleu/sacrebleu.py at /home/ucloud/.cache/huggingface/modules/datasets_modules/metrics/sacrebleu
+10/07/2026 17:56:41 - INFO - datasets.load -   Found specific version folder for metric https://raw.githubusercontent.com/huggingface/datasets/1.11.0/metrics/sacrebleu/sacrebleu.py at /home/ucloud/.cache/huggingface/modules/datasets_modules/metrics/sacrebleu/eae4b006c615cfaacce2df4eec95acba813e69f28db6fff9e0e1398c50a0ed47
+10/07/2026 17:56:41 - INFO - datasets.load -   Found script file from https://raw.githubusercontent.com/huggingface/datasets/1.11.0/metrics/sacrebleu/sacrebleu.py to /home/ucloud/.cache/huggingface/modules/datasets_modules/metrics/sacrebleu/eae4b006c615cfaacce2df4eec95acba813e69f28db6fff9e0e1398c50a0ed47/sacrebleu.py
+10/07/2026 17:56:41 - INFO - datasets.load -   Couldn't find dataset infos file at https://raw.githubusercontent.com/huggingface/datasets/1.11.0/metrics/sacrebleu/dataset_infos.json
+10/07/2026 17:56:41 - INFO - datasets.load -   Found metadata file for metric https://raw.githubusercontent.com/huggingface/datasets/1.11.0/metrics/sacrebleu/sacrebleu.py at /home/ucloud/.cache/huggingface/modules/datasets_modules/metrics/sacrebleu/eae4b006c615cfaacce2df4eec95acba813e69f28db6fff9e0e1398c50a0ed47/sacrebleu.json
+max_steps is given, it will override any value given in num_train_epochs
+Using amp fp16 backend
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:430: FutureWarning: `torch.cuda.amp.GradScaler(args...)` is deprecated. Please use `torch.amp.GradScaler('cuda', args...)` instead.
+  self.scaler = torch.cuda.amp.GradScaler()
+***** Running training *****
+  Num examples = 610320
+  Num Epochs = 22
+  Instantaneous batch size per device = 10
+  Total train batch size (w. parallel, distributed & accumulation) = 40
+  Gradient Accumulation steps = 4
+  Total optimization steps = 50000
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 6.1683, 'learning_rate': 4.9904192e-05, 'epoch': 0.04}
+{'loss': 3.5936, 'learning_rate': 4.9804392e-05, 'epoch': 0.09}
+{'loss': 3.227, 'learning_rate': 4.9704592e-05, 'epoch': 0.13}
+{'loss': 3.1489, 'learning_rate': 4.9604792e-05, 'epoch': 0.17}
+{'loss': 3.0883, 'learning_rate': 4.9504992e-05, 'epoch': 0.21}
+{'loss': 3.035, 'learning_rate': 4.9405192e-05, 'epoch': 0.26}
+{'loss': 3.006, 'learning_rate': 4.9305392e-05, 'epoch': 0.3}
+{'loss': 2.9747, 'learning_rate': 4.9205592e-05, 'epoch': 0.34}
+{'loss': 2.9535, 'learning_rate': 4.9105792e-05, 'epoch': 0.39}
+{'loss': 2.9341, 'learning_rate': 4.9005992e-05, 'epoch': 0.43}
+{'loss': 2.9055, 'learning_rate': 4.8906192e-05, 'epoch': 0.47}
+{'loss': 2.8876, 'learning_rate': 4.8806392e-05, 'epoch': 0.52}
+{'loss': 2.8905, 'learning_rate': 4.8706592000000004e-05, 'epoch': 0.56}
+{'loss': 2.8796, 'learning_rate': 4.860679200000001e-05, 'epoch': 0.6}
+{'loss': 2.8658, 'learning_rate': 4.8506992000000006e-05, 'epoch': 0.64}
+{'loss': 2.8554, 'learning_rate': 4.8407192000000004e-05, 'epoch': 0.69}
+{'loss': 2.8423, 'learning_rate': 4.8307392e-05, 'epoch': 0.73}
+{'loss': 2.8313, 'learning_rate': 4.820759200000001e-05, 'epoch': 0.77}
+{'loss': 2.8347, 'learning_rate': 4.8107792000000005e-05, 'epoch': 0.82}
+{'loss': 2.8291, 'learning_rate': 4.8007992e-05, 'epoch': 0.86}
+{'loss': 2.8195, 'learning_rate': 4.7908192e-05, 'epoch': 0.9}
+{'loss': 2.8067, 'learning_rate': 4.7808392000000006e-05, 'epoch': 0.94}
+{'loss': 2.8001, 'learning_rate': 4.7708592000000004e-05, 'epoch': 0.99}
+{'loss': 2.8203, 'learning_rate': 4.7608792e-05, 'epoch': 1.03}
+{'loss': 2.7867, 'learning_rate': 4.750899200000001e-05, 'epoch': 1.07}
+{'loss': 2.7768, 'learning_rate': 4.7409192000000005e-05, 'epoch': 1.12}
+{'loss': 2.779, 'learning_rate': 4.7309392e-05, 'epoch': 1.16}
+{'loss': 2.7721, 'learning_rate': 4.7209592e-05, 'epoch': 1.2}
+{'loss': 2.7646, 'learning_rate': 4.7109792000000006e-05, 'epoch': 1.25}
+{'loss': 2.7657, 'learning_rate': 4.7009992000000004e-05, 'epoch': 1.29}
+{'loss': 2.7625, 'learning_rate': 4.6910192e-05, 'epoch': 1.33}
+{'loss': 2.7553, 'learning_rate': 4.6810392000000006e-05, 'epoch': 1.37}
+{'loss': 2.753, 'learning_rate': 4.6710592000000004e-05, 'epoch': 1.42}
+{'loss': 2.7394, 'learning_rate': 4.6610792e-05, 'epoch': 1.46}
+{'loss': 2.7328, 'learning_rate': 4.6510992e-05, 'epoch': 1.5}
+{'loss': 2.7403, 'learning_rate': 4.6411192000000005e-05, 'epoch': 1.55}
+{'loss': 2.7335, 'learning_rate': 4.6311392e-05, 'epoch': 1.59}
+{'loss': 2.7315, 'learning_rate': 4.6211592e-05, 'epoch': 1.63}
+{'loss': 2.7255, 'learning_rate': 4.6111792000000006e-05, 'epoch': 1.68}
+{'loss': 2.7139, 'learning_rate': 4.6011992000000004e-05, 'epoch': 1.72}
+{'loss': 2.7142, 'learning_rate': 4.5912192e-05, 'epoch': 1.76}
+{'loss': 2.7154, 'learning_rate': 4.5812392e-05, 'epoch': 1.8}
+{'loss': 2.7134, 'learning_rate': 4.5712592000000005e-05, 'epoch': 1.85}
+{'loss': 2.7134, 'learning_rate': 4.5612792e-05, 'epoch': 1.89}
+{'loss': 2.7088, 'learning_rate': 4.5512992e-05, 'epoch': 1.93}
+{'loss': 2.7039, 'learning_rate': 4.5413192e-05, 'epoch': 1.98}
+{'loss': 2.7165, 'learning_rate': 4.5313392000000004e-05, 'epoch': 2.02}
+{'loss': 2.7007, 'learning_rate': 4.5213592e-05, 'epoch': 2.06}
+{'loss': 2.6856, 'learning_rate': 4.5113792e-05, 'epoch': 2.1}
+{'loss': 2.6901, 'learning_rate': 4.5013992000000005e-05, 'epoch': 2.15}
+***** Running Evaluation *****
+  Num examples = 1999
+  Batch size = 10
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 18:22:32 - INFO - datasets.metric -   Removing /work/unify-parameter-efficient-tuning/checkpoints/hf_model/sacrebleu/default/default_experiment-1-0.arrow
+{'eval_loss': 3.0548501014709473, 'eval_bleu': 24.1422, 'eval_gen_len': 36.2986, 'eval_runtime': 110.4095, 'eval_samples_per_second': 18.105, 'eval_steps_per_second': 1.811, 'epoch': 2.15}
+Saving model checkpoint to /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-5000
+Configuration saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-5000/config.json
+Model weights saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-5000/pytorch_model.bin
+tokenizer config file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-5000/tokenizer_config.json
+Special tokens file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-5000/special_tokens_map.json
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.6895, 'learning_rate': 4.4914192e-05, 'epoch': 2.19}
+{'loss': 2.6832, 'learning_rate': 4.4814392e-05, 'epoch': 2.23}
+{'loss': 2.6857, 'learning_rate': 4.4714592e-05, 'epoch': 2.28}
+{'loss': 2.6849, 'learning_rate': 4.4614792e-05, 'epoch': 2.32}
+{'loss': 2.6853, 'learning_rate': 4.4514992e-05, 'epoch': 2.36}
+{'loss': 2.6741, 'learning_rate': 4.4415192e-05, 'epoch': 2.41}
+{'loss': 2.671, 'learning_rate': 4.4315392000000004e-05, 'epoch': 2.45}
+{'loss': 2.6646, 'learning_rate': 4.4215592e-05, 'epoch': 2.49}
+{'loss': 2.6648, 'learning_rate': 4.4115792e-05, 'epoch': 2.53}
+{'loss': 2.6708, 'learning_rate': 4.4015992e-05, 'epoch': 2.58}
+{'loss': 2.6651, 'learning_rate': 4.3916192e-05, 'epoch': 2.62}
+{'loss': 2.6585, 'learning_rate': 4.3816392e-05, 'epoch': 2.66}
+{'loss': 2.6514, 'learning_rate': 4.3716592e-05, 'epoch': 2.71}
+{'loss': 2.6548, 'learning_rate': 4.3616792000000004e-05, 'epoch': 2.75}
+{'loss': 2.6516, 'learning_rate': 4.3516992e-05, 'epoch': 2.79}
+{'loss': 2.6535, 'learning_rate': 4.3417192e-05, 'epoch': 2.83}
+{'loss': 2.6584, 'learning_rate': 4.3317392e-05, 'epoch': 2.88}
+{'loss': 2.6494, 'learning_rate': 4.3217592e-05, 'epoch': 2.92}
+{'loss': 2.649, 'learning_rate': 4.3117792e-05, 'epoch': 2.96}
+{'loss': 2.6612, 'learning_rate': 4.3017992e-05, 'epoch': 3.01}
+{'loss': 2.6485, 'learning_rate': 4.2918192e-05, 'epoch': 3.05}
+{'loss': 2.6384, 'learning_rate': 4.2818392e-05, 'epoch': 3.09}
+{'loss': 2.639, 'learning_rate': 4.2718592e-05, 'epoch': 3.14}
+{'loss': 2.6406, 'learning_rate': 4.2618792e-05, 'epoch': 3.18}
+{'loss': 2.6381, 'learning_rate': 4.2518992e-05, 'epoch': 3.22}
+{'loss': 2.638, 'learning_rate': 4.2419192e-05, 'epoch': 3.26}
+{'loss': 2.636, 'learning_rate': 4.2319392e-05, 'epoch': 3.31}
+{'loss': 2.6385, 'learning_rate': 4.2219591999999996e-05, 'epoch': 3.35}
+{'loss': 2.631, 'learning_rate': 4.2119792e-05, 'epoch': 3.39}
+{'loss': 2.6314, 'learning_rate': 4.2019992e-05, 'epoch': 3.44}
+{'loss': 2.6156, 'learning_rate': 4.1920192e-05, 'epoch': 3.48}
+{'loss': 2.6234, 'learning_rate': 4.1820392e-05, 'epoch': 3.52}
+{'loss': 2.6265, 'learning_rate': 4.1720592e-05, 'epoch': 3.57}
+{'loss': 2.6216, 'learning_rate': 4.1620792e-05, 'epoch': 3.61}
+{'loss': 2.6215, 'learning_rate': 4.1520992e-05, 'epoch': 3.65}
+{'loss': 2.6155, 'learning_rate': 4.142119200000001e-05, 'epoch': 3.69}
+{'loss': 2.6144, 'learning_rate': 4.1321392000000005e-05, 'epoch': 3.74}
+{'loss': 2.6141, 'learning_rate': 4.1221592e-05, 'epoch': 3.78}
+{'loss': 2.612, 'learning_rate': 4.1121792e-05, 'epoch': 3.82}
+{'loss': 2.6192, 'learning_rate': 4.1021992000000006e-05, 'epoch': 3.87}
+{'loss': 2.6165, 'learning_rate': 4.0922192000000004e-05, 'epoch': 3.91}
+{'loss': 2.6095, 'learning_rate': 4.0822392e-05, 'epoch': 3.95}
+{'loss': 2.6097, 'learning_rate': 4.072259200000001e-05, 'epoch': 3.99}
+{'loss': 2.6358, 'learning_rate': 4.062379e-05, 'epoch': 4.04}
+{'loss': 2.6039, 'learning_rate': 4.0524988e-05, 'epoch': 4.08}
+{'loss': 2.5996, 'learning_rate': 4.0425188e-05, 'epoch': 4.12}
+{'loss': 2.6071, 'learning_rate': 4.0325388e-05, 'epoch': 4.17}
+{'loss': 2.6044, 'learning_rate': 4.0225588e-05, 'epoch': 4.21}
+{'loss': 2.6021, 'learning_rate': 4.0125788e-05, 'epoch': 4.25}
+{'loss': 2.6048, 'learning_rate': 4.0025988e-05, 'epoch': 4.3}
+***** Running Evaluation *****
+  Num examples = 1999
+  Batch size = 10
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 18:47:38 - INFO - datasets.metric -   Removing /work/unify-parameter-efficient-tuning/checkpoints/hf_model/sacrebleu/default/default_experiment-1-0.arrow
+{'eval_loss': 3.0155766010284424, 'eval_bleu': 24.391, 'eval_gen_len': 36.5943, 'eval_runtime': 111.917, 'eval_samples_per_second': 17.861, 'eval_steps_per_second': 1.787, 'epoch': 4.3}
+Saving model checkpoint to /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-10000
+Configuration saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-10000/config.json
+Model weights saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-10000/pytorch_model.bin
+tokenizer config file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-10000/tokenizer_config.json
+Special tokens file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-10000/special_tokens_map.json
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.6019, 'learning_rate': 3.9926188e-05, 'epoch': 4.34}
+{'loss': 2.6018, 'learning_rate': 3.9826388e-05, 'epoch': 4.38}
+{'loss': 2.6019, 'learning_rate': 3.9726588e-05, 'epoch': 4.42}
+{'loss': 2.5906, 'learning_rate': 3.9626788e-05, 'epoch': 4.47}
+{'loss': 2.5866, 'learning_rate': 3.9526988e-05, 'epoch': 4.51}
+{'loss': 2.5995, 'learning_rate': 3.9427188e-05, 'epoch': 4.55}
+{'loss': 2.5906, 'learning_rate': 3.9327388000000006e-05, 'epoch': 4.6}
+{'loss': 2.5939, 'learning_rate': 3.9227588000000004e-05, 'epoch': 4.64}
+{'loss': 2.5898, 'learning_rate': 3.9127788e-05, 'epoch': 4.68}
+{'loss': 2.5839, 'learning_rate': 3.902798800000001e-05, 'epoch': 4.72}
+{'loss': 2.5841, 'learning_rate': 3.8928188000000005e-05, 'epoch': 4.77}
+{'loss': 2.586, 'learning_rate': 3.8828388e-05, 'epoch': 4.81}
+{'loss': 2.5921, 'learning_rate': 3.8728588e-05, 'epoch': 4.85}
+{'loss': 2.5925, 'learning_rate': 3.8628788000000006e-05, 'epoch': 4.9}
+{'loss': 2.5879, 'learning_rate': 3.8528988000000004e-05, 'epoch': 4.94}
+{'loss': 2.5849, 'learning_rate': 3.8429188e-05, 'epoch': 4.98}
+{'loss': 2.6049, 'learning_rate': 3.8329388000000007e-05, 'epoch': 5.03}
+{'loss': 2.5813, 'learning_rate': 3.8229588000000005e-05, 'epoch': 5.07}
+{'loss': 2.5736, 'learning_rate': 3.8129788e-05, 'epoch': 5.11}
+{'loss': 2.5853, 'learning_rate': 3.8029988e-05, 'epoch': 5.15}
+{'loss': 2.5802, 'learning_rate': 3.7930188000000005e-05, 'epoch': 5.2}
+{'loss': 2.5789, 'learning_rate': 3.7830388000000003e-05, 'epoch': 5.24}
+{'loss': 2.5804, 'learning_rate': 3.7730588e-05, 'epoch': 5.28}
+{'loss': 2.5795, 'learning_rate': 3.7630788000000006e-05, 'epoch': 5.33}
+{'loss': 2.5778, 'learning_rate': 3.7530988000000004e-05, 'epoch': 5.37}
+{'loss': 2.5768, 'learning_rate': 3.7431188e-05, 'epoch': 5.41}
+{'loss': 2.5699, 'learning_rate': 3.7331388e-05, 'epoch': 5.46}
+{'loss': 2.5664, 'learning_rate': 3.7231588000000005e-05, 'epoch': 5.5}
+{'loss': 2.5713, 'learning_rate': 3.7132786000000006e-05, 'epoch': 5.54}
+{'loss': 2.5708, 'learning_rate': 3.7032986000000004e-05, 'epoch': 5.58}
+{'loss': 2.5734, 'learning_rate': 3.6933186e-05, 'epoch': 5.63}
+{'loss': 2.5695, 'learning_rate': 3.6833386e-05, 'epoch': 5.67}
+{'loss': 2.5619, 'learning_rate': 3.6733586000000005e-05, 'epoch': 5.71}
+{'loss': 2.5651, 'learning_rate': 3.6633786e-05, 'epoch': 5.76}
+{'loss': 2.5623, 'learning_rate': 3.6533986e-05, 'epoch': 5.8}
+{'loss': 2.5681, 'learning_rate': 3.6434186000000006e-05, 'epoch': 5.84}
+{'loss': 2.5755, 'learning_rate': 3.6334386000000004e-05, 'epoch': 5.88}
+{'loss': 2.5671, 'learning_rate': 3.6234586e-05, 'epoch': 5.93}
+{'loss': 2.5643, 'learning_rate': 3.6134786e-05, 'epoch': 5.97}
+{'loss': 2.5779, 'learning_rate': 3.6034986000000005e-05, 'epoch': 6.01}
+{'loss': 2.5684, 'learning_rate': 3.5935186e-05, 'epoch': 6.06}
+{'loss': 2.5563, 'learning_rate': 3.5835386e-05, 'epoch': 6.1}
+{'loss': 2.5648, 'learning_rate': 3.5735586e-05, 'epoch': 6.14}
+{'loss': 2.5602, 'learning_rate': 3.5635786000000004e-05, 'epoch': 6.19}
+{'loss': 2.5601, 'learning_rate': 3.5535986e-05, 'epoch': 6.23}
+{'loss': 2.5595, 'learning_rate': 3.5436186e-05, 'epoch': 6.27}
+{'loss': 2.564, 'learning_rate': 3.5336386000000004e-05, 'epoch': 6.31}
+{'loss': 2.5661, 'learning_rate': 3.5236586e-05, 'epoch': 6.36}
+{'loss': 2.56, 'learning_rate': 3.5136786e-05, 'epoch': 6.4}
+{'loss': 2.5566, 'learning_rate': 3.5036986e-05, 'epoch': 6.44}
+***** Running Evaluation *****
+  Num examples = 1999
+  Batch size = 10
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 19:12:41 - INFO - datasets.metric -   Removing /work/unify-parameter-efficient-tuning/checkpoints/hf_model/sacrebleu/default/default_experiment-1-0.arrow
+{'eval_loss': 3.0033650398254395, 'eval_bleu': 24.9019, 'eval_gen_len': 36.7529, 'eval_runtime': 110.8454, 'eval_samples_per_second': 18.034, 'eval_steps_per_second': 1.804, 'epoch': 6.44}
+Saving model checkpoint to /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-15000
+Configuration saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-15000/config.json
+Model weights saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-15000/pytorch_model.bin
+tokenizer config file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-15000/tokenizer_config.json
+Special tokens file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-15000/special_tokens_map.json
+Deleting older checkpoint [/work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-5000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.5456, 'learning_rate': 3.4937186e-05, 'epoch': 6.49}
+{'loss': 2.5504, 'learning_rate': 3.4837386e-05, 'epoch': 6.53}
+{'loss': 2.5566, 'learning_rate': 3.4737586e-05, 'epoch': 6.57}
+{'loss': 2.5551, 'learning_rate': 3.4637786000000004e-05, 'epoch': 6.61}
+{'loss': 2.5534, 'learning_rate': 3.4537986e-05, 'epoch': 6.66}
+{'loss': 2.5473, 'learning_rate': 3.4438186e-05, 'epoch': 6.7}
+{'loss': 2.5499, 'learning_rate': 3.4338386e-05, 'epoch': 6.74}
+{'loss': 2.5458, 'learning_rate': 3.4238586e-05, 'epoch': 6.79}
+{'loss': 2.5518, 'learning_rate': 3.4138786e-05, 'epoch': 6.83}
+{'loss': 2.5557, 'learning_rate': 3.4038986e-05, 'epoch': 6.87}
+{'loss': 2.5537, 'learning_rate': 3.3939186000000004e-05, 'epoch': 6.92}
+{'loss': 2.5475, 'learning_rate': 3.3839386e-05, 'epoch': 6.96}
+{'loss': 2.5645, 'learning_rate': 3.3739586e-05, 'epoch': 7.0}
+{'loss': 2.5534, 'learning_rate': 3.3639786e-05, 'epoch': 7.04}
+{'loss': 2.5389, 'learning_rate': 3.3539986e-05, 'epoch': 7.09}
+{'loss': 2.5438, 'learning_rate': 3.3440186e-05, 'epoch': 7.13}
+{'loss': 2.5465, 'learning_rate': 3.3340386e-05, 'epoch': 7.17}
+{'loss': 2.5474, 'learning_rate': 3.3240586e-05, 'epoch': 7.22}
+{'loss': 2.5445, 'learning_rate': 3.3140786e-05, 'epoch': 7.26}
+{'loss': 2.548, 'learning_rate': 3.3040986e-05, 'epoch': 7.3}
+{'loss': 2.5464, 'learning_rate': 3.2941186e-05, 'epoch': 7.35}
+{'loss': 2.5464, 'learning_rate': 3.2841386e-05, 'epoch': 7.39}
+{'loss': 2.5431, 'learning_rate': 3.2741586e-05, 'epoch': 7.43}
+{'loss': 2.5342, 'learning_rate': 3.2641786e-05, 'epoch': 7.47}
+{'loss': 2.5358, 'learning_rate': 3.2541985999999996e-05, 'epoch': 7.52}
+{'loss': 2.5433, 'learning_rate': 3.2442186e-05, 'epoch': 7.56}
+{'loss': 2.54, 'learning_rate': 3.2342386e-05, 'epoch': 7.6}
+{'loss': 2.5387, 'learning_rate': 3.2242586e-05, 'epoch': 7.65}
+{'loss': 2.5358, 'learning_rate': 3.2142786e-05, 'epoch': 7.69}
+{'loss': 2.5332, 'learning_rate': 3.2042986e-05, 'epoch': 7.73}
+{'loss': 2.5325, 'learning_rate': 3.1943186e-05, 'epoch': 7.77}
+{'loss': 2.5363, 'learning_rate': 3.1843385999999996e-05, 'epoch': 7.82}
+{'loss': 2.5413, 'learning_rate': 3.1743586e-05, 'epoch': 7.86}
+{'loss': 2.5389, 'learning_rate': 3.1643786e-05, 'epoch': 7.9}
+{'loss': 2.5356, 'learning_rate': 3.1543985999999997e-05, 'epoch': 7.95}
+{'loss': 2.5361, 'learning_rate': 3.1444186e-05, 'epoch': 7.99}
+{'loss': 2.5568, 'learning_rate': 3.1344386e-05, 'epoch': 8.03}
+{'loss': 2.5308, 'learning_rate': 3.1244586e-05, 'epoch': 8.08}
+{'loss': 2.5275, 'learning_rate': 3.1144786e-05, 'epoch': 8.12}
+{'loss': 2.5351, 'learning_rate': 3.104498600000001e-05, 'epoch': 8.16}
+{'loss': 2.5342, 'learning_rate': 3.0945186000000005e-05, 'epoch': 8.2}
+{'loss': 2.5303, 'learning_rate': 3.0845386e-05, 'epoch': 8.25}
+{'loss': 2.5375, 'learning_rate': 3.0745586e-05, 'epoch': 8.29}
+{'loss': 2.5347, 'learning_rate': 3.0645786000000006e-05, 'epoch': 8.33}
+{'loss': 2.5349, 'learning_rate': 3.0545986000000004e-05, 'epoch': 8.38}
+{'loss': 2.5344, 'learning_rate': 3.0447184000000002e-05, 'epoch': 8.42}
+{'loss': 2.5244, 'learning_rate': 3.0347384e-05, 'epoch': 8.46}
+{'loss': 2.5182, 'learning_rate': 3.0247584e-05, 'epoch': 8.5}
+{'loss': 2.533, 'learning_rate': 3.0147784000000003e-05, 'epoch': 8.55}
+{'loss': 2.5279, 'learning_rate': 3.0047984e-05, 'epoch': 8.59}
+***** Running Evaluation *****
+  Num examples = 1999
+  Batch size = 10
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 19:37:43 - INFO - datasets.metric -   Removing /work/unify-parameter-efficient-tuning/checkpoints/hf_model/sacrebleu/default/default_experiment-1-0.arrow
+{'eval_loss': 3.004455804824829, 'eval_bleu': 25.0588, 'eval_gen_len': 36.6808, 'eval_runtime': 109.5709, 'eval_samples_per_second': 18.244, 'eval_steps_per_second': 1.825, 'epoch': 8.59}
+Saving model checkpoint to /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-20000
+Configuration saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-20000/config.json
+Model weights saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-20000/pytorch_model.bin
+tokenizer config file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-20000/tokenizer_config.json
+Special tokens file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-20000/special_tokens_map.json
+Deleting older checkpoint [/work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-10000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.5309, 'learning_rate': 2.9948184000000002e-05, 'epoch': 8.63}
+{'loss': 2.5268, 'learning_rate': 2.9848384e-05, 'epoch': 8.68}
+{'loss': 2.5202, 'learning_rate': 2.974958199999999e-05, 'epoch': 8.72}
+{'loss': 2.5202, 'learning_rate': 2.9649782e-05, 'epoch': 8.76}
+{'loss': 2.5242, 'learning_rate': 2.9549981999999994e-05, 'epoch': 8.81}
+{'loss': 2.526, 'learning_rate': 2.9450181999999992e-05, 'epoch': 8.85}
+{'loss': 2.5322, 'learning_rate': 2.9350382e-05, 'epoch': 8.89}
+{'loss': 2.5282, 'learning_rate': 2.925058199999999e-05, 'epoch': 8.93}
+{'loss': 2.5247, 'learning_rate': 2.9150782e-05, 'epoch': 8.98}
+{'loss': 2.5423, 'learning_rate': 2.9050981999999994e-05, 'epoch': 9.02}
+{'loss': 2.5252, 'learning_rate': 2.8951182e-05, 'epoch': 9.06}
+{'loss': 2.5146, 'learning_rate': 2.8851382e-05, 'epoch': 9.11}
+{'loss': 2.5214, 'learning_rate': 2.8751582e-05, 'epoch': 9.15}
+{'loss': 2.524, 'learning_rate': 2.8651782e-05, 'epoch': 9.19}
+{'loss': 2.522, 'learning_rate': 2.8551981999999998e-05, 'epoch': 9.24}
+{'loss': 2.5271, 'learning_rate': 2.8452182e-05, 'epoch': 9.28}
+{'loss': 2.5246, 'learning_rate': 2.8352382e-05, 'epoch': 9.32}
+{'loss': 2.5256, 'learning_rate': 2.8252582e-05, 'epoch': 9.36}
+{'loss': 2.5199, 'learning_rate': 2.8152782e-05, 'epoch': 9.41}
+{'loss': 2.5175, 'learning_rate': 2.8052982e-05, 'epoch': 9.45}
+{'loss': 2.5122, 'learning_rate': 2.7953182e-05, 'epoch': 9.49}
+{'loss': 2.5176, 'learning_rate': 2.7853382e-05, 'epoch': 9.54}
+{'loss': 2.5187, 'learning_rate': 2.7753582e-05, 'epoch': 9.58}
+{'loss': 2.5232, 'learning_rate': 2.7653782e-05, 'epoch': 9.62}
+{'loss': 2.5158, 'learning_rate': 2.7553982e-05, 'epoch': 9.66}
+{'loss': 2.5086, 'learning_rate': 2.7454182e-05, 'epoch': 9.71}
+{'loss': 2.5156, 'learning_rate': 2.7354381999999994e-05, 'epoch': 9.75}
+{'loss': 2.5142, 'learning_rate': 2.7254582000000002e-05, 'epoch': 9.79}
+{'loss': 2.5167, 'learning_rate': 2.7154782e-05, 'epoch': 9.84}
+{'loss': 2.5248, 'learning_rate': 2.7054982000000002e-05, 'epoch': 9.88}
+{'loss': 2.5177, 'learning_rate': 2.6955182e-05, 'epoch': 9.92}
+{'loss': 2.5166, 'learning_rate': 2.6855381999999994e-05, 'epoch': 9.97}
+{'loss': 2.5309, 'learning_rate': 2.6755582000000003e-05, 'epoch': 10.01}
+{'loss': 2.5193, 'learning_rate': 2.6655781999999997e-05, 'epoch': 10.05}
+{'loss': 2.5079, 'learning_rate': 2.6555981999999995e-05, 'epoch': 10.09}
+{'loss': 2.5136, 'learning_rate': 2.6456181999999997e-05, 'epoch': 10.14}
+{'loss': 2.5129, 'learning_rate': 2.6356381999999995e-05, 'epoch': 10.18}
+{'loss': 2.5138, 'learning_rate': 2.6256582000000003e-05, 'epoch': 10.22}
+{'loss': 2.5142, 'learning_rate': 2.6156781999999997e-05, 'epoch': 10.27}
+{'loss': 2.5159, 'learning_rate': 2.6056981999999995e-05, 'epoch': 10.31}
+{'loss': 2.5184, 'learning_rate': 2.5957181999999997e-05, 'epoch': 10.35}
+{'loss': 2.5141, 'learning_rate': 2.5857382e-05, 'epoch': 10.4}
+{'loss': 2.5117, 'learning_rate': 2.5757582000000003e-05, 'epoch': 10.44}
+{'loss': 2.5008, 'learning_rate': 2.5657782e-05, 'epoch': 10.48}
+{'loss': 2.509, 'learning_rate': 2.555898e-05, 'epoch': 10.52}
+{'loss': 2.5138, 'learning_rate': 2.545918e-05, 'epoch': 10.57}
+{'loss': 2.5086, 'learning_rate': 2.535938e-05, 'epoch': 10.61}
+{'loss': 2.5109, 'learning_rate': 2.5259579999999993e-05, 'epoch': 10.65}
+{'loss': 2.5021, 'learning_rate': 2.5159779999999998e-05, 'epoch': 10.7}
+{'loss': 2.5062, 'learning_rate': 2.505998e-05, 'epoch': 10.74}
+***** Running Evaluation *****
+  Num examples = 1999
+  Batch size = 10
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 20:02:51 - INFO - datasets.metric -   Removing /work/unify-parameter-efficient-tuning/checkpoints/hf_model/sacrebleu/default/default_experiment-1-0.arrow
+{'eval_loss': 2.992541790008545, 'eval_bleu': 25.2685, 'eval_gen_len': 36.7324, 'eval_runtime': 110.0266, 'eval_samples_per_second': 18.168, 'eval_steps_per_second': 1.818, 'epoch': 10.74}
+Saving model checkpoint to /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-25000
+Configuration saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-25000/config.json
+Model weights saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-25000/pytorch_model.bin
+tokenizer config file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-25000/tokenizer_config.json
+Special tokens file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-25000/special_tokens_map.json
+Deleting older checkpoint [/work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-15000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.5056, 'learning_rate': 2.4961177999999997e-05, 'epoch': 10.78}
+{'loss': 2.5087, 'learning_rate': 2.4861378e-05, 'epoch': 10.82}
+{'loss': 2.5113, 'learning_rate': 2.4761578e-05, 'epoch': 10.87}
+{'loss': 2.5104, 'learning_rate': 2.4661777999999998e-05, 'epoch': 10.91}
+{'loss': 2.5082, 'learning_rate': 2.4561978e-05, 'epoch': 10.95}
+{'loss': 2.5067, 'learning_rate': 2.4462177999999997e-05, 'epoch': 11.0}
+{'loss': 2.53, 'learning_rate': 2.4362378e-05, 'epoch': 11.04}
+{'loss': 2.5011, 'learning_rate': 2.4262577999999997e-05, 'epoch': 11.08}
+{'loss': 2.5028, 'learning_rate': 2.4162777999999998e-05, 'epoch': 11.13}
+{'loss': 2.5077, 'learning_rate': 2.4062978e-05, 'epoch': 11.17}
+{'loss': 2.5065, 'learning_rate': 2.3963177999999998e-05, 'epoch': 11.21}
+{'loss': 2.5061, 'learning_rate': 2.3863378e-05, 'epoch': 11.25}
+{'loss': 2.5075, 'learning_rate': 2.3763577999999997e-05, 'epoch': 11.3}
+{'loss': 2.5069, 'learning_rate': 2.3663778e-05, 'epoch': 11.34}
+{'loss': 2.5084, 'learning_rate': 2.3563977999999996e-05, 'epoch': 11.38}
+{'loss': 2.5064, 'learning_rate': 2.3464177999999998e-05, 'epoch': 11.43}
+{'loss': 2.4965, 'learning_rate': 2.3364377999999996e-05, 'epoch': 11.47}
+{'loss': 2.4949, 'learning_rate': 2.3264577999999997e-05, 'epoch': 11.51}
+{'loss': 2.5086, 'learning_rate': 2.3164778e-05, 'epoch': 11.55}
+{'loss': 2.5009, 'learning_rate': 2.3064977999999997e-05, 'epoch': 11.6}
+{'loss': 2.5025, 'learning_rate': 2.2965177999999998e-05, 'epoch': 11.64}
+{'loss': 2.4997, 'learning_rate': 2.2865377999999996e-05, 'epoch': 11.68}
+{'loss': 2.4964, 'learning_rate': 2.2765577999999997e-05, 'epoch': 11.73}
+{'loss': 2.495, 'learning_rate': 2.2665777999999995e-05, 'epoch': 11.77}
+{'loss': 2.5008, 'learning_rate': 2.2565977999999997e-05, 'epoch': 11.81}
+{'loss': 2.5038, 'learning_rate': 2.2466177999999998e-05, 'epoch': 11.86}
+{'loss': 2.5056, 'learning_rate': 2.2366377999999996e-05, 'epoch': 11.9}
+{'loss': 2.5019, 'learning_rate': 2.2266577999999998e-05, 'epoch': 11.94}
+{'loss': 2.5035, 'learning_rate': 2.2166777999999996e-05, 'epoch': 11.98}
+{'loss': 2.5198, 'learning_rate': 2.2066977999999997e-05, 'epoch': 12.03}
+{'loss': 2.4964, 'learning_rate': 2.1967178000000002e-05, 'epoch': 12.07}
+{'loss': 2.4912, 'learning_rate': 2.1867378000000003e-05, 'epoch': 12.11}
+{'loss': 2.5029, 'learning_rate': 2.1767578e-05, 'epoch': 12.16}
+{'loss': 2.4985, 'learning_rate': 2.1667778000000003e-05, 'epoch': 12.2}
+{'loss': 2.4986, 'learning_rate': 2.1567978e-05, 'epoch': 12.24}
+{'loss': 2.501, 'learning_rate': 2.1468178000000002e-05, 'epoch': 12.29}
+{'loss': 2.4999, 'learning_rate': 2.1368378e-05, 'epoch': 12.33}
+{'loss': 2.4999, 'learning_rate': 2.1268578e-05, 'epoch': 12.37}
+{'loss': 2.5005, 'learning_rate': 2.1168778e-05, 'epoch': 12.41}
+{'loss': 2.4934, 'learning_rate': 2.1068978e-05, 'epoch': 12.46}
+{'loss': 2.4891, 'learning_rate': 2.0969178000000002e-05, 'epoch': 12.5}
+{'loss': 2.497, 'learning_rate': 2.0869378e-05, 'epoch': 12.54}
+{'loss': 2.4951, 'learning_rate': 2.0769578e-05, 'epoch': 12.59}
+{'loss': 2.4993, 'learning_rate': 2.0669778e-05, 'epoch': 12.63}
+{'loss': 2.4947, 'learning_rate': 2.0569978e-05, 'epoch': 12.67}
+{'loss': 2.4868, 'learning_rate': 2.0470178e-05, 'epoch': 12.71}
+{'loss': 2.4923, 'learning_rate': 2.0370378e-05, 'epoch': 12.76}
+{'loss': 2.4909, 'learning_rate': 2.0270578000000002e-05, 'epoch': 12.8}
+{'loss': 2.4946, 'learning_rate': 2.0170778e-05, 'epoch': 12.84}
+{'loss': 2.5018, 'learning_rate': 2.0070978e-05, 'epoch': 12.89}
+***** Running Evaluation *****
+  Num examples = 1999
+  Batch size = 10
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 20:28:22 - INFO - datasets.metric -   Removing /work/unify-parameter-efficient-tuning/checkpoints/hf_model/sacrebleu/default/default_experiment-1-0.arrow
+{'eval_loss': 2.9930930137634277, 'eval_bleu': 25.3858, 'eval_gen_len': 36.7824, 'eval_runtime': 110.8719, 'eval_samples_per_second': 18.03, 'eval_steps_per_second': 1.804, 'epoch': 12.89}
+Saving model checkpoint to /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-30000
+Configuration saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-30000/config.json
+Model weights saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-30000/pytorch_model.bin
+tokenizer config file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-30000/tokenizer_config.json
+Special tokens file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-30000/special_tokens_map.json
+Deleting older checkpoint [/work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-20000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.4997, 'learning_rate': 1.9971178e-05, 'epoch': 12.93}
+{'loss': 2.493, 'learning_rate': 1.9871378e-05, 'epoch': 12.97}
+{'loss': 2.5082, 'learning_rate': 1.9771578e-05, 'epoch': 13.02}
+{'loss': 2.5, 'learning_rate': 1.9671778e-05, 'epoch': 13.06}
+{'loss': 2.4854, 'learning_rate': 1.9571977999999998e-05, 'epoch': 13.1}
+{'loss': 2.4905, 'learning_rate': 1.9472178e-05, 'epoch': 13.14}
+{'loss': 2.4941, 'learning_rate': 1.9372378e-05, 'epoch': 13.19}
+{'loss': 2.4907, 'learning_rate': 1.9272578e-05, 'epoch': 13.23}
+{'loss': 2.4952, 'learning_rate': 1.9172778e-05, 'epoch': 13.27}
+{'loss': 2.4943, 'learning_rate': 1.9072977999999998e-05, 'epoch': 13.32}
+{'loss': 2.499, 'learning_rate': 1.8973178e-05, 'epoch': 13.36}
+{'loss': 2.4933, 'learning_rate': 1.8873377999999998e-05, 'epoch': 13.4}
+{'loss': 2.4903, 'learning_rate': 1.8773578e-05, 'epoch': 13.44}
+{'loss': 2.4821, 'learning_rate': 1.8673777999999997e-05, 'epoch': 13.49}
+{'loss': 2.4883, 'learning_rate': 1.8573978e-05, 'epoch': 13.53}
+{'loss': 2.4933, 'learning_rate': 1.8474178e-05, 'epoch': 13.57}
+{'loss': 2.492, 'learning_rate': 1.8375375999999998e-05, 'epoch': 13.62}
+{'loss': 2.4886, 'learning_rate': 1.8275576e-05, 'epoch': 13.66}
+{'loss': 2.4824, 'learning_rate': 1.8175776e-05, 'epoch': 13.7}
+{'loss': 2.485, 'learning_rate': 1.8075976e-05, 'epoch': 13.75}
+{'loss': 2.4868, 'learning_rate': 1.7976176e-05, 'epoch': 13.79}
+{'loss': 2.4886, 'learning_rate': 1.7876375999999998e-05, 'epoch': 13.83}
+{'loss': 2.4958, 'learning_rate': 1.7776576e-05, 'epoch': 13.87}
+{'loss': 2.4929, 'learning_rate': 1.7676775999999998e-05, 'epoch': 13.92}
+{'loss': 2.4884, 'learning_rate': 1.7576976e-05, 'epoch': 13.96}
+{'loss': 2.5042, 'learning_rate': 1.7477176e-05, 'epoch': 14.0}
+{'loss': 2.4921, 'learning_rate': 1.7377376e-05, 'epoch': 14.05}
+{'loss': 2.482, 'learning_rate': 1.7277576e-05, 'epoch': 14.09}
+{'loss': 2.4867, 'learning_rate': 1.7177775999999998e-05, 'epoch': 14.13}
+{'loss': 2.4877, 'learning_rate': 1.7077976e-05, 'epoch': 14.18}
+{'loss': 2.4927, 'learning_rate': 1.6978175999999997e-05, 'epoch': 14.22}
+{'loss': 2.487, 'learning_rate': 1.6878376e-05, 'epoch': 14.26}
+{'loss': 2.489, 'learning_rate': 1.6778575999999997e-05, 'epoch': 14.3}
+{'loss': 2.492, 'learning_rate': 1.6678775999999998e-05, 'epoch': 14.35}
+{'loss': 2.4882, 'learning_rate': 1.6578976e-05, 'epoch': 14.39}
+{'loss': 2.4876, 'learning_rate': 1.6479175999999997e-05, 'epoch': 14.43}
+{'loss': 2.4783, 'learning_rate': 1.6379376e-05, 'epoch': 14.48}
+{'loss': 2.4806, 'learning_rate': 1.6279575999999997e-05, 'epoch': 14.52}
+{'loss': 2.4882, 'learning_rate': 1.6180773999999998e-05, 'epoch': 14.56}
+{'loss': 2.486, 'learning_rate': 1.6080974e-05, 'epoch': 14.6}
+{'loss': 2.4842, 'learning_rate': 1.5981173999999998e-05, 'epoch': 14.65}
+{'loss': 2.4801, 'learning_rate': 1.5881374e-05, 'epoch': 14.69}
+{'loss': 2.4803, 'learning_rate': 1.5782572e-05, 'epoch': 14.73}
+{'loss': 2.4811, 'learning_rate': 1.5682772e-05, 'epoch': 14.78}
+{'loss': 2.4833, 'learning_rate': 1.5582972e-05, 'epoch': 14.82}
+{'loss': 2.4881, 'learning_rate': 1.5483171999999998e-05, 'epoch': 14.86}
+{'loss': 2.4886, 'learning_rate': 1.5383372e-05, 'epoch': 14.91}
+{'loss': 2.482, 'learning_rate': 1.5283572e-05, 'epoch': 14.95}
+{'loss': 2.4856, 'learning_rate': 1.5183772000000002e-05, 'epoch': 14.99}
+{'loss': 2.5053, 'learning_rate': 1.5083971999999998e-05, 'epoch': 15.03}
+***** Running Evaluation *****
+  Num examples = 1999
+  Batch size = 10
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 20:54:06 - INFO - datasets.metric -   Removing /work/unify-parameter-efficient-tuning/checkpoints/hf_model/sacrebleu/default/default_experiment-1-0.arrow
+{'eval_loss': 2.976074695587158, 'eval_bleu': 25.7064, 'eval_gen_len': 36.7654, 'eval_runtime': 110.3018, 'eval_samples_per_second': 18.123, 'eval_steps_per_second': 1.813, 'epoch': 15.03}
+Saving model checkpoint to /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-35000
+Configuration saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-35000/config.json
+Model weights saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-35000/pytorch_model.bin
+tokenizer config file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-35000/tokenizer_config.json
+Special tokens file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-35000/special_tokens_map.json
+Deleting older checkpoint [/work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-25000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.4783, 'learning_rate': 1.4984172e-05, 'epoch': 15.08}
+{'loss': 2.4769, 'learning_rate': 1.4884372e-05, 'epoch': 15.12}
+{'loss': 2.4848, 'learning_rate': 1.4784572000000002e-05, 'epoch': 15.16}
+{'loss': 2.4832, 'learning_rate': 1.4684771999999999e-05, 'epoch': 15.21}
+{'loss': 2.4825, 'learning_rate': 1.4584972e-05, 'epoch': 15.25}
+{'loss': 2.4876, 'learning_rate': 1.4485172e-05, 'epoch': 15.29}
+{'loss': 2.4833, 'learning_rate': 1.4385372e-05, 'epoch': 15.33}
+{'loss': 2.4875, 'learning_rate': 1.4285572e-05, 'epoch': 15.38}
+{'loss': 2.4847, 'learning_rate': 1.4185772e-05, 'epoch': 15.42}
+{'loss': 2.4763, 'learning_rate': 1.4085972e-05, 'epoch': 15.46}
+{'loss': 2.4701, 'learning_rate': 1.3986172e-05, 'epoch': 15.51}
+{'loss': 2.4862, 'learning_rate': 1.3886372e-05, 'epoch': 15.55}
+{'loss': 2.478, 'learning_rate': 1.3786572000000001e-05, 'epoch': 15.59}
+{'loss': 2.4839, 'learning_rate': 1.3686772000000001e-05, 'epoch': 15.64}
+{'loss': 2.4778, 'learning_rate': 1.3586971999999997e-05, 'epoch': 15.68}
+{'loss': 2.4731, 'learning_rate': 1.3487171999999999e-05, 'epoch': 15.72}
+{'loss': 2.4739, 'learning_rate': 1.3387371999999998e-05, 'epoch': 15.76}
+{'loss': 2.4786, 'learning_rate': 1.3287571999999998e-05, 'epoch': 15.81}
+{'loss': 2.482, 'learning_rate': 1.3187771999999998e-05, 'epoch': 15.85}
+{'loss': 2.4849, 'learning_rate': 1.3087971999999999e-05, 'epoch': 15.89}
+{'loss': 2.4833, 'learning_rate': 1.2988171999999999e-05, 'epoch': 15.94}
+{'loss': 2.4805, 'learning_rate': 1.2888371999999999e-05, 'epoch': 15.98}
+{'loss': 2.497, 'learning_rate': 1.2788571999999998e-05, 'epoch': 16.02}
+{'loss': 2.4801, 'learning_rate': 1.2688772e-05, 'epoch': 16.07}
+{'loss': 2.4717, 'learning_rate': 1.2588972e-05, 'epoch': 16.11}
+{'loss': 2.4792, 'learning_rate': 1.2489171999999997e-05, 'epoch': 16.15}
+{'loss': 2.4794, 'learning_rate': 1.2389372000000004e-05, 'epoch': 16.19}
+{'loss': 2.4781, 'learning_rate': 1.2289572000000004e-05, 'epoch': 16.24}
+{'loss': 2.4832, 'learning_rate': 1.2189772000000003e-05, 'epoch': 16.28}
+{'loss': 2.4804, 'learning_rate': 1.2089972000000003e-05, 'epoch': 16.32}
+{'loss': 2.4812, 'learning_rate': 1.1990172000000003e-05, 'epoch': 16.37}
+{'loss': 2.48, 'learning_rate': 1.1890372000000002e-05, 'epoch': 16.41}
+{'loss': 2.4738, 'learning_rate': 1.1790572000000004e-05, 'epoch': 16.45}
+{'loss': 2.4705, 'learning_rate': 1.1691769999999998e-05, 'epoch': 16.49}
+{'loss': 2.477, 'learning_rate': 1.1591969999999998e-05, 'epoch': 16.54}
+{'loss': 2.4758, 'learning_rate': 1.1492169999999998e-05, 'epoch': 16.58}
+{'loss': 2.4793, 'learning_rate': 1.1392369999999997e-05, 'epoch': 16.62}
+{'loss': 2.4748, 'learning_rate': 1.1292570000000004e-05, 'epoch': 16.67}
+{'loss': 2.4686, 'learning_rate': 1.1192770000000004e-05, 'epoch': 16.71}
+{'loss': 2.4746, 'learning_rate': 1.1092970000000003e-05, 'epoch': 16.75}
+{'loss': 2.4726, 'learning_rate': 1.0993170000000003e-05, 'epoch': 16.8}
+{'loss': 2.4734, 'learning_rate': 1.0893370000000003e-05, 'epoch': 16.84}
+{'loss': 2.4859, 'learning_rate': 1.0793570000000002e-05, 'epoch': 16.88}
+{'loss': 2.4801, 'learning_rate': 1.0693770000000002e-05, 'epoch': 16.92}
+{'loss': 2.4755, 'learning_rate': 1.0593970000000004e-05, 'epoch': 16.97}
+{'loss': 2.4897, 'learning_rate': 1.0494170000000003e-05, 'epoch': 17.01}
+{'loss': 2.4801, 'learning_rate': 1.0394370000000003e-05, 'epoch': 17.05}
+{'loss': 2.4677, 'learning_rate': 1.0294570000000003e-05, 'epoch': 17.1}
+{'loss': 2.4748, 'learning_rate': 1.0194770000000002e-05, 'epoch': 17.14}
+{'loss': 2.4737, 'learning_rate': 1.0094970000000002e-05, 'epoch': 17.18}
+***** Running Evaluation *****
+  Num examples = 1999
+  Batch size = 10
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 21:19:19 - INFO - datasets.metric -   Removing /work/unify-parameter-efficient-tuning/checkpoints/hf_model/sacrebleu/default/default_experiment-1-0.arrow
+{'eval_loss': 2.9729056358337402, 'eval_bleu': 25.6145, 'eval_gen_len': 36.8009, 'eval_runtime': 110.0314, 'eval_samples_per_second': 18.168, 'eval_steps_per_second': 1.818, 'epoch': 17.18}
+Saving model checkpoint to /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-40000
+Configuration saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-40000/config.json
+Model weights saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-40000/pytorch_model.bin
+tokenizer config file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-40000/tokenizer_config.json
+Special tokens file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-40000/special_tokens_map.json
+Deleting older checkpoint [/work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-30000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.4748, 'learning_rate': 9.995170000000002e-06, 'epoch': 17.23}
+{'loss': 2.4766, 'learning_rate': 9.895370000000001e-06, 'epoch': 17.27}
+{'loss': 2.4773, 'learning_rate': 9.795570000000003e-06, 'epoch': 17.31}
+{'loss': 2.48, 'learning_rate': 9.696768000000003e-06, 'epoch': 17.35}
+{'loss': 2.4781, 'learning_rate': 9.596968000000002e-06, 'epoch': 17.4}
+{'loss': 2.4742, 'learning_rate': 9.497168000000004e-06, 'epoch': 17.44}
+{'loss': 2.463, 'learning_rate': 9.397368000000003e-06, 'epoch': 17.48}
+{'loss': 2.4718, 'learning_rate': 9.297568000000003e-06, 'epoch': 17.53}
+{'loss': 2.4766, 'learning_rate': 9.197768000000003e-06, 'epoch': 17.57}
+{'loss': 2.4728, 'learning_rate': 9.097968000000002e-06, 'epoch': 17.61}
+{'loss': 2.4724, 'learning_rate': 8.998168000000002e-06, 'epoch': 17.65}
+{'loss': 2.467, 'learning_rate': 8.898368000000002e-06, 'epoch': 17.7}
+{'loss': 2.47, 'learning_rate': 8.798568000000002e-06, 'epoch': 17.74}
+{'loss': 2.469, 'learning_rate': 8.698768000000003e-06, 'epoch': 17.78}
+{'loss': 2.4714, 'learning_rate': 8.598968000000003e-06, 'epoch': 17.83}
+{'loss': 2.4767, 'learning_rate': 8.499168000000002e-06, 'epoch': 17.87}
+{'loss': 2.4769, 'learning_rate': 8.400366000000002e-06, 'epoch': 17.91}
+{'loss': 2.4735, 'learning_rate': 8.300566000000003e-06, 'epoch': 17.96}
+{'loss': 2.47, 'learning_rate': 8.200766000000003e-06, 'epoch': 18.0}
+{'loss': 2.4944, 'learning_rate': 8.100966000000003e-06, 'epoch': 18.04}
+{'loss': 2.4655, 'learning_rate': 8.001166000000003e-06, 'epoch': 18.08}
+{'loss': 2.4668, 'learning_rate': 7.901366000000002e-06, 'epoch': 18.13}
+{'loss': 2.4731, 'learning_rate': 7.801566000000002e-06, 'epoch': 18.17}
+{'loss': 2.4734, 'learning_rate': 7.701766000000002e-06, 'epoch': 18.21}
+{'loss': 2.4721, 'learning_rate': 7.601966000000002e-06, 'epoch': 18.26}
+{'loss': 2.474, 'learning_rate': 7.502166000000001e-06, 'epoch': 18.3}
+{'loss': 2.4734, 'learning_rate': 7.402366000000001e-06, 'epoch': 18.34}
+{'loss': 2.4756, 'learning_rate': 7.302566000000001e-06, 'epoch': 18.38}
+{'loss': 2.4726, 'learning_rate': 7.202766000000001e-06, 'epoch': 18.43}
+{'loss': 2.4635, 'learning_rate': 7.102966000000001e-06, 'epoch': 18.47}
+{'loss': 2.4622, 'learning_rate': 7.003166e-06, 'epoch': 18.51}
+{'loss': 2.4772, 'learning_rate': 6.903366000000001e-06, 'epoch': 18.56}
+{'loss': 2.4666, 'learning_rate': 6.803566e-06, 'epoch': 18.6}
+{'loss': 2.4705, 'learning_rate': 6.703766e-06, 'epoch': 18.64}
+{'loss': 2.4677, 'learning_rate': 6.603966e-06, 'epoch': 18.69}
+{'loss': 2.466, 'learning_rate': 6.504166000000001e-06, 'epoch': 18.73}
+{'loss': 2.4641, 'learning_rate': 6.404366e-06, 'epoch': 18.77}
+{'loss': 2.4674, 'learning_rate': 6.304566000000001e-06, 'epoch': 18.81}
+{'loss': 2.4728, 'learning_rate': 6.204766e-06, 'epoch': 18.86}
+{'loss': 2.4749, 'learning_rate': 6.104966e-06, 'epoch': 18.9}
+{'loss': 2.4701, 'learning_rate': 6.005166e-06, 'epoch': 18.94}
+{'loss': 2.472, 'learning_rate': 5.906364000000001e-06, 'epoch': 18.99}
+{'loss': 2.4887, 'learning_rate': 5.806564000000001e-06, 'epoch': 19.03}
+{'loss': 2.4669, 'learning_rate': 5.706764000000001e-06, 'epoch': 19.07}
+{'loss': 2.4605, 'learning_rate': 5.6069640000000005e-06, 'epoch': 19.12}
+{'loss': 2.4728, 'learning_rate': 5.507164e-06, 'epoch': 19.16}
+{'loss': 2.4691, 'learning_rate': 5.407364000000001e-06, 'epoch': 19.2}
+{'loss': 2.4688, 'learning_rate': 5.3075640000000005e-06, 'epoch': 19.24}
+{'loss': 2.4715, 'learning_rate': 5.207764e-06, 'epoch': 19.29}
+{'loss': 2.4706, 'learning_rate': 5.107964e-06, 'epoch': 19.33}
+***** Running Evaluation *****
+  Num examples = 1999
+  Batch size = 10
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 21:44:50 - INFO - datasets.metric -   Removing /work/unify-parameter-efficient-tuning/checkpoints/hf_model/sacrebleu/default/default_experiment-1-0.arrow
+{'eval_loss': 2.9725639820098877, 'eval_bleu': 25.5176, 'eval_gen_len': 36.7224, 'eval_runtime': 111.6853, 'eval_samples_per_second': 17.899, 'eval_steps_per_second': 1.791, 'epoch': 19.33}
+Saving model checkpoint to /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-45000
+Configuration saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-45000/config.json
+Model weights saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-45000/pytorch_model.bin
+tokenizer config file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-45000/tokenizer_config.json
+Special tokens file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-45000/special_tokens_map.json
+Deleting older checkpoint [/work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-35000] due to args.save_total_limit
+/work/unify-parameter-efficient-tuning/src/transformers/trainer.py:1784: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+{'loss': 2.4717, 'learning_rate': 5.0081640000000005e-06, 'epoch': 19.37}
+{'loss': 2.4705, 'learning_rate': 4.908364e-06, 'epoch': 19.42}
+{'loss': 2.465, 'learning_rate': 4.808564e-06, 'epoch': 19.46}
+{'loss': 2.4596, 'learning_rate': 4.7087639999999996e-06, 'epoch': 19.5}
+{'loss': 2.4692, 'learning_rate': 4.608963999999999e-06, 'epoch': 19.54}
+{'loss': 2.4682, 'learning_rate': 4.509164e-06, 'epoch': 19.59}
+{'loss': 2.4701, 'learning_rate': 4.4093639999999995e-06, 'epoch': 19.63}
+{'loss': 2.4664, 'learning_rate': 4.309563999999999e-06, 'epoch': 19.67}
+{'loss': 2.4583, 'learning_rate': 4.209763999999999e-06, 'epoch': 19.72}
+{'loss': 2.4626, 'learning_rate': 4.1099639999999995e-06, 'epoch': 19.76}
+{'loss': 2.4648, 'learning_rate': 4.010163999999999e-06, 'epoch': 19.8}
+{'loss': 2.4673, 'learning_rate': 3.910363999999999e-06, 'epoch': 19.85}
+{'loss': 2.4738, 'learning_rate': 3.810563999999999e-06, 'epoch': 19.89}
+{'loss': 2.4722, 'learning_rate': 3.7107639999999987e-06, 'epoch': 19.93}
+{'loss': 2.4657, 'learning_rate': 3.610963999999999e-06, 'epoch': 19.97}
+{'loss': 2.4836, 'learning_rate': 3.5111639999999985e-06, 'epoch': 20.02}
+{'loss': 2.4711, 'learning_rate': 3.4113639999999987e-06, 'epoch': 20.06}
+{'loss': 2.4592, 'learning_rate': 3.3115639999999984e-06, 'epoch': 20.1}
+{'loss': 2.4642, 'learning_rate': 3.2117639999999985e-06, 'epoch': 20.15}
+{'loss': 2.4685, 'learning_rate': 3.111963999999998e-06, 'epoch': 20.19}
+{'loss': 2.4655, 'learning_rate': 3.0121639999999983e-06, 'epoch': 20.23}
+{'loss': 2.4691, 'learning_rate': 2.912363999999998e-06, 'epoch': 20.27}
+{'loss': 2.4675, 'learning_rate': 2.812563999999998e-06, 'epoch': 20.32}
+{'loss': 2.4737, 'learning_rate': 2.712763999999998e-06, 'epoch': 20.36}
+{'loss': 2.4667, 'learning_rate': 2.612963999999998e-06, 'epoch': 20.4}
+{'loss': 2.4638, 'learning_rate': 2.5131639999999977e-06, 'epoch': 20.45}
+{'loss': 2.4583, 'learning_rate': 2.4133639999999978e-06, 'epoch': 20.49}
+{'loss': 2.4623, 'learning_rate': 2.3135639999999975e-06, 'epoch': 20.53}
+{'loss': 2.4672, 'learning_rate': 2.2137639999999976e-06, 'epoch': 20.58}
+{'loss': 2.4678, 'learning_rate': 2.1139639999999973e-06, 'epoch': 20.62}
+{'loss': 2.4642, 'learning_rate': 2.0141639999999974e-06, 'epoch': 20.66}
+{'loss': 2.4586, 'learning_rate': 1.9143639999999976e-06, 'epoch': 20.7}
+{'loss': 2.4597, 'learning_rate': 1.8145639999999975e-06, 'epoch': 20.75}
+{'loss': 2.4625, 'learning_rate': 1.7157619999999983e-06, 'epoch': 20.79}
+{'loss': 2.4648, 'learning_rate': 1.615961999999998e-06, 'epoch': 20.83}
+{'loss': 2.4714, 'learning_rate': 1.517159999999999e-06, 'epoch': 20.88}
+{'loss': 2.4679, 'learning_rate': 1.417359999999999e-06, 'epoch': 20.92}
+{'loss': 2.4643, 'learning_rate': 1.3175599999999988e-06, 'epoch': 20.96}
+{'loss': 2.4805, 'learning_rate': 1.217759999999999e-06, 'epoch': 21.01}
+{'loss': 2.4687, 'learning_rate': 1.1179599999999986e-06, 'epoch': 21.05}
+{'loss': 2.4566, 'learning_rate': 1.0181599999999987e-06, 'epoch': 21.09}
+{'loss': 2.4622, 'learning_rate': 9.183599999999985e-07, 'epoch': 21.13}
+{'loss': 2.4641, 'learning_rate': 8.185599999999985e-07, 'epoch': 21.18}
+{'loss': 2.4661, 'learning_rate': 7.187599999999984e-07, 'epoch': 21.22}
+{'loss': 2.4661, 'learning_rate': 6.189599999999983e-07, 'epoch': 21.26}
+{'loss': 2.4661, 'learning_rate': 5.191599999999981e-07, 'epoch': 21.31}
+{'loss': 2.4696, 'learning_rate': 4.1935999999999806e-07, 'epoch': 21.35}
+{'loss': 2.4674, 'learning_rate': 3.1955999999999797e-07, 'epoch': 21.39}
+{'loss': 2.4647, 'learning_rate': 2.1975999999999789e-07, 'epoch': 21.43}
+{'loss': 2.4553, 'learning_rate': 1.199599999999978e-07, 'epoch': 21.48}
+***** Running Evaluation *****
+  Num examples = 1999
+  Batch size = 10
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 22:15:01 - INFO - datasets.metric -   Removing /work/unify-parameter-efficient-tuning/checkpoints/hf_model/sacrebleu/default/default_experiment-1-0.arrow
+{'eval_loss': 2.970647096633911, 'eval_bleu': 25.5796, 'eval_gen_len': 36.7589, 'eval_runtime': 110.364, 'eval_samples_per_second': 18.113, 'eval_steps_per_second': 1.812, 'epoch': 21.48}
+Saving model checkpoint to /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-50000
+Configuration saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-50000/config.json
+Model weights saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-50000/pytorch_model.bin
+tokenizer config file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-50000/tokenizer_config.json
+Special tokens file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-50000/special_tokens_map.json
+Deleting older checkpoint [/work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-40000] due to args.save_total_limit
+
+
+Training completed. Do not forget to share your model on huggingface.co/models =)
+
+
+Loading best model from /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/checkpoint-50000 (score: 2.970647096633911).
+{'train_runtime': 15501.111, 'train_samples_per_second': 129.023, 'train_steps_per_second': 3.226, 'train_loss': 2.558755429992676, 'epoch': 21.48}
+Saving model checkpoint to /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix
+Configuration saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/config.json
+Model weights saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/pytorch_model.bin
+tokenizer config file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/tokenizer_config.json
+Special tokens file saved in /work/unify-parameter-efficient-tuning/checkpoints/wmt16_table4_small/20261007_175503_475486/prefix/special_tokens_map.json
+***** train metrics *****
+  epoch                    =      21.48
+  train_loss               =     2.5588
+  train_runtime            = 4:18:21.11
+  train_samples            =     610320
+  train_samples_per_second =    129.023
+  train_steps_per_second   =      3.226
+10/07/2026 22:15:05 - INFO - __main__ -   *** Evaluate ***
+***** Running Evaluation *****
+  Num examples = 1999
+  Batch size = 10
+/work/unify-parameter-efficient-tuning/src/transformers/trainer_seq2seq.py:183: FutureWarning: `torch.cuda.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cuda', args...)` instead.
+  with autocast():
+10/07/2026 22:16:56 - INFO - datasets.metric -   Removing /work/unify-parameter-efficient-tuning/checkpoints/hf_model/sacrebleu/default/default_experiment-1-0.arrow
+{'eval_loss': 2.970647096633911, 'eval_bleu': 25.5796, 'eval_gen_len': 36.7589, 'eval_runtime': 110.2135, 'eval_samples_per_second': 18.138, 'eval_steps_per_second': 1.815, 'epoch': 21.48}
+***** eval metrics *****
+  epoch                   =      21.48
+  eval_bleu               =    25.5796
+  eval_gen_len            =    36.7589
+  eval_loss               =     2.9706
+  eval_runtime            = 0:01:50.21
+  eval_samples            =       1999
+  eval_samples_per_second =     18.138
+  eval_steps_per_second   =      1.815
+10/07/2026 22:16:56 - INFO - __main__ -   *** Predict ***
+***** Running Prediction *****
+  Num examples = 1999
+  Batch size = 10
+10/07/2026 22:18:45 - INFO - datasets.metric -   Removing /work/unify-parameter-efficient-tuning/checkpoints/hf_model/sacrebleu/default/default_experiment-1-0.arrow
+***** predict metrics *****
+  predict_bleu               =    24.6975
+  predict_gen_len            =    35.4862
+  predict_loss               =     3.0121
+  predict_runtime            = 0:01:49.70
+  predict_samples            =       1999
+  predict_samples_per_second =     18.221
+  predict_steps_per_second   =      1.823
+Tokenizer Version 1.1
+Language: ro
+Number of threads: 1
+Tokenizer Version 1.1
+Language: ro
+Number of threads: 1
+34.6
