@@ -1,0 +1,18 @@
+\begin{table}[t]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\caption{WMT16 English--Romanian results for the insertion forms from Table~3. BLEU is reported as Paper / Reproduced.}
+\label{tab:table3_mt}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Method & \# Params & BLEU \\
+\midrule
+Prefix, $l=200$ & 3.6\% & 35.6 / 34.6 \\
+SA (attn), $r=200$ & 3.6\% & 35.3 / 35.3 \\
+SA (ffn), $r=200$ & 2.4\% & 35.6 / 35.8 \\
+PA (attn), $r=200$ & 3.6\% & 35.6 / 35.4 \\
+PA (ffn), $r=200$ & 2.4\% & 36.4 / 36.3 \\
+\bottomrule
+\end{tabular}
+\end{table}

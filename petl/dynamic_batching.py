@@ -164,6 +164,8 @@ class DynamicBatchingDataset(Dataset):
         return shuffled_batches
 
     def __getitem__(self, item):
+        if isinstance(item, np.integer):
+            item = int(item)
         return self.dataset.__getitem__(item)
 
     def collate_fn(self, batch):

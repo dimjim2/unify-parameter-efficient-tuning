@@ -308,10 +308,29 @@ def main():
     # In distributed training, the load_dataset function guarantee that only one local process can concurrently
     # download the dataset.
     if data_args.dataset_name is not None:
-        # Downloading and loading a dataset from the hub.
-        raw_datasets = load_dataset(
-            data_args.dataset_name, data_args.dataset_config_name, cache_dir=model_args.cache_dir
-        )
+        # Special handling for WMT16 ro-en because the old datasets loader
+        # points to obsolete source URLs.
+        if data_args.dataset_name == "wmt16" and data_args.dataset_config_name == "ro-en":
+            base = "https://huggingface.co/datasets/wmt/wmt16/resolve/main/ro-en"
+
+            data_files = {
+                "train": f"{base}/train-00000-of-00001.parquet",
+                "validation": f"{base}/validation-00000-of-00001.parquet",
+                "test": f"{base}/test-00000-of-00001.parquet",
+            }
+
+            raw_datasets = load_dataset(
+                "parquet",
+                data_files=data_files,
+                cache_dir=model_args.cache_dir,
+            )
+        else:
+            # Default behaviour for all other datasets.
+            raw_datasets = load_dataset(
+                data_args.dataset_name,
+                data_args.dataset_config_name,
+                cache_dir=model_args.cache_dir,
+            )
     else:
         data_files = {}
         if data_args.train_file is not None:
