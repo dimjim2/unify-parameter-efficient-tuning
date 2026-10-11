@@ -1,0 +1,10 @@
+method,capacity,parameters_percent,predict_rouge2,source
+Prefix attn,l=200,3.629315798361263,20.1669,reproduction
+Prefix attn,l=512,9.291048443804833,20.1796,reproduction
+PA attn,r=200,3.629315798361263,20.3583,reproduction
+PA attn,r=512,9.291048443804833,20.9688,reproduction
+PA-FFN,r=200,2.4195438655741754,20.6833,reproduction
+PA-FFN,r=512,6.1940322958698895,21.1696,reproduction
+PA-FFN,r=1024,12.388064591739779,21.5657,reproduction
+LoRA attn,r=200,7.258631596722526,19.3731,reproduction
+LoRA-FFN,r=102,6.169836857214147,21.3011,reproduction
